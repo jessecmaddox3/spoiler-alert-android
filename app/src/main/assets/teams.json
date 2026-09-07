@@ -1,0 +1,2242 @@
+{
+  "leagues": [
+    {
+      "id": "nfl",
+      "name": "NFL",
+      "teams": [
+        {
+          "id": "nfl-monday-night-football",
+          "name": "Monday Night Football",
+          "aliases": [
+            "monday night football"
+          ],
+          "short": [
+            "mnf"
+          ]
+        },
+        {
+          "id": "nfl-sunday-night-football",
+          "name": "Sunday Night Football",
+          "aliases": [
+            "sunday night football"
+          ],
+          "short": [
+            "snf"
+          ]
+        },
+        {
+          "id": "nfl-thursday-night-football",
+          "name": "Thursday Night Football",
+          "aliases": [
+            "thursday night football"
+          ],
+          "short": [
+            "tnf"
+          ]
+        },
+        {
+          "id": "buf-bills",
+          "name": "Buffalo Bills",
+          "aliases": [
+            "bills mafia"
+          ],
+          "short": [
+            "bills"
+          ],
+          "espn": "football/nfl/2"
+        },
+        {
+          "id": "mia-dolphins",
+          "name": "Miami Dolphins",
+          "short": [
+            "dolphins",
+            "fins"
+          ],
+          "espn": "football/nfl/15"
+        },
+        {
+          "id": "ne-patriots",
+          "name": "New England Patriots",
+          "short": [
+            "patriots",
+            "pats",
+            "ne"
+          ],
+          "espn": "football/nfl/17"
+        },
+        {
+          "id": "nyj-jets",
+          "name": "New York Jets",
+          "aliases": [
+            "ny jets"
+          ],
+          "short": [
+            "jets"
+          ],
+          "espn": "football/nfl/20"
+        },
+        {
+          "id": "bal-ravens",
+          "name": "Baltimore Ravens",
+          "short": [
+            "ravens"
+          ],
+          "espn": "football/nfl/33"
+        },
+        {
+          "id": "cin-bengals",
+          "name": "Cincinnati Bengals",
+          "short": [
+            "bengals"
+          ],
+          "espn": "football/nfl/4"
+        },
+        {
+          "id": "cle-browns",
+          "name": "Cleveland Browns",
+          "short": [
+            "browns"
+          ],
+          "espn": "football/nfl/5"
+        },
+        {
+          "id": "pit-steelers",
+          "name": "Pittsburgh Steelers",
+          "aliases": [
+            "steelers",
+            "steel curtain"
+          ],
+          "espn": "football/nfl/23"
+        },
+        {
+          "id": "hou-texans",
+          "name": "Houston Texans",
+          "short": [
+            "texans"
+          ],
+          "espn": "football/nfl/34"
+        },
+        {
+          "id": "ind-colts",
+          "name": "Indianapolis Colts",
+          "short": [
+            "colts"
+          ],
+          "espn": "football/nfl/11"
+        },
+        {
+          "id": "jax-jaguars",
+          "name": "Jacksonville Jaguars",
+          "aliases": [
+            "jaguars",
+            "jags"
+          ],
+          "espn": "football/nfl/30"
+        },
+        {
+          "id": "ten-titans",
+          "name": "Tennessee Titans",
+          "short": [
+            "titans"
+          ],
+          "espn": "football/nfl/10"
+        },
+        {
+          "id": "den-broncos",
+          "name": "Denver Broncos",
+          "short": [
+            "broncos"
+          ],
+          "espn": "football/nfl/7"
+        },
+        {
+          "id": "kc-chiefs",
+          "name": "Kansas City Chiefs",
+          "short": [
+            "chiefs",
+            "kc"
+          ],
+          "espn": "football/nfl/12"
+        },
+        {
+          "id": "lv-raiders",
+          "name": "Las Vegas Raiders",
+          "aliases": [
+            "raiders"
+          ],
+          "espn": "football/nfl/13"
+        },
+        {
+          "id": "lac-chargers",
+          "name": "Los Angeles Chargers",
+          "short": [
+            "chargers",
+            "bolts"
+          ],
+          "espn": "football/nfl/24"
+        },
+        {
+          "id": "dal-cowboys",
+          "name": "Dallas Cowboys",
+          "aliases": [
+            "america's team"
+          ],
+          "short": [
+            "cowboys"
+          ],
+          "espn": "football/nfl/6"
+        },
+        {
+          "id": "nyg-giants",
+          "name": "New York Giants",
+          "aliases": [
+            "g-men",
+            "big blue"
+          ],
+          "short": [
+            "giants"
+          ],
+          "espn": "football/nfl/19"
+        },
+        {
+          "id": "phi-eagles",
+          "name": "Philadelphia Eagles",
+          "short": [
+            "eagles"
+          ],
+          "espn": "football/nfl/21"
+        },
+        {
+          "id": "was-commanders",
+          "name": "Washington Commanders",
+          "short": [
+            "commanders"
+          ],
+          "espn": "football/nfl/28"
+        },
+        {
+          "id": "chi-bears",
+          "name": "Chicago Bears",
+          "short": [
+            "bears"
+          ],
+          "espn": "football/nfl/3"
+        },
+        {
+          "id": "det-lions",
+          "name": "Detroit Lions",
+          "short": [
+            "lions"
+          ],
+          "espn": "football/nfl/8"
+        },
+        {
+          "id": "gb-packers",
+          "name": "Green Bay Packers",
+          "aliases": [
+            "cheeseheads"
+          ],
+          "short": [
+            "packers"
+          ],
+          "espn": "football/nfl/9"
+        },
+        {
+          "id": "min-vikings",
+          "name": "Minnesota Vikings",
+          "short": [
+            "vikings"
+          ],
+          "espn": "football/nfl/16"
+        },
+        {
+          "id": "atl-falcons",
+          "name": "Atlanta Falcons",
+          "aliases": [
+            "falcons",
+            "dirty birds"
+          ],
+          "short": [
+            "atl"
+          ],
+          "espn": "football/nfl/1"
+        },
+        {
+          "id": "car-panthers",
+          "name": "Carolina Panthers",
+          "short": [
+            "panthers"
+          ],
+          "espn": "football/nfl/29"
+        },
+        {
+          "id": "no-saints",
+          "name": "New Orleans Saints",
+          "short": [
+            "saints"
+          ],
+          "espn": "football/nfl/18"
+        },
+        {
+          "id": "tb-buccaneers",
+          "name": "Tampa Bay Buccaneers",
+          "aliases": [
+            "buccaneers",
+            "bucs"
+          ],
+          "espn": "football/nfl/27"
+        },
+        {
+          "id": "ari-cardinals",
+          "name": "Arizona Cardinals",
+          "short": [
+            "cardinals"
+          ],
+          "espn": "football/nfl/22"
+        },
+        {
+          "id": "lar-rams",
+          "name": "Los Angeles Rams",
+          "short": [
+            "rams"
+          ],
+          "espn": "football/nfl/14"
+        },
+        {
+          "id": "sf-49ers",
+          "name": "San Francisco 49ers",
+          "aliases": [
+            "49ers",
+            "niners"
+          ],
+          "espn": "football/nfl/25"
+        },
+        {
+          "id": "sea-seahawks",
+          "name": "Seattle Seahawks",
+          "aliases": [
+            "seahawks"
+          ],
+          "short": [
+            "hawks"
+          ],
+          "espn": "football/nfl/26"
+        }
+      ]
+    },
+    {
+      "id": "cfb",
+      "name": "College Football",
+      "teams": [
+        {
+          "id": "cfb-alabama",
+          "name": "Alabama Crimson Tide",
+          "aliases": [
+            "bama",
+            "roll tide",
+            "crimson tide"
+          ],
+          "espn": "football/college-football/333"
+        },
+        {
+          "id": "cfb-arkansas",
+          "name": "Arkansas Razorbacks",
+          "aliases": [
+            "razorbacks"
+          ],
+          "short": [
+            "hogs"
+          ],
+          "espn": "football/college-football/8"
+        },
+        {
+          "id": "cfb-auburn",
+          "name": "Auburn Tigers",
+          "aliases": [
+            "war eagle"
+          ],
+          "short": [
+            "tigers"
+          ],
+          "espn": "football/college-football/2"
+        },
+        {
+          "id": "cfb-florida",
+          "name": "Florida Gators",
+          "aliases": [
+            "the swamp"
+          ],
+          "short": [
+            "gators"
+          ],
+          "espn": "football/college-football/57"
+        },
+        {
+          "id": "cfb-georgia",
+          "name": "Georgia Bulldogs",
+          "short": [
+            "dawgs",
+            "uga",
+            "bulldogs"
+          ],
+          "espn": "football/college-football/61"
+        },
+        {
+          "id": "cfb-kentucky",
+          "name": "Kentucky Wildcats",
+          "short": [
+            "wildcats"
+          ],
+          "espn": "football/college-football/96"
+        },
+        {
+          "id": "cfb-lsu",
+          "name": "LSU Tigers",
+          "short": [
+            "tigers"
+          ],
+          "espn": "football/college-football/99"
+        },
+        {
+          "id": "cfb-mississippi-state",
+          "name": "Mississippi State Bulldogs",
+          "aliases": [
+            "miss state"
+          ],
+          "short": [
+            "bulldogs"
+          ],
+          "espn": "football/college-football/344"
+        },
+        {
+          "id": "cfb-missouri",
+          "name": "Missouri Tigers",
+          "short": [
+            "tigers"
+          ],
+          "espn": "football/college-football/142"
+        },
+        {
+          "id": "cfb-ole-miss",
+          "name": "Ole Miss Rebels",
+          "aliases": [
+            "ole miss"
+          ],
+          "short": [
+            "rebels"
+          ],
+          "espn": "football/college-football/145"
+        },
+        {
+          "id": "cfb-oklahoma",
+          "name": "Oklahoma Sooners",
+          "aliases": [
+            "sooners"
+          ],
+          "espn": "football/college-football/201"
+        },
+        {
+          "id": "cfb-south-carolina",
+          "name": "South Carolina Gamecocks",
+          "aliases": [
+            "gamecocks"
+          ],
+          "short": [
+            "cocks"
+          ],
+          "espn": "football/college-football/2579"
+        },
+        {
+          "id": "cfb-tennessee",
+          "name": "Tennessee Volunteers",
+          "aliases": [
+            "vols"
+          ],
+          "espn": "football/college-football/2633"
+        },
+        {
+          "id": "cfb-texas",
+          "name": "Texas Longhorns",
+          "aliases": [
+            "longhorns"
+          ],
+          "short": [
+            "horns"
+          ],
+          "espn": "football/college-football/251"
+        },
+        {
+          "id": "cfb-texas-am",
+          "name": "Texas A&M Aggies",
+          "aliases": [
+            "aggies"
+          ],
+          "espn": "football/college-football/245"
+        },
+        {
+          "id": "cfb-vanderbilt",
+          "name": "Vanderbilt Commodores",
+          "aliases": [
+            "commodores",
+            "dores"
+          ],
+          "espn": "football/college-football/238"
+        },
+        {
+          "id": "cfb-illinois",
+          "name": "Illinois Fighting Illini",
+          "aliases": [
+            "illini"
+          ],
+          "espn": "football/college-football/356"
+        },
+        {
+          "id": "cfb-indiana",
+          "name": "Indiana Hoosiers",
+          "aliases": [
+            "hoosiers"
+          ],
+          "espn": "football/college-football/84"
+        },
+        {
+          "id": "cfb-iowa",
+          "name": "Iowa Hawkeyes",
+          "aliases": [
+            "hawkeyes"
+          ],
+          "espn": "football/college-football/2294"
+        },
+        {
+          "id": "cfb-maryland",
+          "name": "Maryland Terrapins",
+          "aliases": [
+            "terps"
+          ],
+          "espn": "football/college-football/120"
+        },
+        {
+          "id": "cfb-michigan",
+          "name": "Michigan Wolverines",
+          "aliases": [
+            "wolverines"
+          ],
+          "espn": "football/college-football/130"
+        },
+        {
+          "id": "cfb-michigan-state",
+          "name": "Michigan State Spartans",
+          "aliases": [
+            "spartans"
+          ],
+          "short": [
+            "msu"
+          ],
+          "espn": "football/college-football/127"
+        },
+        {
+          "id": "cfb-minnesota",
+          "name": "Minnesota Golden Gophers",
+          "aliases": [
+            "golden gophers"
+          ],
+          "short": [
+            "gophers"
+          ],
+          "espn": "football/college-football/135"
+        },
+        {
+          "id": "cfb-nebraska",
+          "name": "Nebraska Cornhuskers",
+          "aliases": [
+            "cornhuskers",
+            "huskers"
+          ],
+          "espn": "football/college-football/158"
+        },
+        {
+          "id": "cfb-northwestern",
+          "name": "Northwestern Wildcats",
+          "short": [
+            "wildcats"
+          ],
+          "espn": "football/college-football/77"
+        },
+        {
+          "id": "cfb-ohio-state",
+          "name": "Ohio State Buckeyes",
+          "short": [
+            "buckeyes",
+            "osu"
+          ],
+          "espn": "football/college-football/194"
+        },
+        {
+          "id": "cfb-oregon",
+          "name": "Oregon Ducks",
+          "short": [
+            "ducks"
+          ],
+          "espn": "football/college-football/2483"
+        },
+        {
+          "id": "cfb-penn-state",
+          "name": "Penn State Nittany Lions",
+          "aliases": [
+            "nittany lions"
+          ],
+          "short": [
+            "psu"
+          ],
+          "espn": "football/college-football/213"
+        },
+        {
+          "id": "cfb-purdue",
+          "name": "Purdue Boilermakers",
+          "aliases": [
+            "boilermakers",
+            "boilers"
+          ],
+          "espn": "football/college-football/2509"
+        },
+        {
+          "id": "cfb-rutgers",
+          "name": "Rutgers Scarlet Knights",
+          "aliases": [
+            "scarlet knights"
+          ],
+          "espn": "football/college-football/164"
+        },
+        {
+          "id": "cfb-ucla",
+          "name": "UCLA Bruins",
+          "aliases": [
+            "bruins"
+          ],
+          "espn": "football/college-football/26"
+        },
+        {
+          "id": "cfb-usc",
+          "name": "USC Trojans",
+          "short": [
+            "trojans"
+          ],
+          "espn": "football/college-football/30"
+        },
+        {
+          "id": "cfb-washington",
+          "name": "Washington Huskies",
+          "short": [
+            "huskies"
+          ],
+          "espn": "football/college-football/264"
+        },
+        {
+          "id": "cfb-wisconsin",
+          "name": "Wisconsin Badgers",
+          "aliases": [
+            "badgers"
+          ],
+          "espn": "football/college-football/275"
+        },
+        {
+          "id": "cfb-boston-college",
+          "name": "Boston College Eagles",
+          "short": [
+            "eagles"
+          ],
+          "espn": "football/college-football/103"
+        },
+        {
+          "id": "cfb-california",
+          "name": "California Golden Bears",
+          "aliases": [
+            "golden bears"
+          ],
+          "short": [
+            "cal"
+          ],
+          "espn": "football/college-football/25"
+        },
+        {
+          "id": "cfb-clemson",
+          "name": "Clemson Tigers",
+          "short": [
+            "tigers"
+          ],
+          "espn": "football/college-football/228"
+        },
+        {
+          "id": "cfb-duke",
+          "name": "Duke Blue Devils",
+          "aliases": [
+            "blue devils"
+          ],
+          "espn": "football/college-football/150"
+        },
+        {
+          "id": "cfb-florida-state",
+          "name": "Florida State Seminoles",
+          "aliases": [
+            "seminoles",
+            "noles"
+          ],
+          "espn": "football/college-football/52"
+        },
+        {
+          "id": "cfb-georgia-tech",
+          "name": "Georgia Tech Yellow Jackets",
+          "aliases": [
+            "ramblin wreck"
+          ],
+          "short": [
+            "yellow jackets"
+          ],
+          "espn": "football/college-football/59"
+        },
+        {
+          "id": "cfb-louisville",
+          "name": "Louisville Cardinals",
+          "short": [
+            "cardinals"
+          ],
+          "espn": "football/college-football/97"
+        },
+        {
+          "id": "cfb-miami",
+          "name": "Miami Hurricanes",
+          "short": [
+            "hurricanes",
+            "the u"
+          ],
+          "espn": "football/college-football/2390"
+        },
+        {
+          "id": "cfb-nc-state",
+          "name": "NC State Wolfpack",
+          "aliases": [
+            "wolfpack"
+          ],
+          "espn": "football/college-football/152"
+        },
+        {
+          "id": "cfb-north-carolina",
+          "name": "North Carolina Tar Heels",
+          "aliases": [
+            "tar heels"
+          ],
+          "short": [
+            "unc"
+          ],
+          "espn": "football/college-football/153"
+        },
+        {
+          "id": "cfb-pittsburgh",
+          "name": "Pittsburgh Panthers",
+          "short": [
+            "panthers"
+          ],
+          "espn": "football/college-football/221"
+        },
+        {
+          "id": "cfb-smu",
+          "name": "SMU Mustangs",
+          "short": [
+            "mustangs"
+          ],
+          "espn": "football/college-football/2567"
+        },
+        {
+          "id": "cfb-stanford",
+          "name": "Stanford Cardinal",
+          "espn": "football/college-football/24"
+        },
+        {
+          "id": "cfb-syracuse",
+          "name": "Syracuse Orange",
+          "short": [
+            "orange"
+          ],
+          "espn": "football/college-football/183"
+        },
+        {
+          "id": "cfb-virginia",
+          "name": "Virginia Cavaliers",
+          "short": [
+            "cavaliers",
+            "uva"
+          ],
+          "espn": "football/college-football/258"
+        },
+        {
+          "id": "cfb-virginia-tech",
+          "name": "Virginia Tech Hokies",
+          "aliases": [
+            "hokies"
+          ],
+          "short": [
+            "vt"
+          ],
+          "espn": "football/college-football/259"
+        },
+        {
+          "id": "cfb-wake-forest",
+          "name": "Wake Forest Demon Deacons",
+          "aliases": [
+            "demon deacons"
+          ],
+          "espn": "football/college-football/154"
+        },
+        {
+          "id": "cfb-arizona",
+          "name": "Arizona Wildcats",
+          "short": [
+            "wildcats"
+          ],
+          "espn": "football/college-football/12"
+        },
+        {
+          "id": "cfb-arizona-state",
+          "name": "Arizona State Sun Devils",
+          "aliases": [
+            "sun devils"
+          ],
+          "short": [
+            "asu"
+          ],
+          "espn": "football/college-football/9"
+        },
+        {
+          "id": "cfb-baylor",
+          "name": "Baylor Bears",
+          "short": [
+            "bears"
+          ],
+          "espn": "football/college-football/239"
+        },
+        {
+          "id": "cfb-byu",
+          "name": "BYU Cougars",
+          "short": [
+            "cougars"
+          ],
+          "espn": "football/college-football/252"
+        },
+        {
+          "id": "cfb-cincinnati",
+          "name": "Cincinnati Bearcats",
+          "aliases": [
+            "bearcats"
+          ],
+          "espn": "football/college-football/2132"
+        },
+        {
+          "id": "cfb-colorado",
+          "name": "Colorado Buffaloes",
+          "aliases": [
+            "buffaloes"
+          ],
+          "short": [
+            "buffs"
+          ],
+          "espn": "football/college-football/38"
+        },
+        {
+          "id": "cfb-houston",
+          "name": "Houston Cougars",
+          "short": [
+            "cougars"
+          ],
+          "espn": "football/college-football/248"
+        },
+        {
+          "id": "cfb-iowa-state",
+          "name": "Iowa State Cyclones",
+          "short": [
+            "cyclones"
+          ],
+          "espn": "football/college-football/66"
+        },
+        {
+          "id": "cfb-kansas",
+          "name": "Kansas Jayhawks",
+          "aliases": [
+            "jayhawks"
+          ],
+          "espn": "football/college-football/2305"
+        },
+        {
+          "id": "cfb-kansas-state",
+          "name": "Kansas State Wildcats",
+          "short": [
+            "wildcats"
+          ],
+          "espn": "football/college-football/2306"
+        },
+        {
+          "id": "cfb-oklahoma-state",
+          "name": "Oklahoma State Cowboys",
+          "short": [
+            "cowboys",
+            "pokes"
+          ],
+          "espn": "football/college-football/197"
+        },
+        {
+          "id": "cfb-tcu",
+          "name": "TCU Horned Frogs",
+          "aliases": [
+            "horned frogs"
+          ],
+          "espn": "football/college-football/2628"
+        },
+        {
+          "id": "cfb-texas-tech",
+          "name": "Texas Tech Red Raiders",
+          "aliases": [
+            "red raiders"
+          ],
+          "espn": "football/college-football/2641"
+        },
+        {
+          "id": "cfb-ucf",
+          "name": "UCF Knights",
+          "short": [
+            "knights"
+          ],
+          "espn": "football/college-football/2116"
+        },
+        {
+          "id": "cfb-utah",
+          "name": "Utah Utes",
+          "aliases": [
+            "utes"
+          ],
+          "espn": "football/college-football/254"
+        },
+        {
+          "id": "cfb-west-virginia",
+          "name": "West Virginia Mountaineers",
+          "aliases": [
+            "mountaineers"
+          ],
+          "short": [
+            "wvu"
+          ],
+          "espn": "football/college-football/277"
+        },
+        {
+          "id": "cfb-notre-dame",
+          "name": "Notre Dame Fighting Irish",
+          "aliases": [
+            "fighting irish"
+          ],
+          "short": [
+            "irish"
+          ],
+          "espn": "football/college-football/87"
+        }
+      ]
+    },
+    {
+      "id": "nba",
+      "name": "NBA",
+      "teams": [
+        {
+          "id": "bos-celtics",
+          "name": "Boston Celtics",
+          "aliases": [
+            "celtics"
+          ],
+          "espn": "basketball/nba/2"
+        },
+        {
+          "id": "bkn-nets",
+          "name": "Brooklyn Nets",
+          "short": [
+            "nets"
+          ],
+          "espn": "basketball/nba/17"
+        },
+        {
+          "id": "nyk-knicks",
+          "name": "New York Knicks",
+          "aliases": [
+            "knicks"
+          ],
+          "espn": "basketball/nba/18"
+        },
+        {
+          "id": "phi-76ers",
+          "name": "Philadelphia 76ers",
+          "aliases": [
+            "76ers",
+            "sixers"
+          ],
+          "espn": "basketball/nba/20"
+        },
+        {
+          "id": "tor-raptors",
+          "name": "Toronto Raptors",
+          "short": [
+            "raptors"
+          ],
+          "espn": "basketball/nba/28"
+        },
+        {
+          "id": "chi-bulls",
+          "name": "Chicago Bulls",
+          "short": [
+            "bulls"
+          ],
+          "espn": "basketball/nba/4"
+        },
+        {
+          "id": "cle-cavaliers",
+          "name": "Cleveland Cavaliers",
+          "aliases": [
+            "cavs"
+          ],
+          "short": [
+            "cavaliers"
+          ],
+          "espn": "basketball/nba/5"
+        },
+        {
+          "id": "det-pistons",
+          "name": "Detroit Pistons",
+          "short": [
+            "pistons"
+          ],
+          "espn": "basketball/nba/8"
+        },
+        {
+          "id": "ind-pacers",
+          "name": "Indiana Pacers",
+          "short": [
+            "pacers"
+          ],
+          "espn": "basketball/nba/11"
+        },
+        {
+          "id": "mil-bucks",
+          "name": "Milwaukee Bucks",
+          "short": [
+            "bucks"
+          ],
+          "espn": "basketball/nba/15"
+        },
+        {
+          "id": "atl-hawks",
+          "name": "Atlanta Hawks",
+          "short": [
+            "hawks"
+          ],
+          "espn": "basketball/nba/1"
+        },
+        {
+          "id": "cha-hornets",
+          "name": "Charlotte Hornets",
+          "short": [
+            "hornets"
+          ],
+          "espn": "basketball/nba/30"
+        },
+        {
+          "id": "mia-heat",
+          "name": "Miami Heat",
+          "short": [
+            "heat"
+          ],
+          "espn": "basketball/nba/14"
+        },
+        {
+          "id": "orl-magic",
+          "name": "Orlando Magic",
+          "short": [
+            "magic"
+          ],
+          "espn": "basketball/nba/19"
+        },
+        {
+          "id": "was-wizards",
+          "name": "Washington Wizards",
+          "short": [
+            "wizards"
+          ],
+          "espn": "basketball/nba/27"
+        },
+        {
+          "id": "den-nuggets",
+          "name": "Denver Nuggets",
+          "short": [
+            "nuggets"
+          ],
+          "espn": "basketball/nba/7"
+        },
+        {
+          "id": "min-timberwolves",
+          "name": "Minnesota Timberwolves",
+          "aliases": [
+            "timberwolves"
+          ],
+          "short": [
+            "wolves"
+          ],
+          "espn": "basketball/nba/16"
+        },
+        {
+          "id": "okc-thunder",
+          "name": "Oklahoma City Thunder",
+          "short": [
+            "thunder"
+          ],
+          "espn": "basketball/nba/25"
+        },
+        {
+          "id": "por-blazers",
+          "name": "Portland Trail Blazers",
+          "aliases": [
+            "trail blazers"
+          ],
+          "short": [
+            "blazers"
+          ],
+          "espn": "basketball/nba/22"
+        },
+        {
+          "id": "utah-jazz",
+          "name": "Utah Jazz",
+          "short": [
+            "jazz"
+          ],
+          "espn": "basketball/nba/26"
+        },
+        {
+          "id": "gsw-warriors",
+          "name": "Golden State Warriors",
+          "short": [
+            "warriors",
+            "dubs"
+          ],
+          "espn": "basketball/nba/9"
+        },
+        {
+          "id": "lac-clippers",
+          "name": "LA Clippers",
+          "short": [
+            "clippers"
+          ],
+          "espn": "basketball/nba/12"
+        },
+        {
+          "id": "lal-lakers",
+          "name": "Los Angeles Lakers",
+          "aliases": [
+            "lakers"
+          ],
+          "espn": "basketball/nba/13"
+        },
+        {
+          "id": "phx-suns",
+          "name": "Phoenix Suns",
+          "short": [
+            "suns"
+          ],
+          "espn": "basketball/nba/21"
+        },
+        {
+          "id": "sac-kings",
+          "name": "Sacramento Kings",
+          "short": [
+            "kings"
+          ],
+          "espn": "basketball/nba/23"
+        },
+        {
+          "id": "dal-mavericks",
+          "name": "Dallas Mavericks",
+          "aliases": [
+            "mavs"
+          ],
+          "short": [
+            "mavericks"
+          ],
+          "espn": "basketball/nba/6"
+        },
+        {
+          "id": "hou-rockets",
+          "name": "Houston Rockets",
+          "short": [
+            "rockets"
+          ],
+          "espn": "basketball/nba/10"
+        },
+        {
+          "id": "mem-grizzlies",
+          "name": "Memphis Grizzlies",
+          "aliases": [
+            "grizzlies"
+          ],
+          "espn": "basketball/nba/29"
+        },
+        {
+          "id": "no-pelicans",
+          "name": "New Orleans Pelicans",
+          "aliases": [
+            "pelicans"
+          ],
+          "espn": "basketball/nba/3"
+        },
+        {
+          "id": "sas-spurs",
+          "name": "San Antonio Spurs",
+          "short": [
+            "spurs"
+          ],
+          "espn": "basketball/nba/24"
+        }
+      ]
+    },
+    {
+      "id": "mlb",
+      "name": "MLB",
+      "teams": [
+        {
+          "id": "bal-orioles",
+          "name": "Baltimore Orioles",
+          "aliases": [
+            "orioles"
+          ],
+          "short": [
+            "o's"
+          ],
+          "espn": "baseball/mlb/1"
+        },
+        {
+          "id": "bos-redsox",
+          "name": "Boston Red Sox",
+          "aliases": [
+            "red sox",
+            "bosox"
+          ],
+          "espn": "baseball/mlb/2"
+        },
+        {
+          "id": "nyy-yankees",
+          "name": "New York Yankees",
+          "aliases": [
+            "yankees",
+            "bronx bombers"
+          ],
+          "short": [
+            "yanks"
+          ],
+          "espn": "baseball/mlb/10"
+        },
+        {
+          "id": "tb-rays",
+          "name": "Tampa Bay Rays",
+          "short": [
+            "rays"
+          ],
+          "espn": "baseball/mlb/30"
+        },
+        {
+          "id": "tor-bluejays",
+          "name": "Toronto Blue Jays",
+          "aliases": [
+            "blue jays"
+          ],
+          "short": [
+            "jays"
+          ],
+          "espn": "baseball/mlb/14"
+        },
+        {
+          "id": "chw-whitesox",
+          "name": "Chicago White Sox",
+          "aliases": [
+            "white sox",
+            "chisox"
+          ],
+          "espn": "baseball/mlb/4"
+        },
+        {
+          "id": "cle-guardians",
+          "name": "Cleveland Guardians",
+          "short": [
+            "guardians"
+          ],
+          "espn": "baseball/mlb/5"
+        },
+        {
+          "id": "det-tigers",
+          "name": "Detroit Tigers",
+          "short": [
+            "tigers"
+          ],
+          "espn": "baseball/mlb/6"
+        },
+        {
+          "id": "kc-royals",
+          "name": "Kansas City Royals",
+          "short": [
+            "royals"
+          ],
+          "espn": "baseball/mlb/7"
+        },
+        {
+          "id": "min-twins",
+          "name": "Minnesota Twins",
+          "short": [
+            "twins"
+          ],
+          "espn": "baseball/mlb/9"
+        },
+        {
+          "id": "hou-astros",
+          "name": "Houston Astros",
+          "aliases": [
+            "astros"
+          ],
+          "espn": "baseball/mlb/18"
+        },
+        {
+          "id": "laa-angels",
+          "name": "Los Angeles Angels",
+          "short": [
+            "angels"
+          ],
+          "espn": "baseball/mlb/3"
+        },
+        {
+          "id": "ath-athletics",
+          "name": "Athletics",
+          "aliases": [
+            "oakland athletics"
+          ],
+          "short": [
+            "a's"
+          ],
+          "nameShort": true,
+          "espn": "baseball/mlb/11"
+        },
+        {
+          "id": "sea-mariners",
+          "name": "Seattle Mariners",
+          "aliases": [
+            "mariners"
+          ],
+          "espn": "baseball/mlb/12"
+        },
+        {
+          "id": "tex-rangers",
+          "name": "Texas Rangers",
+          "short": [
+            "rangers"
+          ],
+          "espn": "baseball/mlb/13"
+        },
+        {
+          "id": "atl-braves",
+          "name": "Atlanta Braves",
+          "aliases": [
+            "braves"
+          ],
+          "espn": "baseball/mlb/15"
+        },
+        {
+          "id": "mia-marlins",
+          "name": "Miami Marlins",
+          "aliases": [
+            "marlins"
+          ],
+          "espn": "baseball/mlb/28"
+        },
+        {
+          "id": "nym-mets",
+          "name": "New York Mets",
+          "aliases": [
+            "mets",
+            "amazins"
+          ],
+          "espn": "baseball/mlb/21"
+        },
+        {
+          "id": "phi-phillies",
+          "name": "Philadelphia Phillies",
+          "aliases": [
+            "phillies"
+          ],
+          "espn": "baseball/mlb/22"
+        },
+        {
+          "id": "was-nationals",
+          "name": "Washington Nationals",
+          "short": [
+            "nationals",
+            "nats"
+          ],
+          "espn": "baseball/mlb/20"
+        },
+        {
+          "id": "chc-cubs",
+          "name": "Chicago Cubs",
+          "short": [
+            "cubs"
+          ],
+          "espn": "baseball/mlb/16"
+        },
+        {
+          "id": "cin-reds",
+          "name": "Cincinnati Reds",
+          "short": [
+            "reds"
+          ],
+          "espn": "baseball/mlb/17"
+        },
+        {
+          "id": "mil-brewers",
+          "name": "Milwaukee Brewers",
+          "short": [
+            "brewers"
+          ],
+          "espn": "baseball/mlb/8"
+        },
+        {
+          "id": "pit-pirates",
+          "name": "Pittsburgh Pirates",
+          "short": [
+            "pirates"
+          ],
+          "espn": "baseball/mlb/23"
+        },
+        {
+          "id": "stl-cardinals",
+          "name": "St. Louis Cardinals",
+          "short": [
+            "cardinals"
+          ],
+          "espn": "baseball/mlb/24"
+        },
+        {
+          "id": "ari-diamondbacks",
+          "name": "Arizona Diamondbacks",
+          "aliases": [
+            "diamondbacks",
+            "d-backs"
+          ],
+          "espn": "baseball/mlb/29"
+        },
+        {
+          "id": "col-rockies",
+          "name": "Colorado Rockies",
+          "short": [
+            "rockies"
+          ],
+          "espn": "baseball/mlb/27"
+        },
+        {
+          "id": "lad-dodgers",
+          "name": "Los Angeles Dodgers",
+          "aliases": [
+            "dodgers"
+          ],
+          "espn": "baseball/mlb/19"
+        },
+        {
+          "id": "sd-padres",
+          "name": "San Diego Padres",
+          "short": [
+            "padres"
+          ],
+          "espn": "baseball/mlb/25"
+        },
+        {
+          "id": "sf-giants",
+          "name": "San Francisco Giants",
+          "short": [
+            "giants"
+          ],
+          "espn": "baseball/mlb/26"
+        }
+      ]
+    },
+    {
+      "id": "nhl",
+      "name": "NHL",
+      "teams": [
+        { "id": "nhl-anaheim-ducks", "name": "Anaheim Ducks", "espn": "hockey/nhl/25" },
+        { "id": "nhl-boston-bruins", "name": "Boston Bruins", "espn": "hockey/nhl/1" },
+        { "id": "nhl-buffalo-sabres", "name": "Buffalo Sabres", "espn": "hockey/nhl/2" },
+        { "id": "nhl-calgary-flames", "name": "Calgary Flames", "espn": "hockey/nhl/3" },
+        { "id": "nhl-carolina-hurricanes", "name": "Carolina Hurricanes", "espn": "hockey/nhl/7" },
+        { "id": "nhl-chicago-blackhawks", "name": "Chicago Blackhawks", "espn": "hockey/nhl/4" },
+        { "id": "nhl-colorado-avalanche", "name": "Colorado Avalanche", "espn": "hockey/nhl/17" },
+        { "id": "nhl-columbus-blue-jackets", "name": "Columbus Blue Jackets", "espn": "hockey/nhl/29" },
+        { "id": "nhl-dallas-stars", "name": "Dallas Stars", "espn": "hockey/nhl/9" },
+        { "id": "nhl-detroit-red-wings", "name": "Detroit Red Wings", "espn": "hockey/nhl/5" },
+        { "id": "nhl-edmonton-oilers", "name": "Edmonton Oilers", "espn": "hockey/nhl/6" },
+        { "id": "nhl-florida-panthers", "name": "Florida Panthers", "espn": "hockey/nhl/26" },
+        { "id": "nhl-los-angeles-kings", "name": "Los Angeles Kings", "espn": "hockey/nhl/8" },
+        { "id": "nhl-minnesota-wild", "name": "Minnesota Wild", "espn": "hockey/nhl/30" },
+        { "id": "nhl-montreal-canadiens", "name": "Montreal Canadiens", "espn": "hockey/nhl/10" },
+        { "id": "nhl-nashville-predators", "name": "Nashville Predators", "espn": "hockey/nhl/27" },
+        { "id": "nhl-new-jersey-devils", "name": "New Jersey Devils", "espn": "hockey/nhl/11" },
+        { "id": "nhl-new-york-islanders", "name": "New York Islanders", "espn": "hockey/nhl/12" },
+        { "id": "nhl-new-york-rangers", "name": "New York Rangers", "espn": "hockey/nhl/13" },
+        { "id": "nhl-ottawa-senators", "name": "Ottawa Senators", "espn": "hockey/nhl/14" },
+        { "id": "nhl-philadelphia-flyers", "name": "Philadelphia Flyers", "espn": "hockey/nhl/15" },
+        { "id": "nhl-pittsburgh-penguins", "name": "Pittsburgh Penguins", "espn": "hockey/nhl/16" },
+        { "id": "nhl-san-jose-sharks", "name": "San Jose Sharks", "espn": "hockey/nhl/18" },
+        { "id": "nhl-seattle-kraken", "name": "Seattle Kraken", "espn": "hockey/nhl/124292" },
+        { "id": "nhl-st-louis-blues", "name": "St. Louis Blues", "espn": "hockey/nhl/19" },
+        { "id": "nhl-tampa-bay-lightning", "name": "Tampa Bay Lightning", "espn": "hockey/nhl/20" },
+        { "id": "nhl-toronto-maple-leafs", "name": "Toronto Maple Leafs", "espn": "hockey/nhl/21" },
+        { "id": "nhl-utah-mammoth", "name": "Utah Mammoth", "espn": "hockey/nhl/129764" },
+        { "id": "nhl-vancouver-canucks", "name": "Vancouver Canucks", "espn": "hockey/nhl/22" },
+        { "id": "nhl-vegas-golden-knights", "name": "Vegas Golden Knights", "espn": "hockey/nhl/37" },
+        { "id": "nhl-washington-capitals", "name": "Washington Capitals", "espn": "hockey/nhl/23" },
+        { "id": "nhl-winnipeg-jets", "name": "Winnipeg Jets", "espn": "hockey/nhl/28" }
+      ]
+    },
+    {
+      "id": "wnba",
+      "name": "WNBA",
+      "teams": [
+        { "id": "wnba-atlanta-dream", "name": "Atlanta Dream", "espn": "basketball/wnba/20" },
+        { "id": "wnba-chicago-sky", "name": "Chicago Sky", "espn": "basketball/wnba/19" },
+        { "id": "wnba-connecticut-sun", "name": "Connecticut Sun", "espn": "basketball/wnba/18" },
+        { "id": "wnba-dallas-wings", "name": "Dallas Wings", "espn": "basketball/wnba/3" },
+        { "id": "wnba-golden-state-valkyries", "name": "Golden State Valkyries", "espn": "basketball/wnba/129689" },
+        { "id": "wnba-indiana-fever", "name": "Indiana Fever", "espn": "basketball/wnba/5" },
+        { "id": "wnba-las-vegas-aces", "name": "Las Vegas Aces", "espn": "basketball/wnba/17" },
+        { "id": "wnba-los-angeles-sparks", "name": "Los Angeles Sparks", "espn": "basketball/wnba/6" },
+        { "id": "wnba-minnesota-lynx", "name": "Minnesota Lynx", "espn": "basketball/wnba/8" },
+        { "id": "wnba-new-york-liberty", "name": "New York Liberty", "espn": "basketball/wnba/9" },
+        { "id": "wnba-phoenix-mercury", "name": "Phoenix Mercury", "espn": "basketball/wnba/11" },
+        { "id": "wnba-portland-fire", "name": "Portland Fire", "espn": "basketball/wnba/132052" },
+        { "id": "wnba-seattle-storm", "name": "Seattle Storm", "espn": "basketball/wnba/14" },
+        { "id": "wnba-toronto-tempo", "name": "Toronto Tempo", "espn": "basketball/wnba/131935" },
+        { "id": "wnba-washington-mystics", "name": "Washington Mystics", "espn": "basketball/wnba/16" }
+      ]
+    },
+    {
+      "id": "epl",
+      "name": "Premier League",
+      "teams": [
+        {
+          "id": "epl-arsenal",
+          "name": "Arsenal",
+          "aliases": [
+            "gunners"
+          ],
+          "espn": "soccer/eng.1/359"
+        },
+        {
+          "id": "epl-aston-villa",
+          "name": "Aston Villa",
+          "aliases": [
+            "villans"
+          ],
+          "short": [
+            "villa"
+          ],
+          "espn": "soccer/eng.1/362"
+        },
+        {
+          "id": "epl-bournemouth",
+          "name": "Bournemouth",
+          "short": [
+            "cherries"
+          ],
+          "espn": "soccer/eng.1/349"
+        },
+        {
+          "id": "epl-brentford",
+          "name": "Brentford",
+          "short": [
+            "bees"
+          ],
+          "espn": "soccer/eng.1/337"
+        },
+        {
+          "id": "epl-brighton",
+          "name": "Brighton & Hove Albion",
+          "short": [
+            "seagulls",
+            "brighton"
+          ],
+          "espn": "soccer/eng.1/331"
+        },
+        {
+          "id": "epl-chelsea",
+          "name": "Chelsea",
+          "short": [
+            "blues"
+          ],
+          "espn": "soccer/eng.1/363"
+        },
+        {
+          "id": "epl-crystal-palace",
+          "name": "Crystal Palace",
+          "short": [
+            "eagles",
+            "palace"
+          ],
+          "espn": "soccer/eng.1/384"
+        },
+        {
+          "id": "epl-everton",
+          "name": "Everton",
+          "short": [
+            "toffees"
+          ],
+          "espn": "soccer/eng.1/368"
+        },
+        {
+          "id": "epl-fulham",
+          "name": "Fulham",
+          "aliases": [
+            "cottagers"
+          ],
+          "espn": "soccer/eng.1/370"
+        },
+        {
+          "id": "epl-leeds",
+          "name": "Leeds United",
+          "short": [
+            "whites",
+            "leeds"
+          ],
+          "espn": "soccer/eng.1/357"
+        },
+        {
+          "id": "epl-liverpool",
+          "name": "Liverpool",
+          "aliases": [
+            "the kop"
+          ],
+          "short": [
+            "reds"
+          ],
+          "espn": "soccer/eng.1/364"
+        },
+        {
+          "id": "epl-man-city",
+          "name": "Manchester City",
+          "aliases": [
+            "man city"
+          ],
+          "short": [
+            "city"
+          ],
+          "espn": "soccer/eng.1/382"
+        },
+        {
+          "id": "epl-man-united",
+          "name": "Manchester United",
+          "aliases": [
+            "man united",
+            "man utd",
+            "red devils"
+          ],
+          "short": [
+            "mufc",
+            "utd"
+          ],
+          "espn": "soccer/eng.1/360"
+        },
+        {
+          "id": "epl-newcastle",
+          "name": "Newcastle United",
+          "aliases": [
+            "magpies"
+          ],
+          "short": [
+            "toon",
+            "newcastle"
+          ],
+          "espn": "soccer/eng.1/361"
+        },
+        {
+          "id": "epl-forest",
+          "name": "Nottingham Forest",
+          "short": [
+            "forest"
+          ],
+          "espn": "soccer/eng.1/393"
+        },
+        {
+          "id": "epl-sunderland",
+          "name": "Sunderland",
+          "aliases": [
+            "black cats"
+          ],
+          "espn": "soccer/eng.1/366"
+        },
+        {
+          "id": "epl-tottenham",
+          "name": "Tottenham Hotspur",
+          "aliases": [
+            "tottenham"
+          ],
+          "short": [
+            "spurs"
+          ],
+          "espn": "soccer/eng.1/367"
+        },
+        {
+          "id": "epl-coventry",
+          "name": "Coventry City",
+          "aliases": [
+            "sky blues",
+            "coventry"
+          ],
+          "espn": "soccer/eng.1/388"
+        },
+        {
+          "id": "epl-ipswich",
+          "name": "Ipswich Town",
+          "aliases": [
+            "tractor boys",
+            "ipswich"
+          ],
+          "espn": "soccer/eng.1/373"
+        },
+        {
+          "id": "epl-hull",
+          "name": "Hull City",
+          "short": [
+            "tigers",
+            "hull"
+          ],
+          "espn": "soccer/eng.1/306"
+        }
+      ]
+    },
+    {
+      "id": "mls",
+      "name": "MLS",
+      "teams": [
+        {
+          "id": "mls-atlanta-united",
+          "name": "Atlanta United FC",
+          "aliases": [
+            "atlanta united",
+            "five stripes"
+          ],
+          "short": [
+            "atl",
+            "atl utd",
+            "atlufc"
+          ],
+          "espn": "soccer/usa.1/18418"
+        },
+        {
+          "id": "mls-austin-fc",
+          "name": "Austin FC",
+          "espn": "soccer/usa.1/20906"
+        },
+        {
+          "id": "mls-cf-montreal",
+          "name": "CF Montréal",
+          "aliases": [
+            "cf montreal"
+          ],
+          "espn": "soccer/usa.1/9720"
+        },
+        {
+          "id": "mls-charlotte-fc",
+          "name": "Charlotte FC",
+          "espn": "soccer/usa.1/21300"
+        },
+        {
+          "id": "mls-chicago-fire",
+          "name": "Chicago Fire FC",
+          "aliases": [
+            "chicago fire"
+          ],
+          "espn": "soccer/usa.1/182"
+        },
+        {
+          "id": "mls-colorado-rapids",
+          "name": "Colorado Rapids",
+          "espn": "soccer/usa.1/184"
+        },
+        {
+          "id": "mls-columbus-crew",
+          "name": "Columbus Crew",
+          "espn": "soccer/usa.1/183"
+        },
+        {
+          "id": "mls-dc-united",
+          "name": "D.C. United",
+          "aliases": [
+            "dc united"
+          ],
+          "espn": "soccer/usa.1/193"
+        },
+        {
+          "id": "mls-fc-cincinnati",
+          "name": "FC Cincinnati",
+          "espn": "soccer/usa.1/18267"
+        },
+        {
+          "id": "mls-fc-dallas",
+          "name": "FC Dallas",
+          "espn": "soccer/usa.1/185"
+        },
+        {
+          "id": "mls-houston-dynamo",
+          "name": "Houston Dynamo FC",
+          "aliases": [
+            "houston dynamo"
+          ],
+          "espn": "soccer/usa.1/6077"
+        },
+        {
+          "id": "mls-inter-miami",
+          "name": "Inter Miami CF",
+          "aliases": [
+            "inter miami"
+          ],
+          "espn": "soccer/usa.1/20232"
+        },
+        {
+          "id": "mls-la-galaxy",
+          "name": "LA Galaxy",
+          "aliases": [
+            "los angeles galaxy"
+          ],
+          "espn": "soccer/usa.1/187"
+        },
+        {
+          "id": "mls-lafc",
+          "name": "LAFC",
+          "aliases": [
+            "los angeles fc"
+          ],
+          "espn": "soccer/usa.1/18966"
+        },
+        {
+          "id": "mls-minnesota-united",
+          "name": "Minnesota United FC",
+          "aliases": [
+            "minnesota united"
+          ],
+          "espn": "soccer/usa.1/17362"
+        },
+        {
+          "id": "mls-nashville-sc",
+          "name": "Nashville SC",
+          "espn": "soccer/usa.1/18986"
+        },
+        {
+          "id": "mls-new-england-revolution",
+          "name": "New England Revolution",
+          "espn": "soccer/usa.1/189"
+        },
+        {
+          "id": "mls-new-york-city-fc",
+          "name": "New York City FC",
+          "short": [
+            "nycfc"
+          ],
+          "espn": "soccer/usa.1/17606"
+        },
+        {
+          "id": "mls-orlando-city",
+          "name": "Orlando City SC",
+          "aliases": [
+            "orlando city"
+          ],
+          "espn": "soccer/usa.1/12011"
+        },
+        {
+          "id": "mls-philadelphia-union",
+          "name": "Philadelphia Union",
+          "espn": "soccer/usa.1/10739"
+        },
+        {
+          "id": "mls-portland-timbers",
+          "name": "Portland Timbers",
+          "espn": "soccer/usa.1/9723"
+        },
+        {
+          "id": "mls-real-salt-lake",
+          "name": "Real Salt Lake",
+          "espn": "soccer/usa.1/4771"
+        },
+        {
+          "id": "mls-new-york-red-bulls",
+          "name": "New York Red Bulls",
+          "aliases": [
+            "red bull new york"
+          ],
+          "espn": "soccer/usa.1/190"
+        },
+        {
+          "id": "mls-san-diego-fc",
+          "name": "San Diego FC",
+          "espn": "soccer/usa.1/22529"
+        },
+        {
+          "id": "mls-san-jose-earthquakes",
+          "name": "San Jose Earthquakes",
+          "espn": "soccer/usa.1/191"
+        },
+        {
+          "id": "mls-seattle-sounders",
+          "name": "Seattle Sounders FC",
+          "aliases": [
+            "seattle sounders"
+          ],
+          "espn": "soccer/usa.1/9726"
+        },
+        {
+          "id": "mls-sporting-kansas-city",
+          "name": "Sporting Kansas City",
+          "short": [
+            "sporting kc"
+          ],
+          "espn": "soccer/usa.1/186"
+        },
+        {
+          "id": "mls-st-louis-city",
+          "name": "St. Louis CITY SC",
+          "aliases": [
+            "st louis city sc"
+          ],
+          "espn": "soccer/usa.1/21812"
+        },
+        {
+          "id": "mls-toronto-fc",
+          "name": "Toronto FC",
+          "espn": "soccer/usa.1/7318"
+        },
+        {
+          "id": "mls-vancouver-whitecaps",
+          "name": "Vancouver Whitecaps",
+          "espn": "soccer/usa.1/9727"
+        }
+      ]
+    },
+    {
+      "id": "soccer",
+      "name": "Soccer",
+      "teams": [
+        {
+          "id": "soccer-world-cup",
+          "name": "FIFA World Cup",
+          "aliases": [
+            "world cup",
+            "world cup final",
+            "mbappe",
+            "mbappé",
+            "messi",
+            "haaland",
+            "bellingham",
+            "yamal",
+            "musiala",
+            "pulisic",
+            "ronaldo",
+            "worldcup"
+          ],
+          "short": [
+            "fifa",
+            "wc",
+            "team usa"
+          ]
+        },
+        {
+          "id": "soccer-usmnt",
+          "name": "USMNT",
+          "aliases": [
+            "us men's national team",
+            "usa soccer",
+            "usmnt"
+          ],
+          "short": [],
+          "espn": "soccer/fifa.world/660"
+        }
+      ]
+    },
+    {
+      "id": "f1",
+      "name": "Formula 1",
+      "teams": [
+        {
+          "id": "f1-mclaren",
+          "name": "McLaren",
+          "aliases": [
+            "norris",
+            "piastri"
+          ]
+        },
+        {
+          "id": "f1-mercedes",
+          "name": "Mercedes",
+          "aliases": [
+            "antonelli"
+          ],
+          "short": [
+            "russell"
+          ]
+        },
+        {
+          "id": "f1-ferrari",
+          "name": "Ferrari",
+          "aliases": [
+            "leclerc",
+            "scuderia"
+          ],
+          "short": [
+            "hamilton"
+          ]
+        },
+        {
+          "id": "f1-redbull",
+          "name": "Red Bull Racing",
+          "aliases": [
+            "verstappen",
+            "hadjar",
+            "red bull"
+          ]
+        },
+        {
+          "id": "f1-racing-bulls",
+          "name": "Racing Bulls",
+          "aliases": [
+            "lawson",
+            "lindblad"
+          ],
+          "short": [
+            "rb"
+          ]
+        },
+        {
+          "id": "f1-aston-martin",
+          "name": "Aston Martin",
+          "aliases": [
+            "alonso"
+          ],
+          "short": [
+            "stroll"
+          ]
+        },
+        {
+          "id": "f1-alpine",
+          "name": "Alpine",
+          "aliases": [
+            "gasly",
+            "colapinto"
+          ]
+        },
+        {
+          "id": "f1-haas",
+          "name": "Haas F1 Team",
+          "aliases": [
+            "ocon",
+            "bearman",
+            "haas"
+          ]
+        },
+        {
+          "id": "f1-williams",
+          "name": "Williams",
+          "aliases": [
+            "sainz",
+            "albon"
+          ]
+        },
+        {
+          "id": "f1-audi",
+          "name": "Audi",
+          "aliases": [
+            "hulkenberg",
+            "bortoleto"
+          ]
+        },
+        {
+          "id": "f1-cadillac",
+          "name": "Cadillac",
+          "aliases": [
+            "bottas"
+          ],
+          "short": [
+            "perez"
+          ]
+        },
+        {
+          "id": "f1-general",
+          "name": "Formula 1",
+          "aliases": [
+            "f1",
+            "grand prix",
+            "formula one",
+            "norris",
+            "piastri",
+            "antonelli",
+            "leclerc",
+            "verstappen",
+            "hadjar",
+            "lawson",
+            "lindblad",
+            "alonso",
+            "gasly",
+            "colapinto",
+            "ocon",
+            "bearman",
+            "sainz",
+            "albon",
+            "hulkenberg",
+            "bortoleto",
+            "bottas"
+          ],
+          "short": [
+            "russell",
+            "hamilton",
+            "stroll",
+            "perez"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "golf",
+      "name": "Golf",
+      "teams": [
+        {
+          "id": "golf-masters",
+          "name": "The Masters",
+          "aliases": [
+            "green jacket"
+          ],
+          "short": [
+            "masters",
+            "augusta"
+          ]
+        },
+        {
+          "id": "golf-pga-championship",
+          "name": "PGA Championship",
+          "aliases": [
+            "wanamaker trophy"
+          ]
+        },
+        {
+          "id": "golf-us-open",
+          "name": "U.S. Open Golf",
+          "short": [
+            "us open",
+            "u.s. open"
+          ]
+        },
+        {
+          "id": "golf-open-championship",
+          "name": "The Open Championship",
+          "aliases": [
+            "british open",
+            "claret jug"
+          ],
+          "short": [
+            "the open"
+          ]
+        },
+        {
+          "id": "golf-ryder-cup",
+          "name": "Ryder Cup"
+        },
+        {
+          "id": "golf-presidents-cup",
+          "name": "Presidents Cup"
+        },
+        {
+          "id": "golf-fedex-cup",
+          "name": "FedEx Cup"
+        },
+        {
+          "id": "golf-pga-tour",
+          "name": "PGA Tour",
+          "aliases": [
+            "scheffler",
+            "mcilroy",
+            "rahm",
+            "schauffele",
+            "morikawa",
+            "fleetwood",
+            "fitzpatrick",
+            "spaun",
+            "gotterup",
+            "dechambeau",
+            "aberg",
+            "hovland",
+            "cantlay",
+            "henley",
+            "straka",
+            "lowry",
+            "matsuyama",
+            "rai"
+          ],
+          "short": [
+            "rose",
+            "young",
+            "clark"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tgl",
+      "name": "TGL",
+      "teams": [
+        {
+          "id": "tgl-atlanta-drive",
+          "name": "Atlanta Drive GC",
+          "aliases": [
+            "atlanta drive"
+          ],
+          "espn": "golf/tgl/130349"
+        },
+        {
+          "id": "tgl-boston-common",
+          "name": "Boston Common Golf",
+          "espn": "golf/tgl/130350"
+        },
+        {
+          "id": "tgl-jupiter-links",
+          "name": "Jupiter Links Golf Club",
+          "aliases": [
+            "jupiter links gc"
+          ],
+          "espn": "golf/tgl/130351"
+        },
+        {
+          "id": "tgl-los-angeles",
+          "name": "Los Angeles Golf Club",
+          "aliases": [
+            "los angeles gc"
+          ],
+          "espn": "golf/tgl/130352"
+        },
+        {
+          "id": "tgl-new-york",
+          "name": "New York Golf Club",
+          "aliases": [
+            "new york gc"
+          ],
+          "espn": "golf/tgl/130353"
+        },
+        {
+          "id": "tgl-the-bay",
+          "name": "The Bay Golf Club",
+          "aliases": [
+            "the bay gc"
+          ],
+          "espn": "golf/tgl/130354"
+        }
+      ]
+    }
+  ]
+}

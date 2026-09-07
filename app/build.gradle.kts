@@ -1,0 +1,73 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
+}
+
+android {
+    namespace = "com.jessemaddox.spoileralert"
+    compileSdk = 35
+
+    defaultConfig {
+        applicationId = "com.jessemaddox.spoileralert"
+        minSdk = 26
+        targetSdk = 35
+        versionCode = 25
+        versionName = "3.11.0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            // A public debug install cannot replace the author's private production app.
+            applicationIdSuffix = ".opensource"
+            versionNameSuffix = "-opensource"
+        }
+        release {
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            // No signing material is included. Gradle produces an unsigned release APK; supply
+            // a signing config locally if you intend to distribute your own build.
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions { jvmTarget = "17" }
+    buildFeatures { compose = true }
+
+    // Exported Room schemas as androidTest assets so MigrationTestHelper can replay old versions.
+    sourceSets.getByName("androidTest").assets.srcDir("$projectDir/schemas")
+}
+
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
+}
+
+dependencies {
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.material3)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.tooling.preview)
+    debugImplementation(libs.compose.ui.tooling)
+    implementation(libs.lifecycle.runtime.compose)
+    implementation(libs.lifecycle.viewmodel.compose)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
+    implementation(libs.work.runtime.ktx)
+    implementation(libs.glance.appwidget)
+    implementation(libs.kotlinx.serialization.json)
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.room.testing)
+    androidTestImplementation(libs.work.testing)
+    androidTestImplementation("androidx.test:core-ktx:1.6.1")
+}

@@ -1,0 +1,419 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 10,
+    "identityHash": "949d2d61a544c26c7c54581d47037f03",
+    "entities": [
+      {
+        "tableName": "shields",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `aliasesJson` TEXT NOT NULL, `kind` TEXT NOT NULL, `catalogTeamId` TEXT, `gameEventId` TEXT, `armed` INTEGER NOT NULL, `armedAtMillis` INTEGER, `autoDisarmHours` INTEGER NOT NULL, `maskedAlerts` INTEGER NOT NULL, `pregamePrompts` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "aliasesJson",
+            "columnName": "aliasesJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kind",
+            "columnName": "kind",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "catalogTeamId",
+            "columnName": "catalogTeamId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "gameEventId",
+            "columnName": "gameEventId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "armed",
+            "columnName": "armed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "armedAtMillis",
+            "columnName": "armedAtMillis",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "autoDisarmHours",
+            "columnName": "autoDisarmHours",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "maskedAlerts",
+            "columnName": "maskedAlerts",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pregamePrompts",
+            "columnName": "pregamePrompts",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "vault",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `shieldId` INTEGER NOT NULL, `sourcePackage` TEXT NOT NULL, `sourceAppLabel` TEXT NOT NULL, `title` TEXT NOT NULL, `text` TEXT NOT NULL, `postedAtMillis` INTEGER NOT NULL, `notificationKey` TEXT NOT NULL, `revealedAtMillis` INTEGER, `conversation` TEXT, `messageCount` INTEGER NOT NULL, `isConversation` INTEGER NOT NULL, `isImportantConversation` INTEGER NOT NULL, `sourceCategory` TEXT, `hasExactOpen` INTEGER NOT NULL, `hasReplyAction` INTEGER NOT NULL, `hasMarkUnreadAction` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shieldId",
+            "columnName": "shieldId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sourcePackage",
+            "columnName": "sourcePackage",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sourceAppLabel",
+            "columnName": "sourceAppLabel",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "text",
+            "columnName": "text",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "postedAtMillis",
+            "columnName": "postedAtMillis",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notificationKey",
+            "columnName": "notificationKey",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "revealedAtMillis",
+            "columnName": "revealedAtMillis",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "conversation",
+            "columnName": "conversation",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "messageCount",
+            "columnName": "messageCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isConversation",
+            "columnName": "isConversation",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isImportantConversation",
+            "columnName": "isImportantConversation",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sourceCategory",
+            "columnName": "sourceCategory",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hasExactOpen",
+            "columnName": "hasExactOpen",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hasReplyAction",
+            "columnName": "hasReplyAction",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hasMarkUnreadAction",
+            "columnName": "hasMarkUnreadAction",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_vault_shieldId",
+            "unique": false,
+            "columnNames": [
+              "shieldId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_vault_shieldId` ON `${TABLE_NAME}` (`shieldId`)"
+          },
+          {
+            "name": "index_vault_revealedAtMillis",
+            "unique": false,
+            "columnNames": [
+              "revealedAtMillis"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_vault_revealedAtMillis` ON `${TABLE_NAME}` (`revealedAtMillis`)"
+          },
+          {
+            "name": "index_vault_notificationKey",
+            "unique": false,
+            "columnNames": [
+              "notificationKey"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_vault_notificationKey` ON `${TABLE_NAME}` (`notificationKey`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "games",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `shieldId` INTEGER NOT NULL, `name` TEXT NOT NULL, `shortName` TEXT NOT NULL, `startMillis` INTEGER NOT NULL, `completed` INTEGER NOT NULL, `fetchedAtMillis` INTEGER NOT NULL, PRIMARY KEY(`id`, `shieldId`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shieldId",
+            "columnName": "shieldId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shortName",
+            "columnName": "shortName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startMillis",
+            "columnName": "startMillis",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completed",
+            "columnName": "completed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fetchedAtMillis",
+            "columnName": "fetchedAtMillis",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id",
+            "shieldId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_games_shieldId",
+            "unique": false,
+            "columnNames": [
+              "shieldId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_games_shieldId` ON `${TABLE_NAME}` (`shieldId`)"
+          },
+          {
+            "name": "index_games_startMillis",
+            "unique": false,
+            "columnNames": [
+              "startMillis"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_games_startMillis` ON `${TABLE_NAME}` (`startMillis`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "league_games",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`eventId` TEXT NOT NULL, `leagueId` TEXT NOT NULL, `name` TEXT NOT NULL, `shortName` TEXT NOT NULL, `startMillis` INTEGER NOT NULL, `completed` INTEGER NOT NULL, `homeEspnId` TEXT NOT NULL, `awayEspnId` TEXT NOT NULL, `label` TEXT, `fetchedAtMillis` INTEGER NOT NULL, `endMillis` INTEGER, `phase` TEXT, PRIMARY KEY(`eventId`))",
+        "fields": [
+          {
+            "fieldPath": "eventId",
+            "columnName": "eventId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "leagueId",
+            "columnName": "leagueId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shortName",
+            "columnName": "shortName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startMillis",
+            "columnName": "startMillis",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completed",
+            "columnName": "completed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "homeEspnId",
+            "columnName": "homeEspnId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "awayEspnId",
+            "columnName": "awayEspnId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "label",
+            "columnName": "label",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fetchedAtMillis",
+            "columnName": "fetchedAtMillis",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endMillis",
+            "columnName": "endMillis",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "phase",
+            "columnName": "phase",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "eventId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_league_games_leagueId",
+            "unique": false,
+            "columnNames": [
+              "leagueId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_league_games_leagueId` ON `${TABLE_NAME}` (`leagueId`)"
+          },
+          {
+            "name": "index_league_games_startMillis",
+            "unique": false,
+            "columnNames": [
+              "startMillis"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_league_games_startMillis` ON `${TABLE_NAME}` (`startMillis`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '949d2d61a544c26c7c54581d47037f03')"
+    ]
+  }
+}

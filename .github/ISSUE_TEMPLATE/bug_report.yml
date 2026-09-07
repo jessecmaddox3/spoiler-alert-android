@@ -1,0 +1,25 @@
+name: Bug report
+description: Report a reproducible problem without private notification content.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include notification text, credentials, or security-sensitive details. Use the private security contact for vulnerabilities.
+  - type: input
+    id: version
+    attributes:
+      label: App version or commit
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true

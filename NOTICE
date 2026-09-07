@@ -1,0 +1,13 @@
+Spoiler Alert includes original Kotlin and Android application code.
+
+The public source distribution intentionally excludes team logos, generated header artwork,
+and font files to keep the public tree focused on the application source. The bundled
+team and player catalog is a factual, manually curated reference list. Team and league names are
+used nominatively for identification. This project is not affiliated with or endorsed by any
+team, league, player, ESPN, or other rights holder.
+
+The app retrieves public schedule and event-status data from ESPN's public web endpoints only
+when a user requests or enables schedule features. ESPN is not affiliated with this project.
+
+The Gradle wrapper is distributed under the Apache License, Version 2.0. Gradle is a trademark
+of Gradle Inc. See https://github.com/gradle/gradle/blob/v8.11.1/LICENSE for its license text.

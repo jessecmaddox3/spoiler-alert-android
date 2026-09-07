@@ -1,0 +1,173 @@
+{
+ "_fixture_note": "Trimmed from real GET .../soccer/fifa.world/scoreboard?dates=20260717-20260725&limit=300 captured 2026-07-17 (2026 World Cup semifinal window). No notes -> label absent.",
+ "leagues": [
+  {
+   "id": "606",
+   "name": "FIFA World Cup",
+   "abbreviation": "FIFA World Cup",
+   "slug": "fifa.world"
+  }
+ ],
+ "events": [
+  {
+   "id": "760516",
+   "uid": "s:600~l:606~e:760516",
+   "date": "2026-07-18T21:00Z",
+   "name": "England at France",
+   "shortName": "ENG @ FRA",
+   "competitions": [
+    {
+     "id": "760516",
+     "date": "2026-07-18T21:00Z",
+     "competitors": [
+      {
+       "id": "478",
+       "homeAway": "home",
+       "winner": false,
+       "team": {
+        "id": "478",
+        "uid": "s:600~t:478",
+        "location": "France",
+        "name": "France",
+        "abbreviation": "FRA",
+        "displayName": "France",
+        "shortDisplayName": "France"
+       }
+      },
+      {
+       "id": "448",
+       "homeAway": "away",
+       "winner": false,
+       "team": {
+        "id": "448",
+        "uid": "s:600~t:448",
+        "location": "England",
+        "name": "England",
+        "abbreviation": "ENG",
+        "displayName": "England",
+        "shortDisplayName": "England"
+       }
+      }
+     ],
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0'",
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Sat, July 18th at 5:00 PM EDT",
+       "shortDetail": "Scheduled"
+      }
+     },
+     "broadcasts": [
+      {
+       "market": "national",
+       "names": [
+        "FOX",
+        "Tele",
+        "FOX One"
+       ]
+      }
+     ],
+     "notes": []
+    }
+   ],
+   "status": {
+    "clock": 0.0,
+    "displayClock": "0'",
+    "type": {
+     "id": "1",
+     "name": "STATUS_SCHEDULED",
+     "state": "pre",
+     "completed": false,
+     "description": "Scheduled",
+     "detail": "Sat, July 18th at 5:00 PM EDT",
+     "shortDetail": "Scheduled"
+    }
+   }
+  },
+  {
+   "id": "760517",
+   "uid": "s:600~l:606~e:760517",
+   "date": "2026-07-19T19:00Z",
+   "name": "Argentina at Spain",
+   "shortName": "ARG @ ESP",
+   "competitions": [
+    {
+     "id": "760517",
+     "date": "2026-07-19T19:00Z",
+     "competitors": [
+      {
+       "id": "164",
+       "homeAway": "home",
+       "winner": false,
+       "team": {
+        "id": "164",
+        "uid": "s:600~t:164",
+        "location": "Spain",
+        "name": "Spain",
+        "abbreviation": "ESP",
+        "displayName": "Spain",
+        "shortDisplayName": "Spain"
+       }
+      },
+      {
+       "id": "202",
+       "homeAway": "away",
+       "winner": false,
+       "team": {
+        "id": "202",
+        "uid": "s:600~t:202",
+        "location": "Argentina",
+        "name": "Argentina",
+        "abbreviation": "ARG",
+        "displayName": "Argentina",
+        "shortDisplayName": "Argentina"
+       }
+      }
+     ],
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0'",
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Sun, July 19th at 3:00 PM EDT",
+       "shortDetail": "Scheduled"
+      }
+     },
+     "broadcasts": [
+      {
+       "market": "national",
+       "names": [
+        "FOX",
+        "Tele",
+        "FOX One"
+       ]
+      }
+     ],
+     "notes": []
+    }
+   ],
+   "status": {
+    "clock": 0.0,
+    "displayClock": "0'",
+    "type": {
+     "id": "1",
+     "name": "STATUS_SCHEDULED",
+     "state": "pre",
+     "completed": false,
+     "description": "Scheduled",
+     "detail": "Sun, July 19th at 3:00 PM EDT",
+     "shortDetail": "Scheduled"
+    }
+   }
+  }
+ ]
+}

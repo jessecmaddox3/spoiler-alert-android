@@ -1,0 +1,1043 @@
+{
+ "timestamp": "2026-07-16T08:38:46Z",
+ "status": "success",
+ "season": {
+  "year": 2026,
+  "type": 2,
+  "name": "Regular Season",
+  "displayName": "2026",
+  "half": 2
+ },
+ "team": {
+  "id": "15",
+  "abbreviation": "ATL",
+  "location": "Atlanta",
+  "name": "Braves",
+  "displayName": "Atlanta Braves",
+  "clubhouse": "https://www.espn.com/mlb/team/_/name/atl/atlanta-braves",
+  "color": "0c2340",
+  "seasonSummary": "2026",
+  "standingSummary": "1st in NL East"
+ },
+ "allstarsgame": "2026-07-15T00:00Z",
+ "events": [
+  {
+   "id": "401814691",
+   "date": "2026-03-27T23:15Z",
+   "name": "Kansas City Royals at Atlanta Braves",
+   "shortName": "KC @ ATL",
+   "season": {
+    "year": 2026,
+    "displayName": "2026"
+   },
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "week": {
+    "number": 13,
+    "text": "Week 13"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "401814691",
+     "date": "2026-03-27T23:15Z",
+     "attendance": 39697,
+     "type": {
+      "id": "1",
+      "text": "Standard",
+      "abbreviation": "STD",
+      "slug": "standard",
+      "type": "standard"
+     },
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": true,
+     "ticketsAvailable": false,
+     "venue": {
+      "fullName": "Truist Park",
+      "address": {
+       "city": "Atlanta",
+       "state": "Georgia",
+       "zipCode": "30339"
+      }
+     },
+     "competitors": [
+      {
+       "id": "15",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "winner": true,
+       "team": {
+        "id": "15",
+        "location": "Atlanta",
+        "abbreviation": "ATL",
+        "displayName": "Atlanta Braves",
+        "shortDisplayName": "Braves"
+       },
+       "score": {
+        "value": 6.0,
+        "displayValue": "6"
+       },
+       "record": [
+        {
+         "id": "615",
+         "abbreviation": "Game",
+         "displayName": "Record Year To Date",
+         "shortDisplayName": "YTD",
+         "description": "Overall Record",
+         "type": "total",
+         "displayValue": "1-0"
+        },
+        {
+         "id": "61533",
+         "displayName": "Home",
+         "shortDisplayName": "HOME",
+         "description": "Home Record",
+         "type": "home",
+         "displayValue": "1-0"
+        },
+        {
+         "id": "61534",
+         "displayName": "Road",
+         "shortDisplayName": "AWAY",
+         "description": "Away Record",
+         "type": "road",
+         "displayValue": "0-0"
+        }
+       ]
+      },
+      {
+       "id": "7",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "winner": false,
+       "team": {
+        "id": "7",
+        "location": "Kansas City",
+        "abbreviation": "KC",
+        "displayName": "Kansas City Royals",
+        "shortDisplayName": "Royals"
+       },
+       "score": {
+        "value": 0.0,
+        "displayValue": "0"
+       },
+       "record": [
+        {
+         "id": "615",
+         "abbreviation": "Game",
+         "displayName": "Record Year To Date",
+         "shortDisplayName": "YTD",
+         "description": "Overall Record",
+         "type": "total",
+         "displayValue": "0-1"
+        },
+        {
+         "id": "61533",
+         "displayName": "Home",
+         "shortDisplayName": "HOME",
+         "description": "Home Record",
+         "type": "home",
+         "displayValue": "0-0"
+        },
+        {
+         "id": "61534",
+         "displayName": "Road",
+         "shortDisplayName": "AWAY",
+         "description": "Away Record",
+         "type": "road",
+         "displayValue": "0-1"
+        }
+       ]
+      }
+     ],
+     "notes": [],
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0:00",
+      "period": 9,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      },
+      "featuredAthletes": [
+       {
+        "name": "winningPitcher",
+        "displayName": "Winning Pitcher",
+        "shortDisplayName": "Win",
+        "abbreviation": "WP",
+        "playerId": 30948,
+        "athlete": {
+         "id": "30948",
+         "lastName": "Sale",
+         "displayName": "Chris Sale",
+         "shortName": "C. Sale",
+         "links": [
+          {
+           "rel": [
+            "playercard",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/_/id/30948"
+          },
+          {
+           "rel": [
+            "stats",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/stats/_/id/30948/chris-sale"
+          },
+          {
+           "rel": [
+            "stats",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:30948&section=stats"
+          },
+          {
+           "rel": [
+            "splits",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/splits/_/id/30948/chris-sale"
+          },
+          {
+           "rel": [
+            "gamelog",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/gamelog/_/id/30948/chris-sale"
+          },
+          {
+           "rel": [
+            "gamelog",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:30948&section=gamelog"
+          },
+          {
+           "rel": [
+            "news",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/news/_/id/30948/chris-sale"
+          },
+          {
+           "rel": [
+            "news",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:30948&section=news"
+          },
+          {
+           "rel": [
+            "bio",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/bio/_/id/30948/chris-sale"
+          },
+          {
+           "rel": [
+            "bio",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:30948&section=bio"
+          },
+          {
+           "rel": [
+            "overview",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/_/id/30948/chris-sale"
+          },
+          {
+           "rel": [
+            "overview",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:30948"
+          },
+          {
+           "rel": [
+            "batvspitch",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/batvspitch/_/id/30948/chris-sale"
+          }
+         ],
+         "record": "1-0",
+         "saves": "0"
+        },
+        "team": {
+         "id": "15",
+         "name": "Braves"
+        }
+       },
+       {
+        "name": "losingPitcher",
+        "displayName": "Losing Pitcher",
+        "shortDisplayName": "Loss",
+        "abbreviation": "LP",
+        "playerId": 41054,
+        "athlete": {
+         "id": "41054",
+         "lastName": "Ragans",
+         "displayName": "Cole Ragans",
+         "shortName": "C. Ragans",
+         "links": [
+          {
+           "rel": [
+            "playercard",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/_/id/41054"
+          },
+          {
+           "rel": [
+            "stats",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/stats/_/id/41054/cole-ragans"
+          },
+          {
+           "rel": [
+            "stats",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:41054&section=stats"
+          },
+          {
+           "rel": [
+            "splits",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/splits/_/id/41054/cole-ragans"
+          },
+          {
+           "rel": [
+            "gamelog",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/gamelog/_/id/41054/cole-ragans"
+          },
+          {
+           "rel": [
+            "gamelog",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:41054&section=gamelog"
+          },
+          {
+           "rel": [
+            "news",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/news/_/id/41054/cole-ragans"
+          },
+          {
+           "rel": [
+            "news",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:41054&section=news"
+          },
+          {
+           "rel": [
+            "bio",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/bio/_/id/41054/cole-ragans"
+          },
+          {
+           "rel": [
+            "bio",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:41054&section=bio"
+          },
+          {
+           "rel": [
+            "overview",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/_/id/41054/cole-ragans"
+          },
+          {
+           "rel": [
+            "overview",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:41054"
+          },
+          {
+           "rel": [
+            "batvspitch",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/batvspitch/_/id/41054/cole-ragans"
+          }
+         ],
+         "record": "0-1",
+         "saves": "0"
+        },
+        "team": {
+         "id": "7",
+         "name": "Royals"
+        }
+       }
+      ],
+      "halfInning": 16,
+      "periodPrefix": "Top"
+     }
+    }
+   ]
+  },
+  {
+   "id": "401814710",
+   "date": "2026-03-28T23:15Z",
+   "name": "Kansas City Royals at Atlanta Braves",
+   "shortName": "KC @ ATL",
+   "season": {
+    "year": 2026,
+    "displayName": "2026"
+   },
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "week": {
+    "number": 13,
+    "text": "Week 13"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "401814710",
+     "date": "2026-03-28T23:15Z",
+     "attendance": 39362,
+     "type": {
+      "id": "1",
+      "text": "Standard",
+      "abbreviation": "STD",
+      "slug": "standard",
+      "type": "standard"
+     },
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": true,
+     "ticketsAvailable": false,
+     "venue": {
+      "fullName": "Truist Park",
+      "address": {
+       "city": "Atlanta",
+       "state": "Georgia",
+       "zipCode": "30339"
+      }
+     },
+     "competitors": [
+      {
+       "id": "15",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "winner": true,
+       "team": {
+        "id": "15",
+        "location": "Atlanta",
+        "abbreviation": "ATL",
+        "displayName": "Atlanta Braves",
+        "shortDisplayName": "Braves"
+       },
+       "score": {
+        "value": 6.0,
+        "displayValue": "6"
+       },
+       "record": [
+        {
+         "id": "615",
+         "abbreviation": "Game",
+         "displayName": "Record Year To Date",
+         "shortDisplayName": "YTD",
+         "description": "Overall Record",
+         "type": "total",
+         "displayValue": "2-0"
+        },
+        {
+         "id": "61533",
+         "displayName": "Home",
+         "shortDisplayName": "HOME",
+         "description": "Home Record",
+         "type": "home",
+         "displayValue": "2-0"
+        },
+        {
+         "id": "61534",
+         "displayName": "Road",
+         "shortDisplayName": "AWAY",
+         "description": "Away Record",
+         "type": "road",
+         "displayValue": "0-0"
+        }
+       ]
+      },
+      {
+       "id": "7",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "winner": false,
+       "team": {
+        "id": "7",
+        "location": "Kansas City",
+        "abbreviation": "KC",
+        "displayName": "Kansas City Royals",
+        "shortDisplayName": "Royals"
+       },
+       "score": {
+        "value": 2.0,
+        "displayValue": "2"
+       },
+       "record": [
+        {
+         "id": "615",
+         "abbreviation": "Game",
+         "displayName": "Record Year To Date",
+         "shortDisplayName": "YTD",
+         "description": "Overall Record",
+         "type": "total",
+         "displayValue": "0-2"
+        },
+        {
+         "id": "61533",
+         "displayName": "Home",
+         "shortDisplayName": "HOME",
+         "description": "Home Record",
+         "type": "home",
+         "displayValue": "0-0"
+        },
+        {
+         "id": "61534",
+         "displayName": "Road",
+         "shortDisplayName": "AWAY",
+         "description": "Away Record",
+         "type": "road",
+         "displayValue": "0-2"
+        }
+       ]
+      }
+     ],
+     "notes": [],
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0:00",
+      "period": 9,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final",
+       "shortDetail": "Final"
+      },
+      "featuredAthletes": [
+       {
+        "name": "winningPitcher",
+        "displayName": "Winning Pitcher",
+        "shortDisplayName": "Win",
+        "abbreviation": "WP",
+        "playerId": 5132624,
+        "athlete": {
+         "id": "5132624",
+         "lastName": "Bido",
+         "displayName": "Osvaldo Bido",
+         "shortName": "O. Bido",
+         "links": [
+          {
+           "rel": [
+            "playercard",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/_/id/5132624"
+          },
+          {
+           "rel": [
+            "stats",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/stats/_/id/5132624/osvaldo-bido"
+          },
+          {
+           "rel": [
+            "stats",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:5132624&section=stats"
+          },
+          {
+           "rel": [
+            "splits",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/splits/_/id/5132624/osvaldo-bido"
+          },
+          {
+           "rel": [
+            "gamelog",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/gamelog/_/id/5132624/osvaldo-bido"
+          },
+          {
+           "rel": [
+            "gamelog",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:5132624&section=gamelog"
+          },
+          {
+           "rel": [
+            "news",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/news/_/id/5132624/osvaldo-bido"
+          },
+          {
+           "rel": [
+            "news",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:5132624&section=news"
+          },
+          {
+           "rel": [
+            "bio",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/bio/_/id/5132624/osvaldo-bido"
+          },
+          {
+           "rel": [
+            "bio",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:5132624&section=bio"
+          },
+          {
+           "rel": [
+            "overview",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/_/id/5132624/osvaldo-bido"
+          },
+          {
+           "rel": [
+            "overview",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:5132624"
+          },
+          {
+           "rel": [
+            "batvspitch",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/batvspitch/_/id/5132624/osvaldo-bido"
+          }
+         ],
+         "record": "1-0",
+         "saves": "0"
+        },
+        "team": {
+         "id": "15",
+         "name": "Braves"
+        }
+       },
+       {
+        "name": "losingPitcher",
+        "displayName": "Losing Pitcher",
+        "shortDisplayName": "Loss",
+        "abbreviation": "LP",
+        "playerId": 34861,
+        "athlete": {
+         "id": "34861",
+         "lastName": "Estevez",
+         "displayName": "Carlos Estevez",
+         "shortName": "C. Estevez",
+         "links": [
+          {
+           "rel": [
+            "playercard",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/_/id/34861"
+          },
+          {
+           "rel": [
+            "stats",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/stats/_/id/34861/carlos-estevez"
+          },
+          {
+           "rel": [
+            "stats",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:34861&section=stats"
+          },
+          {
+           "rel": [
+            "splits",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/splits/_/id/34861/carlos-estevez"
+          },
+          {
+           "rel": [
+            "gamelog",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/gamelog/_/id/34861/carlos-estevez"
+          },
+          {
+           "rel": [
+            "gamelog",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:34861&section=gamelog"
+          },
+          {
+           "rel": [
+            "news",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/news/_/id/34861/carlos-estevez"
+          },
+          {
+           "rel": [
+            "news",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:34861&section=news"
+          },
+          {
+           "rel": [
+            "bio",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/bio/_/id/34861/carlos-estevez"
+          },
+          {
+           "rel": [
+            "bio",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:34861&section=bio"
+          },
+          {
+           "rel": [
+            "overview",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/_/id/34861/carlos-estevez"
+          },
+          {
+           "rel": [
+            "overview",
+            "sportscenter",
+            "app",
+            "athlete"
+           ],
+           "href": "sportscenter://x-callback-url/showClubhouse?uid=s:1~l:10~a:34861"
+          },
+          {
+           "rel": [
+            "batvspitch",
+            "desktop",
+            "athlete"
+           ],
+           "href": "https://www.espn.com/mlb/player/batvspitch/_/id/34861/carlos-estevez"
+          }
+         ],
+         "record": "0-1",
+         "saves": "0"
+        },
+        "team": {
+         "id": "7",
+         "name": "Royals"
+        }
+       }
+      ],
+      "halfInning": 17,
+      "periodPrefix": "Bottom"
+     }
+    }
+   ]
+  },
+  {
+   "id": "401817087",
+   "date": "2026-09-26T20:10Z",
+   "name": "Atlanta Braves at Miami Marlins",
+   "shortName": "ATL @ MIA",
+   "season": {
+    "year": 2026,
+    "displayName": "2026"
+   },
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "401817087",
+     "date": "2026-09-26T20:10Z",
+     "attendance": 0,
+     "type": {
+      "id": "1",
+      "text": "Standard",
+      "abbreviation": "STD",
+      "slug": "standard",
+      "type": "standard"
+     },
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": false,
+     "ticketsAvailable": true,
+     "venue": {
+      "fullName": "loanDepot park",
+      "address": {
+       "city": "Miami",
+       "state": "Florida",
+       "zipCode": "33125"
+      }
+     },
+     "competitors": [
+      {
+       "id": "28",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "team": {
+        "id": "28",
+        "location": "Miami",
+        "abbreviation": "MIA",
+        "displayName": "Miami Marlins",
+        "shortDisplayName": "Marlins"
+       }
+      },
+      {
+       "id": "15",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "team": {
+        "id": "15",
+        "location": "Atlanta",
+        "abbreviation": "ATL",
+        "displayName": "Atlanta Braves",
+        "shortDisplayName": "Braves"
+       }
+      }
+     ],
+     "notes": [],
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0:00",
+      "period": 1,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Scheduled",
+       "shortDetail": "9/26 - 4:10 PM EDT"
+      },
+      "halfInning": 0,
+      "periodPrefix": "Top"
+     }
+    }
+   ]
+  },
+  {
+   "id": "401817102",
+   "date": "2026-09-27T19:10Z",
+   "name": "Atlanta Braves at Miami Marlins",
+   "shortName": "ATL @ MIA",
+   "season": {
+    "year": 2026,
+    "displayName": "2026"
+   },
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "401817102",
+     "date": "2026-09-27T19:10Z",
+     "attendance": 0,
+     "type": {
+      "id": "1",
+      "text": "Standard",
+      "abbreviation": "STD",
+      "slug": "standard",
+      "type": "standard"
+     },
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": false,
+     "ticketsAvailable": true,
+     "venue": {
+      "fullName": "loanDepot park",
+      "address": {
+       "city": "Miami",
+       "state": "Florida",
+       "zipCode": "33125"
+      }
+     },
+     "competitors": [
+      {
+       "id": "28",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "team": {
+        "id": "28",
+        "location": "Miami",
+        "abbreviation": "MIA",
+        "displayName": "Miami Marlins",
+        "shortDisplayName": "Marlins"
+       }
+      },
+      {
+       "id": "15",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "team": {
+        "id": "15",
+        "location": "Atlanta",
+        "abbreviation": "ATL",
+        "displayName": "Atlanta Braves",
+        "shortDisplayName": "Braves"
+       }
+      }
+     ],
+     "notes": [],
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0:00",
+      "period": 1,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Scheduled",
+       "shortDetail": "9/27 - 3:10 PM EDT"
+      },
+      "halfInning": 0,
+      "periodPrefix": "Top"
+     }
+    }
+   ]
+  }
+ ],
+ "requestedSeason": {
+  "year": 2026,
+  "type": 2,
+  "name": "Regular Season",
+  "displayName": "2026"
+ }
+}

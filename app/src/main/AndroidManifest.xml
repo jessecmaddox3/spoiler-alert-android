@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- GET-only public schedules, event discovery, and live game status. Hidden content never touches the network. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Android 11+ package visibility: lets the fantasy-app picker (ui.FantasyAppPicker)
+         enumerate launchable apps via queryIntentActivities without QUERY_ALL_PACKAGES
+         (Play-policy sensitive) — standard launcher-style enumeration, no special permission. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".SpoilerAlertApp"
+        android:label="Spoiler Alert"
+        android:icon="@mipmap/ic_launcher"
+        android:theme="@android:style/Theme.Material.Light.NoActionBar"
+        android:allowBackup="false"
+        android:fullBackupContent="@xml/backup_rules"
+        android:dataExtractionRules="@xml/data_extraction_rules">
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".widget.SpoilerWidgetReceiver"
+            android:label="Spoiler Alert"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/spoiler_widget_info" />
+        </receiver>
+
+        <!-- "Arm shield" action on pregame prompt notifications. Not exported: only our
+             own PendingIntents (user taps on the prompt) can trigger it. -->
+        <receiver
+            android:name=".schedule.ArmShieldReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.jessemaddox.spoileralert.ARM_SHIELD" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Session check-in actions ("Keep hiding" / "Reveal now"). Not exported: only our
+             own PendingIntents (user taps on the check-in) can trigger them. -->
+        <receiver
+            android:name=".service.ExtendShieldReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.jessemaddox.spoileralert.EXTEND_SHIELD" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".service.RevealShieldReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.jessemaddox.spoileralert.REVEAL_SHIELD" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name=".service.InterceptorService"
+            android:label="Spoiler Alert"
+            android:exported="false"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+        <!-- Arm-only Quick Settings tile (v3 amendment item 9). Never disarms/reveals. -->
+        <service
+            android:name=".widget.SpoilerTileService"
+            android:label="Hide spoilers"
+            android:icon="@drawable/ic_shield"
+            android:exported="true"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+    </application>
+</manifest>

@@ -1,0 +1,197 @@
+{
+ "_fixture_note": "Trimmed from real GET .../baseball/mlb/scoreboard?dates=20260717-20260725&limit=300 captured 2026-07-17. Doubleheader note headline as label.",
+ "leagues": [
+  {
+   "id": "10",
+   "name": "Major League Baseball",
+   "abbreviation": "MLB",
+   "slug": "mlb"
+  }
+ ],
+ "events": [
+  {
+   "id": "401872178",
+   "uid": "s:1~l:10~e:401872178",
+   "date": "2026-07-17T17:35Z",
+   "name": "Tampa Bay Rays at Boston Red Sox",
+   "shortName": "TB @ BOS",
+   "competitions": [
+    {
+     "id": "401872178",
+     "date": "2026-07-17T17:35Z",
+     "competitors": [
+      {
+       "id": "2",
+       "homeAway": "home",
+       "winner": null,
+       "team": {
+        "id": "2",
+        "uid": "s:1~l:10~t:2",
+        "location": "Boston",
+        "name": "Red Sox",
+        "abbreviation": "BOS",
+        "displayName": "Boston Red Sox",
+        "shortDisplayName": "Red Sox"
+       }
+      },
+      {
+       "id": "30",
+       "homeAway": "away",
+       "winner": null,
+       "team": {
+        "id": "30",
+        "uid": "s:1~l:10~t:30",
+        "location": "Tampa Bay",
+        "name": "Rays",
+        "abbreviation": "TB",
+        "displayName": "Tampa Bay Rays",
+        "shortDisplayName": "Rays"
+       }
+      }
+     ],
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0:00",
+      "period": 1,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Scheduled",
+       "shortDetail": "7/17 - 1:35 PM EDT"
+      }
+     },
+     "broadcasts": [
+      {
+       "market": "national",
+       "names": [
+        "MLB.TV"
+       ]
+      },
+      {
+       "market": "away",
+       "names": [
+        "Rays.TV"
+       ]
+      }
+     ],
+     "notes": [
+      {
+       "type": "event",
+       "headline": "Doubleheader - Game 1 - Makeup from May 9"
+      }
+     ]
+    }
+   ],
+   "status": {
+    "clock": 0.0,
+    "displayClock": "0:00",
+    "period": 1,
+    "type": {
+     "id": "1",
+     "name": "STATUS_SCHEDULED",
+     "state": "pre",
+     "completed": false,
+     "description": "Scheduled",
+     "detail": "Scheduled",
+     "shortDetail": "7/17 - 1:35 PM EDT"
+    }
+   }
+  },
+  {
+   "id": "401816142",
+   "uid": "s:1~l:10~e:401816142",
+   "date": "2026-07-17T23:05Z",
+   "name": "Los Angeles Dodgers at New York Yankees",
+   "shortName": "LAD @ NYY",
+   "competitions": [
+    {
+     "id": "401816142",
+     "date": "2026-07-17T23:05Z",
+     "competitors": [
+      {
+       "id": "10",
+       "homeAway": "home",
+       "winner": null,
+       "team": {
+        "id": "10",
+        "uid": "s:1~l:10~t:10",
+        "location": "New York",
+        "name": "Yankees",
+        "abbreviation": "NYY",
+        "displayName": "New York Yankees",
+        "shortDisplayName": "Yankees"
+       }
+      },
+      {
+       "id": "19",
+       "homeAway": "away",
+       "winner": null,
+       "team": {
+        "id": "19",
+        "uid": "s:1~l:10~t:19",
+        "location": "Los Angeles",
+        "name": "Dodgers",
+        "abbreviation": "LAD",
+        "displayName": "Los Angeles Dodgers",
+        "shortDisplayName": "Dodgers"
+       }
+      }
+     ],
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0:00",
+      "period": 1,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Scheduled",
+       "shortDetail": "7/17 - 7:05 PM EDT"
+      }
+     },
+     "broadcasts": [
+      {
+       "market": "national",
+       "names": [
+        "MLB.TV",
+        "MLB Net"
+       ]
+      },
+      {
+       "market": "away",
+       "names": [
+        "Sportsnet LA"
+       ]
+      },
+      {
+       "market": "home",
+       "names": [
+        "YES"
+       ]
+      }
+     ],
+     "notes": []
+    }
+   ],
+   "status": {
+    "clock": 0.0,
+    "displayClock": "0:00",
+    "period": 1,
+    "type": {
+     "id": "1",
+     "name": "STATUS_SCHEDULED",
+     "state": "pre",
+     "completed": false,
+     "description": "Scheduled",
+     "detail": "Scheduled",
+     "shortDetail": "7/17 - 7:05 PM EDT"
+    }
+   }
+  }
+ ]
+}

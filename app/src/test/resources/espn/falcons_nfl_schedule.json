@@ -1,0 +1,313 @@
+{
+ "timestamp": "2026-07-16T08:37:20Z",
+ "status": "success",
+ "season": {
+  "year": 2025,
+  "type": 4,
+  "name": "Off Season",
+  "displayName": "2025",
+  "half": 1
+ },
+ "team": {
+  "id": "1",
+  "abbreviation": "ATL",
+  "location": "Atlanta",
+  "name": "Falcons",
+  "displayName": "Atlanta Falcons",
+  "clubhouse": "https://www.espn.com/nfl/team/_/name/atl/atlanta-falcons",
+  "color": "a71930",
+  "seasonSummary": "2025",
+  "standingSummary": "1st in NFC South"
+ },
+ "events": [
+  {
+   "id": "401872658",
+   "date": "2026-09-13T17:00Z",
+   "name": "Atlanta Falcons at Pittsburgh Steelers",
+   "shortName": "ATL @ PIT",
+   "season": {
+    "year": 2026,
+    "displayName": "2026"
+   },
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "week": {
+    "number": 1,
+    "text": "Week 1"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "401872658",
+     "date": "2026-09-13T17:00Z",
+     "attendance": 0,
+     "type": {
+      "id": "1",
+      "text": "Standard",
+      "abbreviation": "STD",
+      "slug": "standard",
+      "type": "standard"
+     },
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": false,
+     "ticketsAvailable": true,
+     "venue": {
+      "fullName": "Acrisure Stadium",
+      "address": {
+       "city": "Pittsburgh",
+       "state": "PA",
+       "zipCode": "15212",
+       "country": "USA"
+      }
+     },
+     "competitors": [
+      {
+       "id": "23",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "team": {
+        "id": "23",
+        "location": "Pittsburgh",
+        "nickname": "Steelers",
+        "abbreviation": "PIT",
+        "displayName": "Pittsburgh Steelers",
+        "shortDisplayName": "Steelers"
+       }
+      },
+      {
+       "id": "1",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "team": {
+        "id": "1",
+        "location": "Atlanta",
+        "nickname": "Falcons",
+        "abbreviation": "ATL",
+        "displayName": "Atlanta Falcons",
+        "shortDisplayName": "Falcons"
+       }
+      }
+     ],
+     "notes": [],
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0:00",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Sun, September 13th at 1:00 PM EDT",
+       "shortDetail": "9/13 - 1:00 PM EDT"
+      },
+      "isTBDFlex": false
+     }
+    }
+   ]
+  },
+  {
+   "id": "401872933",
+   "date": "2026-09-20T17:00Z",
+   "name": "Carolina Panthers at Atlanta Falcons",
+   "shortName": "CAR @ ATL",
+   "season": {
+    "year": 2026,
+    "displayName": "2026"
+   },
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "week": {
+    "number": 2,
+    "text": "Week 2"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "401872933",
+     "date": "2026-09-20T17:00Z",
+     "attendance": 0,
+     "type": {
+      "id": "1",
+      "text": "Standard",
+      "abbreviation": "STD",
+      "slug": "standard",
+      "type": "standard"
+     },
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": false,
+     "ticketsAvailable": true,
+     "venue": {
+      "fullName": "Mercedes-Benz Stadium",
+      "address": {
+       "city": "Atlanta",
+       "state": "GA",
+       "zipCode": "30313",
+       "country": "USA"
+      }
+     },
+     "competitors": [
+      {
+       "id": "1",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "team": {
+        "id": "1",
+        "location": "Atlanta",
+        "nickname": "Falcons",
+        "abbreviation": "ATL",
+        "displayName": "Atlanta Falcons",
+        "shortDisplayName": "Falcons"
+       }
+      },
+      {
+       "id": "29",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "team": {
+        "id": "29",
+        "location": "Carolina",
+        "nickname": "Panthers",
+        "abbreviation": "CAR",
+        "displayName": "Carolina Panthers",
+        "shortDisplayName": "Panthers"
+       }
+      }
+     ],
+     "notes": [],
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0:00",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Sun, September 20th at 1:00 PM EDT",
+       "shortDetail": "9/20 - 1:00 PM EDT"
+      },
+      "isTBDFlex": false
+     }
+    }
+   ]
+  },
+  {
+   "id": "401872948",
+   "date": "2026-09-25T00:15Z",
+   "name": "Atlanta Falcons at Green Bay Packers",
+   "shortName": "ATL @ GB",
+   "season": {
+    "year": 2026,
+    "displayName": "2026"
+   },
+   "seasonType": {
+    "id": "2",
+    "type": 2,
+    "name": "Regular Season",
+    "abbreviation": "reg"
+   },
+   "week": {
+    "number": 3,
+    "text": "Week 3"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "401872948",
+     "date": "2026-09-25T00:15Z",
+     "attendance": 0,
+     "type": {
+      "id": "1",
+      "text": "Standard",
+      "abbreviation": "STD",
+      "slug": "standard",
+      "type": "standard"
+     },
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": false,
+     "ticketsAvailable": true,
+     "venue": {
+      "fullName": "Lambeau Field",
+      "address": {
+       "city": "Green Bay",
+       "state": "WI",
+       "zipCode": "54304",
+       "country": "USA"
+      }
+     },
+     "competitors": [
+      {
+       "id": "9",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "team": {
+        "id": "9",
+        "location": "Green Bay",
+        "nickname": "Packers",
+        "abbreviation": "GB",
+        "displayName": "Green Bay Packers",
+        "shortDisplayName": "Packers"
+       }
+      },
+      {
+       "id": "1",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "team": {
+        "id": "1",
+        "location": "Atlanta",
+        "nickname": "Falcons",
+        "abbreviation": "ATL",
+        "displayName": "Atlanta Falcons",
+        "shortDisplayName": "Falcons"
+       }
+      }
+     ],
+     "notes": [],
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0:00",
+      "period": 0,
+      "type": {
+       "id": "1",
+       "name": "STATUS_SCHEDULED",
+       "state": "pre",
+       "completed": false,
+       "description": "Scheduled",
+       "detail": "Thu, September 24th at 8:15 PM EDT",
+       "shortDetail": "9/24 - 8:15 PM EDT"
+      },
+      "isTBDFlex": false
+     }
+    }
+   ]
+  }
+ ],
+ "requestedSeason": {
+  "year": 2026,
+  "type": 2,
+  "name": "Regular Season",
+  "displayName": "2026"
+ },
+ "byeWeek": 5
+}

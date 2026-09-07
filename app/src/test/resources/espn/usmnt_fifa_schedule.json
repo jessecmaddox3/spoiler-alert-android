@@ -1,0 +1,417 @@
+{
+ "timestamp": "2026-07-16T08:39:34Z",
+ "status": "success",
+ "season": {
+  "year": 2026,
+  "type": 13798,
+  "name": "Semifinals",
+  "displayName": "2026 FIFA World Cup",
+  "half": 1
+ },
+ "team": {
+  "id": "660",
+  "abbreviation": "USA",
+  "location": "United States",
+  "name": "United States",
+  "displayName": "United States",
+  "clubhouse": "https://www.espn.com/soccer/team/_/id/660/united-states",
+  "color": "213065",
+  "seasonSummary": "2026",
+  "standingSummary": "1st in FIFA World Cup",
+  "isNational": true
+ },
+ "events": [
+  {
+   "id": "760507",
+   "date": "2026-07-07T00:00Z",
+   "name": "Belgium at United States",
+   "shortName": "BEL @ USA",
+   "season": {
+    "year": 2026,
+    "displayName": "2026 FIFA World Cup"
+   },
+   "seasonType": {
+    "id": "3",
+    "type": 13800,
+    "name": "Round of 16",
+    "abbreviation": "Round of 16"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "760507",
+     "date": "2026-07-07T00:00Z",
+     "attendance": 66925,
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": true,
+     "ticketsAvailable": false,
+     "venue": {
+      "fullName": "Lumen Field",
+      "address": {
+       "city": "Seattle, Washington",
+       "country": "USA"
+      }
+     },
+     "competitors": [
+      {
+       "id": "660",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "winner": false,
+       "advance": false,
+       "team": {
+        "id": "660",
+        "location": "United States",
+        "abbreviation": "USA",
+        "displayName": "United States",
+        "shortDisplayName": "USA"
+       },
+       "score": {
+        "$ref": "http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/fifa.world/events/760507/competitions/760507/competitors/660/scores/38?lang=en&region=us",
+        "value": 1.0,
+        "displayValue": "1",
+        "winner": false,
+        "source": {
+         "id": "38",
+         "description": "SA.ENVOY"
+        }
+       },
+       "record": []
+      },
+      {
+       "id": "459",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "winner": true,
+       "advance": true,
+       "team": {
+        "id": "459",
+        "location": "Belgium",
+        "abbreviation": "BEL",
+        "displayName": "Belgium",
+        "shortDisplayName": "Belgium"
+       },
+       "score": {
+        "$ref": "http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/fifa.world/events/760507/competitions/760507/competitors/459/scores/38?lang=en&region=us",
+        "value": 4.0,
+        "displayValue": "4",
+        "winner": true,
+        "source": {
+         "id": "38",
+         "description": "SA.ENVOY"
+        }
+       },
+       "record": []
+      }
+     ],
+     "notes": [
+      {
+       "type": "event-ingest-note",
+       "date": "2026-07-07T11:41Z",
+       "text": "Belgium advances.",
+       "source": "38"
+      }
+     ],
+     "status": {
+      "clock": 5400.0,
+      "addedClock": 240.0,
+      "displayClock": "90'+4'",
+      "period": 2,
+      "type": {
+       "id": "28",
+       "name": "STATUS_FULL_TIME",
+       "state": "post",
+       "completed": true,
+       "description": "Full Time",
+       "detail": "FT",
+       "shortDetail": "FT"
+      }
+     }
+    }
+   ],
+   "league": {
+    "id": "606",
+    "alternateId": "4",
+    "name": "FIFA World Cup",
+    "abbreviation": "FIFA World Cup",
+    "shortName": "FIFA World Cup",
+    "midsizeName": "FIFA.WORLD",
+    "slug": "fifa.world",
+    "isTournament": true
+   }
+  },
+  {
+   "id": "760494",
+   "date": "2026-07-02T00:00Z",
+   "name": "Bosnia-Herzegovina at United States",
+   "shortName": "BIH @ USA",
+   "season": {
+    "year": 2026,
+    "displayName": "2026 FIFA World Cup"
+   },
+   "seasonType": {
+    "id": "2",
+    "type": 13801,
+    "name": "Round of 32",
+    "abbreviation": "Round of 32"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "760494",
+     "date": "2026-07-02T00:00Z",
+     "attendance": 68827,
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": true,
+     "ticketsAvailable": false,
+     "venue": {
+      "fullName": "Levi's Stadium",
+      "address": {
+       "city": "Santa Clara, California",
+       "country": "USA"
+      }
+     },
+     "competitors": [
+      {
+       "id": "660",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "winner": true,
+       "advance": true,
+       "team": {
+        "id": "660",
+        "location": "United States",
+        "abbreviation": "USA",
+        "displayName": "United States",
+        "shortDisplayName": "USA"
+       },
+       "score": {
+        "$ref": "http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/fifa.world/events/760494/competitions/760494/competitors/660/scores/38?lang=en&region=us",
+        "value": 2.0,
+        "displayValue": "2",
+        "winner": true,
+        "source": {
+         "id": "38",
+         "description": "SA.ENVOY"
+        }
+       },
+       "record": []
+      },
+      {
+       "id": "452",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "winner": false,
+       "advance": false,
+       "team": {
+        "id": "452",
+        "location": "Bosnia-Herzegovina",
+        "abbreviation": "BIH",
+        "displayName": "Bosnia-Herzegovina",
+        "shortDisplayName": "Bosnia-Herz"
+       },
+       "score": {
+        "$ref": "http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/fifa.world/events/760494/competitions/760494/competitors/452/scores/38?lang=en&region=us",
+        "value": 0.0,
+        "displayValue": "0",
+        "winner": false,
+        "source": {
+         "id": "38",
+         "description": "SA.ENVOY"
+        }
+       },
+       "record": []
+      }
+     ],
+     "notes": [
+      {
+       "type": "event-ingest-note",
+       "date": "2026-07-02T12:10Z",
+       "text": "United States advances.",
+       "source": "38"
+      }
+     ],
+     "status": {
+      "clock": 5400.0,
+      "addedClock": 600.0,
+      "displayClock": "90'+10'",
+      "period": 2,
+      "type": {
+       "id": "28",
+       "name": "STATUS_FULL_TIME",
+       "state": "post",
+       "completed": true,
+       "description": "Full Time",
+       "detail": "FT",
+       "shortDetail": "FT"
+      }
+     }
+    }
+   ],
+   "league": {
+    "id": "606",
+    "alternateId": "4",
+    "name": "FIFA World Cup",
+    "abbreviation": "FIFA World Cup",
+    "shortName": "FIFA World Cup",
+    "midsizeName": "FIFA.WORLD",
+    "slug": "fifa.world",
+    "isTournament": true
+   }
+  },
+  {
+   "id": "760470",
+   "date": "2026-06-26T02:00Z",
+   "name": "United States at Türkiye",
+   "shortName": "USA @ TUR",
+   "season": {
+    "year": 2026,
+    "displayName": "2026 FIFA World Cup"
+   },
+   "seasonType": {
+    "id": "1",
+    "type": 13802,
+    "name": "Group Stage",
+    "abbreviation": "Group Stage"
+   },
+   "timeValid": true,
+   "competitions": [
+    {
+     "id": "760470",
+     "date": "2026-06-26T02:00Z",
+     "attendance": 70492,
+     "timeValid": true,
+     "neutralSite": false,
+     "boxscoreAvailable": true,
+     "ticketsAvailable": false,
+     "venue": {
+      "fullName": "SoFi Stadium",
+      "address": {
+       "city": "Inglewood, California",
+       "country": "USA"
+      }
+     },
+     "competitors": [
+      {
+       "id": "465",
+       "type": "team",
+       "order": 0,
+       "homeAway": "home",
+       "winner": true,
+       "advance": true,
+       "team": {
+        "id": "465",
+        "location": "Türkiye",
+        "abbreviation": "TUR",
+        "displayName": "Türkiye",
+        "shortDisplayName": "Türkiye"
+       },
+       "score": {
+        "$ref": "http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/fifa.world/events/760470/competitions/760470/competitors/465/scores/38?lang=en&region=us",
+        "value": 3.0,
+        "displayValue": "3",
+        "winner": true,
+        "source": {
+         "id": "38",
+         "description": "SA.ENVOY"
+        }
+       },
+       "record": [
+        {
+         "id": "0",
+         "abbreviation": "Total",
+         "displayName": "Overall",
+         "shortDisplayName": "OVER",
+         "description": "Overall Record",
+         "type": "total",
+         "displayValue": "1-0-2"
+        }
+       ]
+      },
+      {
+       "id": "660",
+       "type": "team",
+       "order": 1,
+       "homeAway": "away",
+       "winner": false,
+       "advance": false,
+       "team": {
+        "id": "660",
+        "location": "United States",
+        "abbreviation": "USA",
+        "displayName": "United States",
+        "shortDisplayName": "USA"
+       },
+       "score": {
+        "$ref": "http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/fifa.world/events/760470/competitions/760470/competitors/660/scores/38?lang=en&region=us",
+        "value": 2.0,
+        "displayValue": "2",
+        "winner": false,
+        "source": {
+         "id": "38",
+         "description": "SA.ENVOY"
+        }
+       },
+       "record": [
+        {
+         "id": "0",
+         "abbreviation": "Total",
+         "displayName": "Overall",
+         "shortDisplayName": "OVER",
+         "description": "Overall Record",
+         "type": "total",
+         "displayValue": "2-0-1"
+        }
+       ]
+      }
+     ],
+     "notes": [
+      {
+       "type": "event-ingest-note",
+       "date": "2026-06-27T20:51Z",
+       "text": "Türkiye advances.",
+       "source": "38"
+      }
+     ],
+     "status": {
+      "clock": 5400.0,
+      "addedClock": 540.0,
+      "displayClock": "90'+9'",
+      "period": 2,
+      "type": {
+       "id": "28",
+       "name": "STATUS_FULL_TIME",
+       "state": "post",
+       "completed": true,
+       "description": "Full Time",
+       "detail": "FT",
+       "shortDetail": "FT"
+      }
+     }
+    }
+   ],
+   "league": {
+    "id": "606",
+    "alternateId": "4",
+    "name": "FIFA World Cup",
+    "abbreviation": "FIFA World Cup",
+    "shortName": "FIFA World Cup",
+    "midsizeName": "FIFA.WORLD",
+    "slug": "fifa.world",
+    "isTournament": true
+   }
+  }
+ ],
+ "requestedSeason": {
+  "year": 2026,
+  "type": 13800,
+  "name": "Round of 16",
+  "displayName": "2026 FIFA World Cup"
+ }
+}
