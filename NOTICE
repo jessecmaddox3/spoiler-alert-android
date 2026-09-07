@@ -11,3 +11,5 @@ when a user requests or enables schedule features. ESPN is not affiliated with t
 
 The Gradle wrapper is distributed under the Apache License, Version 2.0. Gradle is a trademark
 of Gradle Inc. See https://github.com/gradle/gradle/blob/v8.11.1/LICENSE for its license text.
+
+A copy of the Gradle license is included in licenses/Gradle-LICENSE.txt. Other build and runtime dependencies retain their respective upstream licenses.
