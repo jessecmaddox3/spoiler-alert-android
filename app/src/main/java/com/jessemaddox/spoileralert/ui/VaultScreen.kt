@@ -78,7 +78,6 @@ fun VaultScreen(
 ) {
     val shieldById = shields.associateBy { it.id }
     val hidden = items.filter { it.revealedAtMillis == null }
-    val sessions = HiddenGrouping.group(hidden)
     var historyRangeName by rememberSaveable { mutableStateOf(HistoryRange.WEEK.name) }
     val historyRange = runCatching { HistoryRange.valueOf(historyRangeName) }
         .getOrDefault(HistoryRange.WEEK)
@@ -88,6 +87,11 @@ fun VaultScreen(
     LaunchedEffect(Unit) {
         while (true) { delay(60_000); now = System.currentTimeMillis() }
     }
+
+    val sections = HiddenRecency.split(HiddenGrouping.group(hidden), shieldById, now)
+    val sessions = sections.recent + sections.older
+    val olderIds = sections.older.mapTo(mutableSetOf()) { it.shieldId }
+    var showOlder by rememberSaveable { mutableStateOf(false) }
 
     // Calm, type-led reveal-all confirmation (NO takeover): "N revealed · protection stopped".
     var revealAllNotice by remember { mutableStateOf<String?>(null) }
@@ -123,9 +127,11 @@ fun VaultScreen(
         } else {
             item(key = "waiting-heading") {
                 Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                    Text("Hidden", style = MaterialTheme.typography.titleLarge, color = Blueberry)
+                    Text(if (sections.recent.isEmpty()) "No recent hidden notifications" else "Hidden",
+                        style = MaterialTheme.typography.titleLarge, color = Blueberry)
                     Text(
-                        "Open one safely, or stop hiding to reveal everything from an event.",
+                        if (sections.recent.isEmpty()) "Older notifications are still hidden below."
+                        else "Open one safely, or stop hiding to reveal everything from an event.",
                         style = MaterialTheme.typography.bodySmall,
                         color = JessColors.subtle,
                     )
@@ -134,10 +140,24 @@ fun VaultScreen(
         }
 
         sessions.forEach { session ->
+            if (session.shieldId == sections.older.firstOrNull()?.shieldId) {
+                item(key = "older-hidden") {
+                    HairlineCard {
+                        Text("Older hidden", style = MaterialTheme.typography.titleMedium, color = Blueberry)
+                        Text(
+                            "${sections.older.sumOf { it.count }} notifications from ${sections.older.size} past session${if (sections.older.size == 1) "" else "s"}. Still hidden.",
+                            style = MaterialTheme.typography.bodySmall, color = JessColors.subtle,
+                        )
+                        TextAction(if (showOlder) "Collapse older hidden" else "Show older hidden", onClick = { showOlder = !showOlder })
+                    }
+                }
+            }
+            // No hidden contents or reveal accessibility actions are composed while collapsed.
+            if (session.shieldId in olderIds && !showOlder) return@forEach
             val shield = shieldById[session.shieldId]
-            val armed = shield?.armed == true
-            val expiresAt = shield?.takeIf { it.armed }
-                ?.let { ShieldCodec.sessionDeadlineMillis(it) }
+            val armed = HiddenRecency.isHiding(shield, now)
+            val expiresAt = shield?.takeIf { armed }
+                ?.let { ShieldCodec.expiresAtMillis(it) }
 
             item(key = "chips-${session.shieldId}") {
                 PromotedCard {
@@ -161,6 +181,10 @@ fun VaultScreen(
                             color = JessColors.accentInk,
                         )
                     }
+                    Text(
+                        "Last hidden ${DateFormat.getDateInstance(DateFormat.MEDIUM).format(Date(session.lastPostedAt))}",
+                        style = MaterialTheme.typography.bodySmall, color = JessColors.subtle,
+                    )
                     val statusLine = when {
                         expiresAt != null -> "Hiding stops in ${SessionDurations.formatRemaining(expiresAt - now)}"
                         shield?.kind == "FANTASY" -> "Hidden while another event is active"

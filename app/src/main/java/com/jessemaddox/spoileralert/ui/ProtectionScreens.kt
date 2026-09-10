@@ -43,6 +43,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jessemaddox.spoileralert.R
 import com.jessemaddox.spoileralert.data.GameEntity
+import com.jessemaddox.spoileralert.data.SessionExtension
 import com.jessemaddox.spoileralert.data.ShieldCodec
 import com.jessemaddox.spoileralert.data.ShieldEntity
 import com.jessemaddox.spoileralert.data.VaultEntity
@@ -144,6 +145,7 @@ fun ProtectionHomeScreen(
     shields: List<ShieldEntity>,
     status: ProtectionStatus,
     hiddenCounts: Map<Long, Int>,
+    lastHiddenAtByShield: Map<Long, Long>,
     nextGames: Map<Long, GameEntity>,
     sessionGames: Map<Long, List<GameEntity>>,
     protectedGames: List<ProtectedLiveGame>,
@@ -159,10 +161,6 @@ fun ProtectionHomeScreen(
     onProtectAnotherGame: () -> Unit,
     onProtectFeatured: (com.jessemaddox.spoileralert.data.LeagueGameEntity) -> Unit,
 ) {
-    val armed = shields.filter { it.armed }
-    val sealed = shields.filter { !it.armed && (hiddenCounts[it.id] ?: 0) > 0 }
-    val quietDay = armed.isEmpty() && sealed.isEmpty() &&
-        dailyFeed.personal.isEmpty() && dailyFeed.interests.isEmpty() && dailyFeed.featured.isEmpty()
     var endCandidate by remember { mutableStateOf<ShieldEntity?>(null) }
     var now by remember { mutableStateOf(System.currentTimeMillis()) }
     LaunchedEffect(Unit) {
@@ -171,6 +169,11 @@ fun ProtectionHomeScreen(
             now = System.currentTimeMillis()
         }
     }
+
+    val armed = shields.filter { HiddenRecency.isHiding(it, now) }
+    val sealed = HiddenRecency.recentEndedShields(shields, lastHiddenAtByShield, now)
+    val quietDay = armed.isEmpty() && sealed.isEmpty() &&
+        dailyFeed.personal.isEmpty() && dailyFeed.interests.isEmpty() && dailyFeed.featured.isEmpty()
 
     LazyColumn(
         Modifier.fillMaxSize().padding(horizontal = 16.dp),
@@ -202,25 +205,6 @@ fun ProtectionHomeScreen(
             item(key = "home-art-carousel") { HomeArtCarousel() }
         }
 
-        if (sealed.isNotEmpty()) {
-            item { HomeSectionTitle("Needs you") }
-            sealed.forEach { shield ->
-                item(key = "sealed-${shield.id}") {
-                    PromotedCard {
-                        Text(shield.name, style = MaterialTheme.typography.titleMedium)
-                        Text(
-                            "${hiddenCounts[shield.id]} hidden notification${if (hiddenCounts[shield.id] == 1) "" else "s"} waiting",
-                            style = MaterialTheme.typography.bodyMedium,
-                        )
-                        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                            PrimaryPill("Open Hidden", onOpenHidden, compact = true)
-                            GhostPill("Start hiding again", { onQuickProtect(shield, nextGames[shield.id]) })
-                        }
-                    }
-                }
-            }
-        }
-
         if (armed.isNotEmpty()) {
             item { ActiveHidingBanner(Modifier.fillMaxWidth()) }
             armed.forEach { shield ->
@@ -246,7 +230,7 @@ fun ProtectionHomeScreen(
                             else -> "Starts ${shortTime(liveGame.startMillis)}"
                         }
                         eventState?.let { StatusChip(it) }
-                        ShieldCodec.sessionDeadlineMillis(shield)?.let { deadline ->
+                        ShieldCodec.expiresAtMillis(shield)?.let { deadline ->
                             Text(
                                 "Hiding notifications until ${shortTime(deadline)}",
                                 style = MaterialTheme.typography.titleMedium,
@@ -293,13 +277,14 @@ fun ProtectionHomeScreen(
                                 )
                             }
                             ShieldCodec.sessionDeadlineMillis(shield)?.let { deadline ->
-                                val remaining = deadline - now
-                                if (remaining in 1..THIRTY_MINUTES_MILLIS) {
-                                    GhostPill(
-                                        "Extend hiding until ${shortTime(deadline + ONE_HOUR_MILLIS)}",
-                                        { onExtend(shield) },
-                                        modifier = Modifier.fillMaxWidth(),
-                                    )
+                                if (deadline - now <= THIRTY_MINUTES_MILLIS) {
+                                    SessionExtension.plan(shield, now)?.let { extension ->
+                                        GhostPill(
+                                            "Extend hiding until ${shortTime(extension.sessionDeadlineMillis + ShieldCodec.GRACE_MS)}",
+                                            { onExtend(shield) },
+                                            modifier = Modifier.fillMaxWidth(),
+                                        )
+                                    }
                                 }
                             }
                             StopAndRevealPill(
@@ -394,6 +379,26 @@ fun ProtectionHomeScreen(
                             "Start hiding notifications",
                             { onProtectFeatured(suggestion.game) },
                         )
+                    }
+                }
+            }
+        }
+
+        if (sealed.isNotEmpty()) {
+            item { HomeSectionTitle("Recent hidden") }
+            sealed.forEach { shield ->
+                item(key = "sealed-${shield.id}") {
+                    JessCard {
+                        Text(shield.name, style = MaterialTheme.typography.titleMedium)
+                        Text(
+                            "${hiddenCounts[shield.id]} hidden notification${if (hiddenCounts[shield.id] == 1) "" else "s"}",
+                            style = MaterialTheme.typography.bodyMedium,
+                        )
+                        Text(
+                            "Last hidden ${DateFormat.getDateInstance(DateFormat.MEDIUM).format(Date(lastHiddenAtByShield.getValue(shield.id)))}",
+                            style = MaterialTheme.typography.bodySmall, color = JessColors.subtle,
+                        )
+                        TextAction("Open Hidden", onOpenHidden)
                     }
                 }
             }
@@ -593,7 +598,6 @@ private fun shortTime(millis: Long): String =
     DateFormat.getTimeInstance(DateFormat.SHORT).format(Date(millis))
 
 private const val THIRTY_MINUTES_MILLIS = 30L * 60 * 1000
-private const val ONE_HOUR_MILLIS = 60L * 60 * 1000
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable

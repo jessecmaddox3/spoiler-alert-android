@@ -56,7 +56,7 @@ object DailyRelevance {
             .filterNot { it.completed }
             .mapNotNull { game ->
                 val shield = shieldsById[game.shieldId] ?: return@mapNotNull null
-                if (shield.kind != "TEAM" || shield.armed) return@mapNotNull null
+                if (shield.kind != "TEAM" || HiddenRecency.isHiding(shield, nowMillis)) return@mapNotNull null
                 PersonalToday(shield, game, catalog?.leagueIdForTeam(shield.catalogTeamId))
             }
             .filter { happensToday(it.game.startMillis, null, nowMillis, zoneId) }
@@ -70,7 +70,7 @@ object DailyRelevance {
         // outside the short in-progress GameEntity look-back used elsewhere on Home. An armed Open
         // Championship shield must therefore suppress its available card directly by event id.
         shields.asSequence()
-            .filter { it.armed }
+            .filter { HiddenRecency.isHiding(it, nowMillis) }
             .mapNotNullTo(coveredIds) { it.gameEventId }
         val todayLeagueGames = leagueGames.asSequence()
             .filterNot { it.completed || it.eventId in coveredIds }
@@ -94,7 +94,7 @@ object DailyRelevance {
             .sortedBy { it.game.startMillis }
             .toList()
         val interestEventIds = interestMatches.mapTo(mutableSetOf()) { it.game.eventId }
-        val interests = interestMatches.filterNot { it.shield.armed }
+        val interests = interestMatches.filterNot { HiddenRecency.isHiding(it.shield, nowMillis) }
 
         val featured = leagueGames.asSequence()
             .filterNot { it.completed || it.eventId in coveredIds || it.eventId in interestEventIds }

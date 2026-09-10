@@ -16,6 +16,14 @@ class DailyRelevanceTest {
     private val atlanta = ZoneId.of("America/New_York")
     private val now = at(2026, 7, 19, 10)
 
+    @Test fun `expired hiding flag cannot suppress today's followed-team game`() {
+        val stale = ShieldEntity(id = 7, name = "Atlanta United", aliasesJson = "[]", kind = "TEAM",
+            armed = true, armedAtMillis = now - 21 * 86_400_000L)
+        val today = teamGame("today", 7, at(2026, 7, 19, 13))
+        val feed = DailyRelevance.build(listOf(stale), listOf(today), emptyList(), now, atlanta)
+        assertEquals(listOf("today"), feed.personal.map { it.game.id })
+    }
+
     @Test fun `all saved-team games today appear and tomorrow stays off Home`() {
         val shield = ShieldEntity(id = 7, name = "Atlanta United", aliasesJson = "[]", kind = "TEAM")
         val todayOne = teamGame("one", 7, at(2026, 7, 19, 13))

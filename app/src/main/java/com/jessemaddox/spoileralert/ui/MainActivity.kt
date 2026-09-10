@@ -351,6 +351,8 @@ class MainActivity : ComponentActivity() {
                         shields = homeShields,
                         status = protectionStatus,
                         hiddenCounts = hiddenCounts,
+                        lastHiddenAtByShield = hidden.groupBy { it.shieldId }
+                            .mapValues { (_, items) -> items.maxOf { it.postedAtMillis } },
                         nextGames = nextGames,
                         sessionGames = sessionGames,
                         protectedGames = protectedGames,
