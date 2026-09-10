@@ -91,6 +91,7 @@ fun VaultScreen(
     val sections = HiddenRecency.split(HiddenGrouping.group(hidden), shieldById, now)
     val sessions = sections.recent + sections.older
     val olderIds = sections.older.mapTo(mutableSetOf()) { it.shieldId }
+    val olderCount = sections.older.sumOf { it.count }
     var showOlder by rememberSaveable { mutableStateOf(false) }
 
     // Calm, type-led reveal-all confirmation (NO takeover): "N revealed · protection stopped".
@@ -145,7 +146,7 @@ fun VaultScreen(
                     HairlineCard {
                         Text("Older hidden", style = MaterialTheme.typography.titleMedium, color = Blueberry)
                         Text(
-                            "${sections.older.sumOf { it.count }} notifications from ${sections.older.size} past session${if (sections.older.size == 1) "" else "s"}. Still hidden.",
+                            "${olderCount} notification${if (olderCount == 1) "" else "s"} from ${sections.older.size} past session${if (sections.older.size == 1) "" else "s"}. Still hidden.",
                             style = MaterialTheme.typography.bodySmall, color = JessColors.subtle,
                         )
                         TextAction(if (showOlder) "Collapse older hidden" else "Show older hidden", onClick = { showOlder = !showOlder })
