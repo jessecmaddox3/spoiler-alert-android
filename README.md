@@ -61,8 +61,15 @@ Android Studio's Run button installs the debug app on your selected emulator or 
 Run the database, migration and Android behavior checks on a disposable emulator:
 
 ```bash
+./gradlew :app:assembleDebug :app:assembleDebugAndroidTest
+adb install -r -g app/build/outputs/apk/debug/app-debug.apk
 ./gradlew :app:connectedDebugAndroidTest
 ```
+
+The `-g` flag grants the disposable debug app its runtime notification permission.
+The notification-effect tests need that permission on Android 13 and newer. This
+setup applies only to your test emulator; real users grant permissions themselves
+through the app's setup screens.
 
 `assembleRelease` builds an unsigned APK. No production signing keys, credentials, private history or private repository is needed to build this code. Use your own application ID and signing identity for a separately distributed fork; the official release's signing identity is not part of this repository.
 
