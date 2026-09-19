@@ -1,0 +1,1979 @@
+{
+  "leagues": [
+    {
+      "id": "nfl",
+      "teams": [
+        {
+          "id": "buf-bills",
+          "players": [
+            {
+              "name": "Josh Allen",
+              "short": [
+                "allen"
+              ]
+            },
+            {
+              "name": "James Cook",
+              "short": [
+                "cook"
+              ]
+            },
+            {
+              "name": "Khalil Shakir",
+              "aliases": [
+                "shakir"
+              ]
+            },
+            {
+              "name": "Keon Coleman",
+              "aliases": [
+                "keon coleman"
+              ],
+              "short": [
+                "coleman"
+              ]
+            },
+            {
+              "name": "Dalton Kincaid",
+              "aliases": [
+                "kincaid"
+              ]
+            },
+            {
+              "name": "Tyler Bass",
+              "short": [
+                "bass"
+              ]
+            },
+            {
+              "name": "Von Miller",
+              "short": [
+                "miller"
+              ]
+            },
+            {
+              "name": "Sean McDermott",
+              "aliases": [
+                "mcdermott"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mia-dolphins",
+          "players": [
+            {
+              "name": "Tua Tagovailoa",
+              "aliases": [
+                "tua",
+                "tagovailoa"
+              ]
+            },
+            {
+              "name": "De'Von Achane",
+              "aliases": [
+                "achane"
+              ]
+            },
+            {
+              "name": "Tyreek Hill",
+              "short": [
+                "hill"
+              ]
+            },
+            {
+              "name": "Jaylen Waddle",
+              "aliases": [
+                "waddle"
+              ]
+            },
+            {
+              "name": "Jonnu Smith",
+              "short": [
+                "smith"
+              ]
+            },
+            {
+              "name": "Jason Sanders",
+              "aliases": [
+                "sanders"
+              ]
+            },
+            {
+              "name": "Bradley Chubb",
+              "aliases": [
+                "chubb"
+              ]
+            },
+            {
+              "name": "Mike McDaniel",
+              "aliases": [
+                "mcdaniel"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ne-patriots",
+          "players": [
+            {
+              "name": "Drake Maye",
+              "aliases": [
+                "maye",
+                "drake maye"
+              ]
+            },
+            {
+              "name": "Rhamondre Stevenson",
+              "aliases": [
+                "rhamondre",
+                "stevenson"
+              ]
+            },
+            {
+              "name": "Stefon Diggs",
+              "aliases": [
+                "diggs"
+              ]
+            },
+            {
+              "name": "Hunter Henry",
+              "aliases": [
+                "hunter henry"
+              ]
+            },
+            {
+              "name": "TreVeyon Henderson",
+              "aliases": [
+                "treveyon",
+                "henderson"
+              ]
+            },
+            {
+              "name": "Christian Gonzalez",
+              "aliases": [
+                "gonzalez"
+              ]
+            },
+            {
+              "name": "Mike Vrabel",
+              "aliases": [
+                "vrabel"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "nyj-jets",
+          "players": [
+            {
+              "name": "Justin Fields",
+              "short": [
+                "fields"
+              ]
+            },
+            {
+              "name": "Breece Hall",
+              "aliases": [
+                "breece hall",
+                "breece"
+              ]
+            },
+            {
+              "name": "Garrett Wilson",
+              "aliases": [
+                "garrett wilson"
+              ]
+            },
+            {
+              "name": "Sauce Gardner",
+              "aliases": [
+                "sauce",
+                "gardner"
+              ]
+            },
+            {
+              "name": "Aaron Glenn",
+              "aliases": [
+                "aaron glenn"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bal-ravens",
+          "players": [
+            {
+              "name": "Lamar Jackson",
+              "aliases": [
+                "lamar jackson",
+                "lamar"
+              ]
+            },
+            {
+              "name": "Derrick Henry",
+              "aliases": [
+                "derrick henry"
+              ]
+            },
+            {
+              "name": "Zay Flowers",
+              "short": [
+                "flowers"
+              ]
+            },
+            {
+              "name": "Mark Andrews",
+              "aliases": [
+                "andrews"
+              ]
+            },
+            {
+              "name": "Justin Tucker",
+              "aliases": [
+                "tucker"
+              ]
+            },
+            {
+              "name": "Roquan Smith",
+              "short": [
+                "smith"
+              ]
+            },
+            {
+              "name": "Kyle Hamilton",
+              "aliases": [
+                "kyle hamilton"
+              ]
+            },
+            {
+              "name": "John Harbaugh",
+              "aliases": [
+                "harbaugh"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cin-bengals",
+          "players": [
+            {
+              "name": "Joe Burrow",
+              "aliases": [
+                "burrow",
+                "joe burrow"
+              ]
+            },
+            {
+              "name": "Ja'Marr Chase",
+              "short": [
+                "chase"
+              ]
+            },
+            {
+              "name": "Tee Higgins",
+              "aliases": [
+                "higgins"
+              ]
+            },
+            {
+              "name": "Chase Brown",
+              "short": [
+                "brown"
+              ]
+            },
+            {
+              "name": "Trey Hendrickson",
+              "aliases": [
+                "hendrickson"
+              ]
+            },
+            {
+              "name": "Zac Taylor",
+              "aliases": [
+                "zac taylor"
+              ],
+              "short": [
+                "taylor"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cle-browns",
+          "players": [
+            {
+              "name": "Myles Garrett",
+              "aliases": [
+                "myles garrett",
+                "garrett"
+              ]
+            },
+            {
+              "name": "Jerry Jeudy",
+              "aliases": [
+                "jeudy"
+              ]
+            },
+            {
+              "name": "David Njoku",
+              "aliases": [
+                "njoku"
+              ]
+            },
+            {
+              "name": "Kevin Stefanski",
+              "aliases": [
+                "stefanski"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pit-steelers",
+          "players": [
+            {
+              "name": "Aaron Rodgers",
+              "aliases": [
+                "rodgers"
+              ]
+            },
+            {
+              "name": "T.J. Watt",
+              "aliases": [
+                "tj watt",
+                "watt"
+              ]
+            },
+            {
+              "name": "DK Metcalf",
+              "aliases": [
+                "metcalf"
+              ]
+            },
+            {
+              "name": "Cameron Heyward",
+              "aliases": [
+                "heyward"
+              ]
+            },
+            {
+              "name": "Mike Tomlin",
+              "aliases": [
+                "tomlin"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hou-texans",
+          "players": [
+            {
+              "name": "C.J. Stroud",
+              "aliases": [
+                "stroud",
+                "cj stroud"
+              ]
+            },
+            {
+              "name": "Nico Collins",
+              "aliases": [
+                "nico collins",
+                "collins"
+              ]
+            },
+            {
+              "name": "Joe Mixon",
+              "aliases": [
+                "mixon"
+              ]
+            },
+            {
+              "name": "Nick Chubb",
+              "aliases": [
+                "nick chubb"
+              ]
+            },
+            {
+              "name": "Will Anderson",
+              "aliases": [
+                "will anderson",
+                "anderson"
+              ]
+            },
+            {
+              "name": "DeMeco Ryans",
+              "aliases": [
+                "demeco",
+                "ryans"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ind-colts",
+          "players": [
+            {
+              "name": "Daniel Jones",
+              "short": [
+                "jones"
+              ]
+            },
+            {
+              "name": "Jonathan Taylor",
+              "aliases": [
+                "jonathan taylor"
+              ],
+              "short": [
+                "taylor"
+              ]
+            },
+            {
+              "name": "Michael Pittman",
+              "aliases": [
+                "pittman"
+              ]
+            },
+            {
+              "name": "Josh Downs",
+              "aliases": [
+                "downs"
+              ]
+            },
+            {
+              "name": "Shane Steichen",
+              "aliases": [
+                "steichen"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "jax-jaguars",
+          "players": [
+            {
+              "name": "Trevor Lawrence",
+              "aliases": [
+                "trevor lawrence",
+                "lawrence"
+              ]
+            },
+            {
+              "name": "Travis Hunter",
+              "aliases": [
+                "travis hunter"
+              ]
+            },
+            {
+              "name": "Brian Thomas",
+              "aliases": [
+                "brian thomas"
+              ],
+              "short": [
+                "thomas"
+              ]
+            },
+            {
+              "name": "Travis Etienne",
+              "aliases": [
+                "etienne"
+              ]
+            },
+            {
+              "name": "Liam Coen",
+              "aliases": [
+                "coen"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ten-titans",
+          "players": [
+            {
+              "name": "Cam Ward",
+              "aliases": [
+                "cam ward"
+              ]
+            },
+            {
+              "name": "Tony Pollard",
+              "aliases": [
+                "pollard"
+              ]
+            },
+            {
+              "name": "Calvin Ridley",
+              "aliases": [
+                "ridley"
+              ]
+            },
+            {
+              "name": "Jeffery Simmons",
+              "aliases": [
+                "jeffery simmons",
+                "simmons"
+              ]
+            },
+            {
+              "name": "Brian Callahan",
+              "aliases": [
+                "callahan"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "den-broncos",
+          "players": [
+            {
+              "name": "Bo Nix",
+              "aliases": [
+                "bo nix"
+              ]
+            },
+            {
+              "name": "Courtland Sutton",
+              "aliases": [
+                "sutton"
+              ]
+            },
+            {
+              "name": "Patrick Surtain",
+              "aliases": [
+                "surtain"
+              ]
+            },
+            {
+              "name": "Nik Bonitto",
+              "aliases": [
+                "bonitto"
+              ]
+            },
+            {
+              "name": "Sean Payton",
+              "aliases": [
+                "payton"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kc-chiefs",
+          "players": [
+            {
+              "name": "Patrick Mahomes",
+              "aliases": [
+                "mahomes"
+              ]
+            },
+            {
+              "name": "Travis Kelce",
+              "aliases": [
+                "kelce"
+              ]
+            },
+            {
+              "name": "Rashee Rice",
+              "short": [
+                "rice"
+              ]
+            },
+            {
+              "name": "Xavier Worthy",
+              "short": [
+                "worthy"
+              ]
+            },
+            {
+              "name": "Isiah Pacheco",
+              "aliases": [
+                "pacheco"
+              ]
+            },
+            {
+              "name": "Chris Jones",
+              "aliases": [
+                "chris jones"
+              ]
+            },
+            {
+              "name": "Harrison Butker",
+              "aliases": [
+                "butker"
+              ]
+            },
+            {
+              "name": "Andy Reid",
+              "aliases": [
+                "andy reid"
+              ],
+              "short": [
+                "reid"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lv-raiders",
+          "players": [
+            {
+              "name": "Geno Smith",
+              "aliases": [
+                "geno smith"
+              ],
+              "short": [
+                "smith"
+              ]
+            },
+            {
+              "name": "Ashton Jeanty",
+              "aliases": [
+                "jeanty"
+              ]
+            },
+            {
+              "name": "Brock Bowers",
+              "aliases": [
+                "bowers"
+              ]
+            },
+            {
+              "name": "Maxx Crosby",
+              "aliases": [
+                "maxx",
+                "crosby"
+              ]
+            },
+            {
+              "name": "Pete Carroll",
+              "aliases": [
+                "pete carroll",
+                "carroll"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lac-chargers",
+          "players": [
+            {
+              "name": "Justin Herbert",
+              "aliases": [
+                "herbert"
+              ]
+            },
+            {
+              "name": "Omarion Hampton",
+              "aliases": [
+                "hampton"
+              ]
+            },
+            {
+              "name": "Ladd McConkey",
+              "aliases": [
+                "mcconkey"
+              ]
+            },
+            {
+              "name": "Keenan Allen",
+              "aliases": [
+                "keenan allen"
+              ]
+            },
+            {
+              "name": "Khalil Mack",
+              "aliases": [
+                "khalil mack",
+                "mack"
+              ]
+            },
+            {
+              "name": "Jim Harbaugh",
+              "aliases": [
+                "jim harbaugh"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dal-cowboys",
+          "players": [
+            {
+              "name": "Dak Prescott",
+              "aliases": [
+                "dak",
+                "prescott"
+              ]
+            },
+            {
+              "name": "CeeDee Lamb",
+              "aliases": [
+                "ceedee",
+                "lamb"
+              ]
+            },
+            {
+              "name": "George Pickens",
+              "aliases": [
+                "pickens"
+              ]
+            },
+            {
+              "name": "Javonte Williams",
+              "aliases": [
+                "javonte williams"
+              ]
+            },
+            {
+              "name": "Brian Schottenheimer",
+              "aliases": [
+                "schottenheimer"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "nyg-giants",
+          "players": [
+            {
+              "name": "Russell Wilson",
+              "aliases": [
+                "russell wilson"
+              ],
+              "short": [
+                "russell",
+                "wilson"
+              ]
+            },
+            {
+              "name": "Jaxson Dart",
+              "aliases": [
+                "jaxson dart",
+                "dart"
+              ]
+            },
+            {
+              "name": "Malik Nabers",
+              "aliases": [
+                "nabers"
+              ]
+            },
+            {
+              "name": "Brian Burns",
+              "aliases": [
+                "brian burns",
+                "burns"
+              ]
+            },
+            {
+              "name": "Kayvon Thibodeaux",
+              "aliases": [
+                "thibodeaux"
+              ]
+            },
+            {
+              "name": "Abdul Carter",
+              "aliases": [
+                "abdul carter",
+                "carter"
+              ]
+            },
+            {
+              "name": "Brian Daboll",
+              "aliases": [
+                "daboll"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "phi-eagles",
+          "players": [
+            {
+              "name": "Jalen Hurts",
+              "short": [
+                "hurts"
+              ]
+            },
+            {
+              "name": "Saquon Barkley",
+              "aliases": [
+                "saquon",
+                "barkley"
+              ]
+            },
+            {
+              "name": "A.J. Brown",
+              "short": [
+                "brown"
+              ]
+            },
+            {
+              "name": "DeVonta Smith",
+              "aliases": [
+                "devonta smith"
+              ],
+              "short": [
+                "smith"
+              ]
+            },
+            {
+              "name": "Dallas Goedert",
+              "aliases": [
+                "goedert"
+              ]
+            },
+            {
+              "name": "Nick Sirianni",
+              "aliases": [
+                "sirianni"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "was-commanders",
+          "players": [
+            {
+              "name": "Jayden Daniels",
+              "aliases": [
+                "jayden daniels",
+                "jayden"
+              ]
+            },
+            {
+              "name": "Terry McLaurin",
+              "aliases": [
+                "mclaurin",
+                "terry mclaurin"
+              ]
+            },
+            {
+              "name": "Deebo Samuel",
+              "aliases": [
+                "deebo",
+                "samuel"
+              ]
+            },
+            {
+              "name": "Austin Ekeler",
+              "aliases": [
+                "ekeler"
+              ]
+            },
+            {
+              "name": "Dan Quinn",
+              "aliases": [
+                "dan quinn",
+                "quinn"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "chi-bears",
+          "players": [
+            {
+              "name": "Caleb Williams",
+              "aliases": [
+                "caleb williams"
+              ]
+            },
+            {
+              "name": "DJ Moore",
+              "aliases": [
+                "dj moore"
+              ]
+            },
+            {
+              "name": "Rome Odunze",
+              "aliases": [
+                "rome",
+                "odunze"
+              ]
+            },
+            {
+              "name": "D'Andre Swift",
+              "aliases": [
+                "swift"
+              ]
+            },
+            {
+              "name": "Cole Kmet",
+              "aliases": [
+                "kmet"
+              ]
+            },
+            {
+              "name": "Ben Johnson",
+              "aliases": [
+                "ben johnson"
+              ],
+              "short": [
+                "johnson"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "det-lions",
+          "players": [
+            {
+              "name": "Jared Goff",
+              "aliases": [
+                "goff"
+              ]
+            },
+            {
+              "name": "Jahmyr Gibbs",
+              "aliases": [
+                "jahmyr",
+                "gibbs"
+              ]
+            },
+            {
+              "name": "Amon-Ra St. Brown",
+              "aliases": [
+                "amon-ra",
+                "st. brown",
+                "st brown"
+              ]
+            },
+            {
+              "name": "David Montgomery",
+              "aliases": [
+                "montgomery"
+              ]
+            },
+            {
+              "name": "Penei Sewell",
+              "aliases": [
+                "sewell"
+              ]
+            },
+            {
+              "name": "Aidan Hutchinson",
+              "aliases": [
+                "aidan",
+                "hutchinson"
+              ]
+            },
+            {
+              "name": "Dan Campbell",
+              "aliases": [
+                "dan campbell",
+                "campbell"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gb-packers",
+          "players": [
+            {
+              "name": "Jordan Love",
+              "short": [
+                "love"
+              ]
+            },
+            {
+              "name": "Josh Jacobs",
+              "aliases": [
+                "jacobs"
+              ]
+            },
+            {
+              "name": "Micah Parsons",
+              "aliases": [
+                "micah",
+                "parsons"
+              ]
+            },
+            {
+              "name": "Tucker Kraft",
+              "aliases": [
+                "kraft"
+              ]
+            },
+            {
+              "name": "Matt LaFleur",
+              "aliases": [
+                "lafleur"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "min-vikings",
+          "players": [
+            {
+              "name": "J.J. McCarthy",
+              "aliases": [
+                "jj mccarthy",
+                "mccarthy"
+              ]
+            },
+            {
+              "name": "Justin Jefferson",
+              "aliases": [
+                "justin jefferson",
+                "jefferson"
+              ]
+            },
+            {
+              "name": "Aaron Jones",
+              "aliases": [
+                "aaron jones"
+              ]
+            },
+            {
+              "name": "T.J. Hockenson",
+              "aliases": [
+                "hockenson"
+              ]
+            },
+            {
+              "name": "Jordan Addison",
+              "aliases": [
+                "addison"
+              ]
+            },
+            {
+              "name": "Kevin O'Connell",
+              "aliases": [
+                "o'connell"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "atl-falcons",
+          "players": [
+            {
+              "name": "Michael Penix Jr.",
+              "aliases": [
+                "penix jr",
+                "penix",
+                "michael penix"
+              ]
+            },
+            {
+              "name": "Kirk Cousins",
+              "short": [
+                "cousins"
+              ]
+            },
+            {
+              "name": "Bijan Robinson",
+              "aliases": [
+                "bijan robinson",
+                "bijan"
+              ]
+            },
+            {
+              "name": "Tyler Allgeier",
+              "aliases": [
+                "allgeier"
+              ]
+            },
+            {
+              "name": "Drake London",
+              "short": [
+                "london"
+              ]
+            },
+            {
+              "name": "Darnell Mooney",
+              "aliases": [
+                "mooney"
+              ]
+            },
+            {
+              "name": "Kyle Pitts",
+              "aliases": [
+                "pitts",
+                "kyle pitts"
+              ]
+            },
+            {
+              "name": "Younghoe Koo",
+              "aliases": [
+                "koo"
+              ]
+            },
+            {
+              "name": "Jessie Bates",
+              "aliases": [
+                "jessie bates"
+              ]
+            },
+            {
+              "name": "A.J. Terrell",
+              "aliases": [
+                "terrell"
+              ]
+            },
+            {
+              "name": "Raheem Morris",
+              "aliases": [
+                "raheem morris"
+              ],
+              "short": [
+                "morris"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "car-panthers",
+          "players": [
+            {
+              "name": "Bryce Young",
+              "short": [
+                "young"
+              ]
+            },
+            {
+              "name": "Chuba Hubbard",
+              "aliases": [
+                "chuba",
+                "hubbard"
+              ]
+            },
+            {
+              "name": "Tetairoa McMillan",
+              "aliases": [
+                "mcmillan",
+                "tetairoa"
+              ]
+            },
+            {
+              "name": "Dave Canales",
+              "aliases": [
+                "canales"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "no-saints",
+          "players": [
+            {
+              "name": "Spencer Rattler",
+              "aliases": [
+                "rattler"
+              ]
+            },
+            {
+              "name": "Alvin Kamara",
+              "aliases": [
+                "kamara"
+              ]
+            },
+            {
+              "name": "Chris Olave",
+              "aliases": [
+                "olave"
+              ]
+            },
+            {
+              "name": "Tyler Shough",
+              "aliases": [
+                "shough"
+              ]
+            },
+            {
+              "name": "Kellen Moore",
+              "aliases": [
+                "kellen moore"
+              ],
+              "short": [
+                "moore"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tb-buccaneers",
+          "players": [
+            {
+              "name": "Baker Mayfield",
+              "aliases": [
+                "baker mayfield",
+                "mayfield"
+              ]
+            },
+            {
+              "name": "Mike Evans",
+              "aliases": [
+                "mike evans",
+                "evans"
+              ]
+            },
+            {
+              "name": "Chris Godwin",
+              "aliases": [
+                "godwin"
+              ]
+            },
+            {
+              "name": "Bucky Irving",
+              "aliases": [
+                "bucky",
+                "irving"
+              ]
+            },
+            {
+              "name": "Rachaad White",
+              "aliases": [
+                "rachaad white"
+              ]
+            },
+            {
+              "name": "Emeka Egbuka",
+              "aliases": [
+                "egbuka"
+              ]
+            },
+            {
+              "name": "Todd Bowles",
+              "aliases": [
+                "bowles"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ari-cardinals",
+          "players": [
+            {
+              "name": "Kyler Murray",
+              "aliases": [
+                "kyler",
+                "murray"
+              ]
+            },
+            {
+              "name": "Marvin Harrison Jr.",
+              "aliases": [
+                "marvin harrison",
+                "harrison"
+              ]
+            },
+            {
+              "name": "James Conner",
+              "aliases": [
+                "conner"
+              ]
+            },
+            {
+              "name": "Trey McBride",
+              "aliases": [
+                "mcbride"
+              ]
+            },
+            {
+              "name": "Budda Baker",
+              "aliases": [
+                "budda"
+              ],
+              "short": [
+                "baker"
+              ]
+            },
+            {
+              "name": "Jonathan Gannon",
+              "aliases": [
+                "gannon"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lar-rams",
+          "players": [
+            {
+              "name": "Matthew Stafford",
+              "aliases": [
+                "stafford"
+              ]
+            },
+            {
+              "name": "Puka Nacua",
+              "aliases": [
+                "puka",
+                "nacua"
+              ]
+            },
+            {
+              "name": "Davante Adams",
+              "aliases": [
+                "davante",
+                "adams"
+              ]
+            },
+            {
+              "name": "Kyren Williams",
+              "aliases": [
+                "kyren williams"
+              ]
+            },
+            {
+              "name": "Sean McVay",
+              "aliases": [
+                "mcvay"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sf-49ers",
+          "players": [
+            {
+              "name": "Brock Purdy",
+              "aliases": [
+                "purdy"
+              ]
+            },
+            {
+              "name": "Christian McCaffrey",
+              "aliases": [
+                "cmc",
+                "mccaffrey"
+              ]
+            },
+            {
+              "name": "George Kittle",
+              "aliases": [
+                "kittle"
+              ]
+            },
+            {
+              "name": "Jauan Jennings",
+              "aliases": [
+                "jennings"
+              ]
+            },
+            {
+              "name": "Nick Bosa",
+              "aliases": [
+                "bosa"
+              ]
+            },
+            {
+              "name": "Fred Warner",
+              "aliases": [
+                "fred warner",
+                "warner"
+              ]
+            },
+            {
+              "name": "Kyle Shanahan",
+              "aliases": [
+                "shanahan"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sea-seahawks",
+          "players": [
+            {
+              "name": "Sam Darnold",
+              "aliases": [
+                "darnold"
+              ]
+            },
+            {
+              "name": "Jaxon Smith-Njigba",
+              "aliases": [
+                "smith-njigba",
+                "jsn"
+              ]
+            },
+            {
+              "name": "Kenneth Walker",
+              "aliases": [
+                "kenneth walker",
+                "walker"
+              ]
+            },
+            {
+              "name": "Cooper Kupp",
+              "aliases": [
+                "kupp"
+              ]
+            },
+            {
+              "name": "Mike Macdonald",
+              "aliases": [
+                "macdonald"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cfb",
+      "teams": [
+        {
+          "id": "cfb-georgia",
+          "players": [
+            {
+              "name": "Gunner Stockton",
+              "aliases": [
+                "gunner",
+                "stockton"
+              ]
+            },
+            {
+              "name": "Kirby Smart",
+              "aliases": [
+                "kirby smart"
+              ],
+              "short": [
+                "smart"
+              ]
+            },
+            {
+              "name": "Nate Frazier",
+              "aliases": [
+                "frazier"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-alabama",
+          "players": [
+            {
+              "name": "Ty Simpson",
+              "aliases": [
+                "ty simpson",
+                "simpson"
+              ]
+            },
+            {
+              "name": "Kalen DeBoer",
+              "aliases": [
+                "deboer"
+              ]
+            },
+            {
+              "name": "Ryan Williams",
+              "aliases": [
+                "ryan williams"
+              ]
+            },
+            {
+              "name": "Roll Tide",
+              "aliases": [
+                "roll tide"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-ohio-state",
+          "players": [
+            {
+              "name": "Julian Sayin",
+              "aliases": [
+                "sayin"
+              ]
+            },
+            {
+              "name": "Jeremiah Smith",
+              "aliases": [
+                "jeremiah smith"
+              ],
+              "short": [
+                "smith"
+              ]
+            },
+            {
+              "name": "Carnell Tate",
+              "aliases": [
+                "carnell tate",
+                "tate"
+              ]
+            },
+            {
+              "name": "Ryan Day",
+              "aliases": [
+                "ryan day"
+              ],
+              "short": [
+                "day"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-michigan",
+          "players": [
+            {
+              "name": "Bryce Underwood",
+              "aliases": [
+                "underwood"
+              ]
+            },
+            {
+              "name": "Sherrone Moore",
+              "aliases": [
+                "sherrone moore"
+              ],
+              "short": [
+                "moore"
+              ]
+            },
+            {
+              "name": "Justice Haynes",
+              "aliases": [
+                "justice haynes",
+                "haynes"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-texas",
+          "players": [
+            {
+              "name": "Arch Manning",
+              "aliases": [
+                "arch",
+                "manning"
+              ]
+            },
+            {
+              "name": "Steve Sarkisian",
+              "aliases": [
+                "sarkisian",
+                "sark"
+              ]
+            },
+            {
+              "name": "Ryan Wingo",
+              "aliases": [
+                "wingo"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-oklahoma",
+          "players": [
+            {
+              "name": "John Mateer",
+              "aliases": [
+                "mateer"
+              ]
+            },
+            {
+              "name": "Brent Venables",
+              "aliases": [
+                "venables"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-lsu",
+          "players": [
+            {
+              "name": "Garrett Nussmeier",
+              "aliases": [
+                "nussmeier"
+              ]
+            },
+            {
+              "name": "Brian Kelly",
+              "aliases": [
+                "brian kelly",
+                "kelly"
+              ]
+            },
+            {
+              "name": "Caden Durham",
+              "aliases": [
+                "durham"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-clemson",
+          "players": [
+            {
+              "name": "Cade Klubnik",
+              "aliases": [
+                "klubnik"
+              ]
+            },
+            {
+              "name": "Dabo Swinney",
+              "aliases": [
+                "dabo",
+                "swinney"
+              ]
+            },
+            {
+              "name": "Antonio Williams",
+              "aliases": [
+                "antonio williams"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-florida-state",
+          "players": [
+            {
+              "name": "Thomas Castellanos",
+              "aliases": [
+                "castellanos"
+              ]
+            },
+            {
+              "name": "Mike Norvell",
+              "aliases": [
+                "norvell"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-florida",
+          "players": [
+            {
+              "name": "DJ Lagway",
+              "aliases": [
+                "lagway"
+              ]
+            },
+            {
+              "name": "Billy Napier",
+              "aliases": [
+                "napier"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-tennessee",
+          "players": [
+            {
+              "name": "Joey Aguilar",
+              "aliases": [
+                "aguilar"
+              ]
+            },
+            {
+              "name": "Josh Heupel",
+              "aliases": [
+                "heupel"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-oregon",
+          "players": [
+            {
+              "name": "Dante Moore",
+              "aliases": [
+                "dante moore"
+              ],
+              "short": [
+                "moore"
+              ]
+            },
+            {
+              "name": "Dan Lanning",
+              "aliases": [
+                "lanning"
+              ]
+            },
+            {
+              "name": "Makhi Hughes",
+              "aliases": [
+                "makhi",
+                "hughes"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-penn-state",
+          "players": [
+            {
+              "name": "Drew Allar",
+              "aliases": [
+                "allar"
+              ]
+            },
+            {
+              "name": "Nicholas Singleton",
+              "aliases": [
+                "singleton"
+              ]
+            },
+            {
+              "name": "Kaytron Allen",
+              "aliases": [
+                "kaytron allen"
+              ]
+            },
+            {
+              "name": "James Franklin",
+              "aliases": [
+                "franklin"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-usc",
+          "players": [
+            {
+              "name": "Jayden Maiava",
+              "aliases": [
+                "maiava"
+              ]
+            },
+            {
+              "name": "Lincoln Riley",
+              "aliases": [
+                "lincoln riley",
+                "riley"
+              ]
+            },
+            {
+              "name": "Makai Lemon",
+              "aliases": [
+                "lemon"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-notre-dame",
+          "players": [
+            {
+              "name": "CJ Carr",
+              "aliases": [
+                "cj carr",
+                "carr"
+              ]
+            },
+            {
+              "name": "Jeremiyah Love",
+              "aliases": [
+                "jeremiyah love",
+                "jeremiyah"
+              ]
+            },
+            {
+              "name": "Marcus Freeman",
+              "aliases": [
+                "freeman"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-miami",
+          "players": [
+            {
+              "name": "Carson Beck",
+              "aliases": [
+                "carson beck",
+                "beck"
+              ]
+            },
+            {
+              "name": "Mario Cristobal",
+              "aliases": [
+                "cristobal"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-texas-am",
+          "players": [
+            {
+              "name": "Marcel Reed",
+              "aliases": [
+                "marcel reed",
+                "reed"
+              ]
+            },
+            {
+              "name": "Mike Elko",
+              "aliases": [
+                "elko"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-auburn",
+          "players": [
+            {
+              "name": "Jackson Arnold",
+              "aliases": [
+                "jackson arnold",
+                "arnold"
+              ]
+            },
+            {
+              "name": "Hugh Freeze",
+              "aliases": [
+                "hugh freeze",
+                "freeze"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-ole-miss",
+          "players": [
+            {
+              "name": "Austin Simmons",
+              "aliases": [
+                "austin simmons"
+              ]
+            },
+            {
+              "name": "Lane Kiffin",
+              "aliases": [
+                "kiffin"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-washington",
+          "players": [
+            {
+              "name": "Demond Williams",
+              "aliases": [
+                "demond williams"
+              ]
+            },
+            {
+              "name": "Jedd Fisch",
+              "aliases": [
+                "fisch"
+              ]
+            },
+            {
+              "name": "Jonah Coleman",
+              "aliases": [
+                "jonah coleman"
+              ],
+              "short": [
+                "coleman"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-utah",
+          "players": [
+            {
+              "name": "Devon Dampier",
+              "aliases": [
+                "dampier"
+              ]
+            },
+            {
+              "name": "Kyle Whittingham",
+              "aliases": [
+                "whittingham"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-colorado",
+          "players": [
+            {
+              "name": "Deion Sanders",
+              "aliases": [
+                "deion",
+                "coach prime",
+                "sanders"
+              ]
+            },
+            {
+              "name": "Julian Lewis",
+              "aliases": [
+                "julian lewis"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-georgia-tech",
+          "players": [
+            {
+              "name": "Haynes King",
+              "aliases": [
+                "haynes king"
+              ]
+            },
+            {
+              "name": "Brent Key",
+              "aliases": [
+                "brent key"
+              ],
+              "short": [
+                "key"
+              ]
+            },
+            {
+              "name": "Jamal Haynes",
+              "aliases": [
+                "jamal haynes",
+                "haynes"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-wisconsin",
+          "players": [
+            {
+              "name": "Luke Fickell",
+              "aliases": [
+                "fickell"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cfb-nebraska",
+          "players": [
+            {
+              "name": "Dylan Raiola",
+              "aliases": [
+                "raiola"
+              ]
+            },
+            {
+              "name": "Matt Rhule",
+              "aliases": [
+                "rhule"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+# Preserve upstream license and Windows wrapper bytes, including their line endings.
+app/src/main/assets/licenses/DM-Sans-OFL.txt -text -whitespace
+gradlew.bat -text whitespace=cr-at-eol

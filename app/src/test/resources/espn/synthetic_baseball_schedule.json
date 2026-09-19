@@ -1,0 +1,127 @@
+{
+  "team": {
+    "id": "synthetic-team"
+  },
+  "events": [
+    {
+      "id": "fiction-schedule-b0",
+      "date": "2030-04-01T18:00Z",
+      "name": "Cedar Comets at Harbor Kites",
+      "shortName": "CED @ HAR",
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "id": "synthetic-home"
+              }
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "id": "synthetic-away"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "completed": true
+            }
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "fiction-schedule-b1",
+      "date": "2030-04-02T18:00Z",
+      "name": "Cedar Comets at Harbor Kites",
+      "shortName": "CED @ HAR",
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "id": "synthetic-home"
+              }
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "id": "synthetic-away"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "completed": true
+            }
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "fiction-schedule-b2",
+      "date": "2030-04-03T18:00Z",
+      "name": "Cedar Comets at Harbor Kites",
+      "shortName": "CED @ HAR",
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "id": "synthetic-home"
+              }
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "id": "synthetic-away"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "completed": false
+            }
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "fiction-schedule-b3",
+      "date": "2030-04-04T18:00Z",
+      "name": "Cedar Comets at Harbor Kites",
+      "shortName": "CED @ HAR",
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "id": "synthetic-home"
+              }
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "id": "synthetic-away"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "completed": false
+            }
+          },
+          "notes": []
+        }
+      ]
+    }
+  ]
+}

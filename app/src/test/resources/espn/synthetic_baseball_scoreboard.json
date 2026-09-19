@@ -1,0 +1,68 @@
+{
+  "events": [
+    {
+      "id": "fiction-baseball-a",
+      "date": "2030-04-03T14:05Z",
+      "name": "Cedar Comets at Harbor Kites",
+      "shortName": "CED @ HAR",
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "id": "synthetic-home"
+              }
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "id": "synthetic-away"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "completed": false
+            }
+          },
+          "notes": [
+            {
+              "headline": "Doubleheader - Game 1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiction-baseball-b",
+      "date": "2030-04-03T18:05Z",
+      "name": "Cedar Comets at Harbor Kites",
+      "shortName": "CED @ HAR",
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "id": "synthetic-home"
+              }
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "id": "synthetic-away"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "completed": false
+            }
+          },
+          "notes": []
+        }
+      ]
+    }
+  ]
+}

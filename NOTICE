@@ -1,0 +1,26 @@
+Spoiler Alert includes original Kotlin and Android application code.
+
+The public source distribution excludes downloaded team logos. The bundled
+team and player catalog is a factual, manually curated reference list. Team and league names are
+used nominatively for identification. This project is not affiliated with or endorsed by any
+team, league, player, ESPN, or other rights holder.
+
+The header illustrations were generated for this project with ChatGPT and Gemini.
+The author's rights in those illustrations, to the extent held, are offered under MIT.
+This does not claim exclusive copyright in AI-generated imagery or license anyone else's marks.
+See docs/ARTWORK.md and the packaged home_headers/catalog.json for provenance.
+
+DM Sans 4.004: Copyright 2014 The DM Sans Project Authors.
+Distributed under the SIL Open Font License 1.1, in app/src/main/assets/licenses/DM-Sans-OFL.txt.
+Roboto Condensed 3.008: Copyright 2011 Google Inc. All Rights Reserved.
+Distributed under Apache License 2.0, in app/src/main/assets/licenses/Roboto-Condensed-Apache-2.0.txt.
+These fonts retain their own licenses and are not relicensed under MIT. Both complete license
+texts are packaged in the APK; no font is downloaded at runtime.
+
+The app retrieves public schedule and event-status data from ESPN's public web endpoints only
+when a user requests or enables schedule features. ESPN is not affiliated with this project.
+
+The Gradle wrapper is distributed under the Apache License, Version 2.0. Gradle is a trademark
+of Gradle Inc. See https://github.com/gradle/gradle/blob/v8.11.1/LICENSE for its license text.
+
+A copy of the Gradle license is included in licenses/Gradle-LICENSE.txt. Other build and runtime dependencies retain their respective upstream licenses.

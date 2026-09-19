@@ -1,0 +1,68 @@
+{
+  "events": [
+    {
+      "id": "fiction-basketball-a",
+      "date": "2030-04-02T20:00Z",
+      "name": "Cedar Comets at Harbor Kites",
+      "shortName": "CED @ HAR",
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "id": "synthetic-home"
+              }
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "id": "synthetic-away"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "completed": true
+            }
+          },
+          "notes": [
+            {
+              "headline": "Community Play-In"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiction-basketball-b",
+      "date": "2030-04-02T21:00Z",
+      "name": "Cedar Comets at Harbor Kites",
+      "shortName": "CED @ HAR",
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "id": "synthetic-home"
+              }
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "id": "synthetic-away"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "completed": true
+            }
+          },
+          "notes": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "file": "01_cinematic_stadium_bubble.webp",
+    "description": "cinematic stadium bubble",
+    "generator": "ChatGPT",
+    "sha256": "c58881c08f7555616ee4cde25df3a504439158348feaee9189d89ac29f339f31",
+    "public_revision": "Original generated illustration"
+  },
+  {
+    "file": "02_rube_goldberg_vault.webp",
+    "description": "rube goldberg vault",
+    "generator": "ChatGPT",
+    "sha256": "9da3a9214a94ddeffd67773e8cca864a21bf8f41d41bd5b19a2f3d5993d9ef84",
+    "public_revision": "Original generated illustration"
+  },
+  {
+    "file": "03_neon_sports_storm.webp",
+    "description": "neon sports storm",
+    "generator": "ChatGPT",
+    "sha256": "2fa4480f66bf088a1c5aac95b067b3da092d3ea18e4f3fcd493bf5184f5a68ff",
+    "public_revision": "Original generated illustration"
+  },
+  {
+    "file": "04_sports_multiverse.webp",
+    "description": "sports multiverse",
+    "generator": "ChatGPT",
+    "sha256": "1a03dda7b5541379c161f6b2502f7ac9ca5c035d2ee3ce8eb1c68c65ad72716d",
+    "public_revision": "Branding cleanup with ChatGPT, September 2026"
+  },
+  {
+    "file": "05_connected_sports_city.webp",
+    "description": "connected sports city",
+    "generator": "ChatGPT",
+    "sha256": "ffd40b28e170cc745f3e4875c41fd2db7fa356e94f57506cd3278d28419c7ea2",
+    "public_revision": "Original generated illustration"
+  },
+  {
+    "file": "06_paper_vault_panorama.webp",
+    "description": "paper vault panorama",
+    "generator": "ChatGPT",
+    "sha256": "aeeb5bdc7817f5e3556ad3622b05fb606ea69f29b4669c7318bb0965ac23d2ec",
+    "public_revision": "Original generated illustration"
+  },
+  {
+    "file": "07_paper_sports_collage.webp",
+    "description": "paper sports collage",
+    "generator": "ChatGPT",
+    "sha256": "41b65944c234aaaa39e9c88ebf0d75a0f68a02f6f5b33d8a2cf5a25e6300f905",
+    "public_revision": "Original generated illustration"
+  },
+  {
+    "file": "08_storybook_sports_river.webp",
+    "description": "storybook sports river",
+    "generator": "ChatGPT",
+    "sha256": "a38293bc943f2f7849f273bbdde32607ed6de42f64108c11d432ff26898a1bad",
+    "public_revision": "Original generated illustration"
+  },
+  {
+    "file": "09_shielded_fan_mural.webp",
+    "description": "shielded fan mural",
+    "generator": "ChatGPT",
+    "sha256": "dac2f15d216ff39ca5167ffd1ff96cd2b4768d9190326e27f1cd89dbad1c5be0",
+    "public_revision": "Branding cleanup with ChatGPT, September 2026"
+  },
+  {
+    "file": "10_paper_sports_map.webp",
+    "description": "paper sports map",
+    "generator": "Gemini",
+    "sha256": "4aa01117eeeeeddfff43ea8ed9c94197df12c7c98d9408588794ed622b3af716",
+    "public_revision": "Original generated illustration"
+  },
+  {
+    "file": "11_paper_notification_vault.webp",
+    "description": "paper notification vault",
+    "generator": "Gemini",
+    "sha256": "cf8adc1529b953163ed2b51bbd1e80eb7747d24e954f37926c22710178cb56c9",
+    "public_revision": "Original generated illustration"
+  },
+  {
+    "file": "12_storybook_sports_lagoon.webp",
+    "description": "storybook sports lagoon",
+    "generator": "Gemini",
+    "sha256": "f19bb019899238d87ec2c72f860effad3435ad052583cf43f8bc6087a8ee9032",
+    "public_revision": "Original generated illustration"
+  }
+]

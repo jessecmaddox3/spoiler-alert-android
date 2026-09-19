@@ -1,0 +1,68 @@
+{
+  "events": [
+    {
+      "id": "fiction-football-a",
+      "date": "2030-04-03T19:05Z",
+      "name": "Cedar Comets at Harbor Kites",
+      "shortName": "CED @ HAR",
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "id": "synthetic-home"
+              }
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "id": "synthetic-away"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "completed": false
+            }
+          },
+          "notes": [
+            {
+              "headline": "Exhibition under the lights"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiction-football-b",
+      "date": "2030-04-04T18:30Z",
+      "name": "Cedar Comets at Harbor Kites",
+      "shortName": "CED @ HAR",
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "id": "synthetic-home"
+              }
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "id": "synthetic-away"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "completed": false
+            }
+          },
+          "notes": []
+        }
+      ]
+    }
+  ]
+}

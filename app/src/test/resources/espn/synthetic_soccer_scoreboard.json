@@ -1,0 +1,64 @@
+{
+  "events": [
+    {
+      "id": "fiction-soccer-a",
+      "date": "2030-04-05T16:00Z",
+      "name": "Cedar Comets at Harbor Kites",
+      "shortName": "CED @ HAR",
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "id": "synthetic-home"
+              }
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "id": "synthetic-away"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "completed": false
+            }
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "fiction-soccer-b",
+      "date": "2030-04-05T18:00Z",
+      "name": "Cedar Comets at Harbor Kites",
+      "shortName": "CED @ HAR",
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "id": "synthetic-home"
+              }
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "id": "synthetic-away"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "completed": false
+            }
+          },
+          "notes": []
+        }
+      ]
+    }
+  ]
+}

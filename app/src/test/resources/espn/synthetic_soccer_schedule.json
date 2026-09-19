@@ -1,0 +1,97 @@
+{
+  "team": {
+    "id": "synthetic-team"
+  },
+  "events": [
+    {
+      "id": "fiction-schedule-s0",
+      "date": "2030-04-01T16:00Z",
+      "name": "Étoile Comets at Harbor Kites",
+      "shortName": "CED @ HAR",
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "id": "synthetic-home"
+              }
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "id": "synthetic-away"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "completed": true
+            }
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "fiction-schedule-s1",
+      "date": "2030-04-02T16:00Z",
+      "name": "Étoile Comets at Harbor Kites",
+      "shortName": "CED @ HAR",
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "id": "synthetic-home"
+              }
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "id": "synthetic-away"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "completed": true
+            }
+          },
+          "notes": []
+        }
+      ]
+    },
+    {
+      "id": "fiction-schedule-s2",
+      "date": "2030-04-03T16:00Z",
+      "name": "Étoile Comets at Harbor Kites",
+      "shortName": "CED @ HAR",
+      "competitions": [
+        {
+          "competitors": [
+            {
+              "homeAway": "home",
+              "team": {
+                "id": "synthetic-home"
+              }
+            },
+            {
+              "homeAway": "away",
+              "team": {
+                "id": "synthetic-away"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "completed": true
+            }
+          },
+          "notes": []
+        }
+      ]
+    }
+  ]
+}
