@@ -53,41 +53,6 @@ object SessionDurations {
         else -> 180L                // ~3h honest default
     }
 
-    /**
-     * Epoch-millis end of a game the session should cover (kickoff + typical length + buffer),
-     * or null when there's nothing a session can cover — no known game, the game already
-     * ended, or it ends beyond the [MAX_HOURS] session cap. Callers that get null fall back to
-     * the flat [suggestedHours]. Shared by [gameAwareDefaultHours] and the sheet's "covers the
-     * game" affordance so the label and the math never disagree.
-     *
-     * How early the user arms never matters: the session is anchored to the game, not the tap.
-     * (An earlier "near kickoff" gate sent a morning arm for an evening game to the flat
-     * [suggestedHours], so hiding expired hours before kickoff.)
-     */
-    fun coverableGameEndMillis(leagueId: String?, gameStartMillis: Long?, nowMillis: Long): Long? {
-        if (gameStartMillis == null) return null
-        val end = gameStartMillis +
-            (typicalGameLengthMinutes(leagueId) + POSTGAME_BUFFER_MINUTES) * 60_000L
-        if (end <= nowMillis) return null // already over — nothing left to cover
-        if (end > nowMillis + MAX_HOURS * 3_600_000L) return null // no session can reach it
-        return end
-    }
-
-    /**
-     * Game-aware default session length (v3 amendment item 8, sport-aware check-in timing):
-     * when a game start is known and not yet over, default the session to END at the
-     * game's expected finish (kickoff + [typicalGameLengthMinutes] + [POSTGAME_BUFFER_MINUTES]),
-     * expressed as whole hours from [nowMillis], min 1, capped at [MAX_HOURS]. The check-in
-     * (15 min before expiry) then lands near expected game-end automatically. Falls back to the
-     * flat [suggestedHours] when there's no coverable game (see [coverableGameEndMillis]).
-     */
-    fun gameAwareDefaultHours(leagueId: String?, gameStartMillis: Long?, nowMillis: Long): Int {
-        val end = coverableGameEndMillis(leagueId, gameStartMillis, nowMillis)
-            ?: return suggestedHours(leagueId)
-        val minutes = (end - nowMillis + 59_999L) / 60_000L // ceil to whole minutes
-        return ((minutes + 59) / 60).toInt().coerceIn(1, MAX_HOURS)
-    }
-
     /** "2h 40m" / "4h" / "12m" / "<1m" for live countdown chips. */
     fun formatRemaining(millis: Long): String {
         if (millis < 60_000L) return "<1m"

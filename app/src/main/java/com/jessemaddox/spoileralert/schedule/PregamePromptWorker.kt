@@ -20,9 +20,10 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
 /**
- * Fires ~10 minutes before a cached game's kickoff and ASKS whether to arm the shield.
- * Consent-based: the prompt's "Arm shield" action is the only path to arming — nothing
- * here arms silently. Everything is re-checked at fire time (see [PregamePrompt]) because
+ * Fires ~10 minutes before a cached game's kickoff. For a shield the user opted into game-time
+ * protection ([ShieldEntity.autoProtect]) it starts hiding now: that opt-in is the consent, and
+ * this moment is the window's start ([GameTimeProtection]). Otherwise it only ASKS whether to arm
+ * the shield: the prompt's "Arm shield" action is the only path to arming for those shields. Everything is re-checked at fire time (see [PregamePrompt]) because
  * WorkManager delays are inexact and the world changes between scheduling and firing.
  *
  * Copy shows only public schedule metadata (game short name, kickoff time) plus the
@@ -41,7 +42,13 @@ class PregamePromptWorker(context: Context, params: WorkerParameters) :
             // Re-derive first (collated review finding 2, call site (c)): fire-time is the
             // last chance before the ask goes out, so a stale name/kickoff gets corrected
             // right before the copy below reads it. No-op for TEAM shields / non-GAME kinds.
-            ShieldRepository(applicationContext, db).refreshGameShield(shieldId)
+            val repo = ShieldRepository(applicationContext, db)
+            repo.refreshGameShield(shieldId)
+            if (db.shieldDao().byId(shieldId)?.autoProtect == true) {
+                val covered = repo.startGameWindow(shieldId, eventId)
+                Log.i(TAG, "Game-time protection for $eventId/$shieldId: covered=$covered")
+                return@runCatching
+            }
             val shield = db.shieldDao().byId(shieldId)
             val game = db.gameDao().byKey(eventId, shieldId)
             val decision = PregamePrompt.shouldPrompt(
@@ -53,7 +60,7 @@ class PregamePromptWorker(context: Context, params: WorkerParameters) :
             when (decision) {
                 is PromptDecision.Skip -> Log.i(TAG, "No prompt for $eventId/$shieldId: ${decision.reason}")
                 is PromptDecision.Prompt ->
-                    postPrompt(shield!!.name, shield.autoDisarmHours, game!!, decision.alreadyStarted, shieldId)
+                    postPrompt(shield!!.name, game!!, decision.alreadyStarted, shieldId)
             }
         }.onFailure { Log.w(TAG, "Pregame prompt failed: $it") }
         return Result.success()
@@ -61,7 +68,6 @@ class PregamePromptWorker(context: Context, params: WorkerParameters) :
 
     private fun postPrompt(
         shieldName: String,
-        sessionHours: Int,
         game: com.jessemaddox.spoileralert.data.GameEntity,
         alreadyStarted: Boolean,
         shieldId: Long,
@@ -77,7 +83,8 @@ class PregamePromptWorker(context: Context, params: WorkerParameters) :
             applicationContext, id,
             Intent(applicationContext, ArmShieldReceiver::class.java)
                 .setAction(ArmShieldReceiver.ACTION_ARM_SHIELD)
-                .putExtra(ArmShieldReceiver.EXTRA_SHIELD_ID, shieldId),
+                .putExtra(ArmShieldReceiver.EXTRA_SHIELD_ID, shieldId)
+                .putExtra(ArmShieldReceiver.EXTRA_EVENT_ID, game.id),
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
         )
         val openIntent = PendingIntent.getActivity(
@@ -92,7 +99,7 @@ class PregamePromptWorker(context: Context, params: WorkerParameters) :
             .setContentTitle(title)
             .setContentText(text)
             .setContentIntent(openIntent)
-            .addAction(0, "Start hiding ${sessionHours}h", armIntent)
+            .addAction(0, "Hide until it's over", armIntent)
             .setAutoCancel(true)
             .build()
         applicationContext.getSystemService(NotificationManager::class.java).notify(id, notification)

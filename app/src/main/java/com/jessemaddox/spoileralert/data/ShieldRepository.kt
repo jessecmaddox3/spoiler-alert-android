@@ -32,6 +32,8 @@ import com.jessemaddox.spoileralert.ui.SessionDurations
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
 import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.sync.withLock
 import com.jessemaddox.spoileralert.service.SessionEffects
 import com.jessemaddox.spoileralert.service.SessionActions
@@ -103,18 +105,137 @@ class ShieldRepository(
 
     private suspend fun armSession(shieldId: Long, hours: Int?, rescan: Boolean) {
         (context.applicationContext as? com.jessemaddox.spoileralert.SpoilerAlertApp)?.startupReady?.await()
-        SessionEffects.mutex.withLock {
-            when (shieldDao.byId(shieldId)?.kind) {
-                "GAME" -> refreshGameShield(shieldId)
-                "TEAM" -> refreshTeamShield(shieldId)
-            }
-            val transition = sessions.arm(shieldId, hours) ?: return@withLock
-            transition.previous?.let { SessionActions.cancel(context, it) }
-            scheduleSession(transition.current)
-            sessions.reconcileEquivalentAttribution(shieldId)
-        }
+        SessionEffects.mutex.withLock { armLocked(shieldId, hours) }
         SummaryNotifier.refresh(context)
         if (rescan) ActiveNotificationSweep.request()
+    }
+
+    /** Caller holds [SessionEffects.mutex]. */
+    private suspend fun armLocked(shieldId: Long, hours: Int?): Boolean {
+        when (shieldDao.byId(shieldId)?.kind) {
+            "GAME" -> refreshGameShield(shieldId)
+            "TEAM" -> refreshTeamShield(shieldId)
+        }
+        val transition = sessions.arm(shieldId, hours) ?: return false
+        transition.previous?.let { SessionActions.cancel(context, it) }
+        scheduleSession(transition.current)
+        sessions.reconcileEquivalentAttribution(shieldId)
+        return true
+    }
+
+    /** Game-time windows for every opted-in shield; the listener keeps these hot. */
+    fun observeGameWindows(): Flow<List<GameTimeProtection.Window>> =
+        shieldDao.observeGameTimeRows().map { rows -> rows.map(::windowFor) }
+
+    private fun windowFor(row: GameTimeRow) = GameTimeProtection.window(
+        row.shieldId, row.eventId, row.startMillis,
+        row.leagueId ?: catalog.leagueIdForTeam(row.catalogTeamId), row.endMillis,
+    )
+
+    /**
+     * Start protection for one game's window, if [GameTimeProtection.decide] says so. Serialized
+     * and idempotent: the start worker, the listener's on-notification fallback, and the UI can
+     * all race here and only the first one starts a session. Returns true when hiding now covers
+     * the game (newly started or already running).
+     */
+    suspend fun startGameWindow(shieldId: Long, eventId: String, explicit: Boolean = false): Boolean {
+        (context.applicationContext as? com.jessemaddox.spoileralert.SpoilerAlertApp)?.startupReady?.await()
+        var started = false
+        val covered = SessionEffects.mutex.withLock {
+            if (shieldDao.byId(shieldId)?.kind == "GAME") refreshGameShield(shieldId)
+            val now = System.currentTimeMillis()
+            val record = shieldDao.protectionRecords().firstOrNull { it.shield.id == shieldId }
+            val deadline = record?.takeIf { it.isEffective(now) }?.let { ShieldCodec.sessionDeadlineMillis(it.shield) }
+            val window = shieldDao.gameTimeRow(shieldId, eventId)?.let(::windowFor)
+            when (val decision = GameTimeProtection.decide(record?.shield, deadline, window, now, explicit)) {
+                is GameTimeProtection.Start.Arm -> armLocked(shieldId, decision.hours).also { started = it }
+                GameTimeProtection.Start.AlreadyCovered -> true
+                is GameTimeProtection.Start.Skip -> false
+            }
+        }
+        if (started) {
+            SummaryNotifier.refresh(context)
+            ActiveNotificationSweep.request()
+        }
+        return covered
+    }
+
+    /**
+     * Turn game-time protection on or off for a TEAM shield ("Hide during every game"). Turning
+     * it on schedules every cached game's start, and a game already on starts hiding right away.
+     * Turning it off leaves a running session alone; the user stops that one explicitly.
+     */
+    suspend fun setAutoProtect(shieldId: Long, enabled: Boolean) {
+        shieldDao.setAutoProtect(shieldId, enabled)
+        if (!enabled) return
+        val now = System.currentTimeMillis()
+        for (game in gameDao.upcomingForShield(shieldId, GameWindows.sinceMillis(now))) {
+            PregamePromptWorker.enqueue(context, game.id, shieldId, game.startMillis, game.completed)
+        }
+        shieldDao.gameTimeRows(shieldId).map(::windowFor).filter { it.isOpen(now) }
+            .forEach { startGameWindow(shieldId, it.eventId, explicit = true) }
+    }
+
+    /** Result of protecting one game. */
+    sealed interface GameProtection {
+        /** Hiding starts on its own at [startsAtMillis]; nothing is hidden before then. */
+        data class Scheduled(val startsAtMillis: Long) : GameProtection
+        data object HidingNow : GameProtection
+        data object Unavailable : GameProtection
+    }
+
+    /**
+     * Protect a game on its own clock: hiding starts shortly before kickoff and runs to the
+     * expected finish, however early this is tapped and however far away the game is. A game
+     * already inside its window starts now; a recently finished one (watching a recording)
+     * starts now for the flat sport-length session, because its window has passed.
+     */
+    suspend fun protectAtGameTime(leagueGame: LeagueGameEntity): GameProtection {
+        val shieldId = createGameShield(leagueGame, autoProtect = true) ?: return GameProtection.Unavailable
+        val now = System.currentTimeMillis()
+        val window = GameTimeProtection.window(
+            shieldId, leagueGame.eventId, leagueGame.startMillis, leagueGame.leagueId, leagueGame.endMillis,
+        )
+        val hiding = shieldDao.protectionRecords().any { it.shield.id == shieldId && it.isEffective(now) }
+        return when {
+            hiding && now < window.startMillis -> GameProtection.HidingNow
+            leagueGame.completed || now >= window.endMillis -> {
+                arm(shieldId, SessionDurations.suggestedHours(leagueGame.leagueId))
+                GameProtection.HidingNow
+            }
+            now >= window.startMillis ->
+                if (startGameWindow(shieldId, leagueGame.eventId, explicit = true)) GameProtection.HidingNow
+                else GameProtection.Unavailable
+            else -> GameProtection.Scheduled(window.startMillis)
+        }
+    }
+
+    /**
+     * Protect one cached game of [shieldId] (Home card, widget, Quick Settings tile) on the game's
+     * own clock. A shield already set to hide at game time needs nothing new. Otherwise the game
+     * gets its own GAME shield when the league pool knows it; failing that, hiding starts now and
+     * still runs through the game's expected finish.
+     */
+    suspend fun protectCachedGame(shieldId: Long, eventId: String): GameProtection {
+        val shield = shieldDao.byId(shieldId) ?: return GameProtection.Unavailable
+        val window = shieldDao.gameTimeRow(shieldId, eventId)?.let(::windowFor)
+        val now = System.currentTimeMillis()
+        if (shield.autoProtect && window != null && now < window.startMillis) {
+            return GameProtection.Scheduled(window.startMillis)
+        }
+        if (!shield.autoProtect) leagueGameDao.byId(eventId)?.let { return protectAtGameTime(it) }
+        return if (startGameWindow(shieldId, eventId, explicit = true)) GameProtection.HidingNow
+        else GameProtection.Unavailable
+    }
+
+    /** "Don't hide this game" for a scheduled single game: nothing will start on its own. An
+     *  unused GAME shield (not hiding, nothing captured) goes away with it. */
+    suspend fun cancelGameTime(shieldId: Long) = SessionEffects.mutex.withLock {
+        val shield = shieldDao.byId(shieldId) ?: return@withLock
+        shieldDao.setAutoProtect(shieldId, false)
+        if (shield.kind == "GAME" && !shield.armed && vaultDao.countForShield(shieldId) == 0) {
+            deleteShieldLocked(shieldId)
+        }
     }
 
     /** The displayed generation is required; stale notification actions cannot extend a rearm. */
@@ -219,6 +340,11 @@ class ShieldRepository(
         val name = shieldDao.byId(shieldId)?.name
             ?: selection.sessionIds.firstNotNullOfOrNull { db.protectionSessionDao().byId(it)?.displayName }
             ?: return@withLock null
+        // Stopping this shield's current session is an explicit stop: a game window open right now
+        // stays stopped, later games still start on their own. Recorded before the session ends so
+        // the listener never sees an open window with nothing hiding and nothing stopped.
+        shieldDao.byId(shieldId)?.currentSessionId?.takeIf { it in selection.sessionIds }
+            ?.let { shieldDao.setGameTimeStoppedAt(shieldId, System.currentTimeMillis()) }
         val batch = sessions.reveal(selection, policy(), if (delete) shieldId else null, expectedCurrentSessionId)
         batch.ended.forEach { SessionActions.cancel(context, it) }
         // Ended sessions can retain a session-ended notice after expiry; clear only selected scopes.
@@ -358,8 +484,9 @@ class ShieldRepository(
      * than duplicated), or null when the matchup yields no usable aliases — the caller
      * should tell the user this one can't be protected yet.
      */
-    suspend fun createGameShield(leagueGame: LeagueGameEntity): Long? {
+    suspend fun createGameShield(leagueGame: LeagueGameEntity, autoProtect: Boolean = false): Long? {
         shieldDao.byGameEventId(leagueGame.eventId)?.let { existing ->
+            if (autoProtect && !existing.autoProtect) shieldDao.setAutoProtect(existing.id, true)
             // Reuse path (collated review finding 3): the shield already exists, but its
             // per-shield `games` row and pregame-prompt work may be long gone — e.g. a prior
             // session ended with revealed vault rows, which drops the games row
@@ -387,6 +514,7 @@ class ShieldRepository(
                     kind = "GAME",
                     gameEventId = leagueGame.eventId,
                     autoDisarmHours = SessionDurations.suggestedHours(leagueGame.leagueId),
+                    autoProtect = autoProtect,
                 ))
             gameDao.upsertAll(listOf(gameEntityFor(leagueGame, id)))
             id
@@ -505,6 +633,9 @@ class ShieldRepository(
     private suspend fun cleanupGameShieldLocked(shieldId: Long, exceptWork: String? = null) {
         val s = shieldDao.byId(shieldId) ?: return
         if (s.kind != "GAME" || s.armed) return
+        // Stopping an early "Start hiding now" must not cancel the game's own start later on.
+        val now = System.currentTimeMillis()
+        if (s.autoProtect && shieldDao.gameTimeRows(shieldId).map(::windowFor).any { now < it.startMillis }) return
         val hidden = vaultDao.hiddenForShield(shieldId).size
         val total = vaultDao.countForShield(shieldId)
         if (GameShieldLifecycle.deleteNowAfterReveal(s.kind, s.armed, hidden, total)) {

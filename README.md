@@ -29,7 +29,8 @@ If your phone keeps pausing the listener, open **Settings → Reliability** insi
 
 - **Your teams and events:** a bundled team/player reference catalog, followed interests, individual game protection, event discovery, recent completed games and custom keywords.
 - **Local notification holding:** careful matching for messaging apps, broader matching for sports apps, app exclusions, optional package-wide fantasy protection, and a readable hidden/history view.
-- **A complete watching session:** chosen duration, pregame reminders, a check-in near the end, one-hour extensions, a final grace period, and automatic stopping that keeps unrevealed content hidden.
+- **Game-time protection:** protecting a game hides notifications from just before its start until it should be over, however early you set it up. Turn on **Hide during every game** for a followed team and each of its games is covered on its own schedule.
+- **A complete watching session:** pregame reminders, a check-in near the end, one-hour extensions, a final grace period, and automatic stopping that keeps unrevealed content hidden.
 - **Catch-up tools:** score-free event status, narrowly scoped live and historical questions, skip-ahead checks, soccer clocks and goal guides, and a catch-up summary. Missing or inconsistent provider evidence produces an unavailable answer rather than an invented safe interval.
 - **Android conveniences:** individually reveal a hidden item, open its source when available, use the home-screen widget or Quick Settings tile, and inspect local diagnostic tools.
 - **The full presentation:** the illustrated header carousel, local fonts, onboarding and accessibility labels. [Artwork and font notices](docs/ARTWORK.md) explain their provenance.

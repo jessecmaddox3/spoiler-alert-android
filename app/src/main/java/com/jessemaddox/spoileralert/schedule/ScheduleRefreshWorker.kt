@@ -93,6 +93,12 @@ class ScheduleRefreshWorker(context: Context, params: WorkerParameters) :
         val repo = ShieldRepository(applicationContext, db)
         for (shield in db.shieldDao().gameShields()) {
             repo.refreshGameShield(shield.id)
+            // Like team games, recompute the start from the latest kickoff on every refresh, so a
+            // moved game's pregame ask or game-time start moves with it.
+            val eventId = shield.gameEventId ?: continue
+            db.gameDao().byKey(eventId, shield.id)?.let {
+                PregamePromptWorker.enqueue(applicationContext, it.id, it.shieldId, it.startMillis, it.completed)
+            }
         }
     }
 

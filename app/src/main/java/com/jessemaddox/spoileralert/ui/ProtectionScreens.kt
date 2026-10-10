@@ -10,6 +10,11 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.sizeIn
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.ui.semantics.Role
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
@@ -25,6 +30,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -45,6 +51,7 @@ import androidx.compose.ui.unit.dp
 import com.jessemaddox.spoileralert.R
 import com.jessemaddox.spoileralert.data.GameEntity
 import com.jessemaddox.spoileralert.data.SessionExtension
+import com.jessemaddox.spoileralert.data.GameTimeProtection
 import com.jessemaddox.spoileralert.data.ShieldCodec
 import com.jessemaddox.spoileralert.data.ShieldEntity
 import com.jessemaddox.spoileralert.data.RevealSelection
@@ -152,6 +159,8 @@ fun ProtectionHomeScreen(
     onFixListener: () -> Unit,
     onFixNotifications: () -> Unit,
     onQuickProtect: (ShieldEntity, GameEntity?) -> Unit,
+    onStartGameNow: (ShieldEntity, GameEntity) -> Unit,
+    onCancelGameTime: (ShieldEntity) -> Unit,
     onEndProtection: (ShieldEntity, RevealSelection) -> Unit,
     onExtend: (ShieldEntity) -> Unit,
     onOpenHidden: () -> Unit,
@@ -322,6 +331,15 @@ fun ProtectionHomeScreen(
                             leagueId = suggestion.leagueId,
                             nowMillis = now,
                         )
+                        val hidesAt = suggestion.game.startMillis - GameTimeProtection.LEAD_MS
+                        val scheduled = suggestion.shield.autoProtect && now < hidesAt
+                        if (scheduled) {
+                            Text(
+                                "Hides notifications automatically ${EventPresentation.startsAtLabel(hidesAt, now, ZoneId.systemDefault())}",
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = Blueberry,
+                            )
+                        }
                         PrimaryPill(
                             "Open game",
                             { suggestion.leagueId?.let { league ->
@@ -331,10 +349,14 @@ fun ProtectionHomeScreen(
                                         suggestion.game.completed, null))
                             } },
                         )
-                        GhostPill(
-                            "Hide notifications",
-                            { onQuickProtect(suggestion.shield, suggestion.game) },
-                        )
+                        if (scheduled) {
+                            GhostPill("Start hiding now", { onStartGameNow(suggestion.shield, suggestion.game) })
+                            if (suggestion.shield.kind == "GAME") {
+                                TextAction("Don't hide this game", { onCancelGameTime(suggestion.shield) })
+                            }
+                        } else {
+                            GhostPill("Hide notifications", { onQuickProtect(suggestion.shield, suggestion.game) })
+                        }
                     }
                 }
             }
@@ -647,6 +669,7 @@ fun ProtectionTeamsScreen(
     nextGames: Map<Long, GameEntity>,
     catalog: TeamCatalog,
     onProtectCustom: (ShieldEntity) -> Unit,
+    onSetHideDuringEveryGame: (ShieldEntity, Boolean) -> Unit,
     onAdd: () -> Unit,
     onDelete: (ShieldEntity, RevealSelection) -> Unit,
 ) {
@@ -660,7 +683,7 @@ fun ProtectionTeamsScreen(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             Text(
-                "Follow teams and recurring events so their games appear on Home. Following does not hide notifications until you start it for a specific event.",
+                "Follow teams and recurring events so their games appear on Home. Following alone does not hide notifications: start hiding for one game, or turn on Hide during every game.",
                 style = MaterialTheme.typography.bodyMedium,
                 color = JessColors.subtle,
                 modifier = Modifier.weight(1f),
@@ -693,6 +716,9 @@ fun ProtectionTeamsScreen(
                                     when {
                                         shield.armed -> "Following · Hiding notifications now"
                                         (hiddenCounts[shield.id] ?: 0) > 0 -> "Following · ${hiddenCounts[shield.id]} notification${if (hiddenCounts[shield.id] == 1) "" else "s"} waiting"
+                                        shield.autoProtect -> nextGames[shield.id]?.let {
+                                            "Hides during every game · Next: ${it.shortName}"
+                                        } ?: "Hides during every game"
                                         else -> nextGames[shield.id]?.let { "Following · Next: ${it.shortName}" } ?: "Following"
                                     },
                                     style = MaterialTheme.typography.bodySmall,
@@ -701,6 +727,29 @@ fun ProtectionTeamsScreen(
                             }
                             if (shield.kind == "CUSTOM" && !shield.armed) {
                                 GhostPill("Start hiding", { onProtectCustom(shield) })
+                            }
+                        }
+                        if (shield.kind == "TEAM" && catalog.teamById(shield.catalogTeamId)?.espn != null) {
+                            // Toggleable ROW: one focus stop reading label + switch state, 48dp target.
+                            Row(
+                                Modifier
+                                    .fillMaxWidth()
+                                    .toggleable(value = shield.autoProtect, role = Role.Switch, onValueChange = {
+                                        onSetHideDuringEveryGame(shield, it)
+                                    })
+                                    .sizeIn(minHeight = 48.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                            ) {
+                                Switch(checked = shield.autoProtect, onCheckedChange = null)
+                                Spacer(Modifier.width(10.dp))
+                                Column {
+                                    Text("Hide during every game", style = MaterialTheme.typography.bodyMedium, color = Blueberry)
+                                    Text(
+                                        "Each game on its league schedule, from just before it starts until it should be over",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = JessColors.subtle,
+                                    )
+                                }
                             }
                         }
                         TextAction("Remove", { deleteCandidate = selections[shield.id]?.let { shield to it } })

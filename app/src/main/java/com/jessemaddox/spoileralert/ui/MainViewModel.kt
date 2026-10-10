@@ -463,15 +463,54 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         SpoilerTileService.requestUpdate(getApplication())
     }
 
-    /** "Protect" a matchup from the Big games list / browser: create the session-scoped
-     *  GAME shield and arm it for the sheet's chosen duration. */
-    fun protectGame(game: LeagueGameEntity, hours: Int) = viewModelScope.launch {
-        val id = repo.createGameShield(game)
-        if (id == null) {
-            _userMessages.tryEmit(CANT_PROTECT_MESSAGE)
-            return@launch
-        }
-        repo.arm(id, hours)
+    /** "Hide notifications" for a matchup: create the session-scoped GAME shield and protect it
+     *  on the game's own clock (starts shortly before kickoff, runs to the expected finish). */
+    fun protectGame(game: LeagueGameEntity) = viewModelScope.launch {
+        reportProtection(game.shortName, repo.protectAtGameTime(game))
+    }
+
+    /** "Hide notifications" on a followed team's or protected game's card. */
+    fun protectCachedGame(shield: ShieldEntity, game: GameEntity) = viewModelScope.launch {
+        reportProtection(game.shortName, repo.protectCachedGame(shield.id, game.id))
+    }
+
+    private fun reportProtection(name: String, result: ShieldRepository.GameProtection) {
+        _userMessages.tryEmit(when (result) {
+            ShieldRepository.GameProtection.Unavailable -> CANT_PROTECT_MESSAGE
+            ShieldRepository.GameProtection.HidingNow -> "Hiding notifications for $name"
+            is ShieldRepository.GameProtection.Scheduled ->
+                "$name: hiding starts ${EventPresentation.startsAtLabel(result.startsAtMillis,
+                    System.currentTimeMillis(), ZoneId.systemDefault())}"
+        })
+        WidgetRefresher.refresh(getApplication())
+        SpoilerTileService.requestUpdate(getApplication())
+    }
+
+    /** Start hiding for one cached game right now, still running through its expected finish. */
+    fun startGameNow(shieldId: Long, eventId: String, name: String) = viewModelScope.launch {
+        _userMessages.tryEmit(
+            if (repo.startGameWindow(shieldId, eventId, explicit = true)) "Hiding notifications for $name"
+            else "Couldn't start hiding for $name. Refresh games and try again."
+        )
+        WidgetRefresher.refresh(getApplication())
+        SpoilerTileService.requestUpdate(getApplication())
+    }
+
+    /** "Don't hide this game" for a scheduled single game. */
+    fun cancelGameTime(shield: ShieldEntity) = viewModelScope.launch {
+        repo.cancelGameTime(shield.id)
+        _userMessages.tryEmit("${shield.name} won't hide notifications")
+        WidgetRefresher.refresh(getApplication())
+        SpoilerTileService.requestUpdate(getApplication())
+    }
+
+    /** "Hide during every game" for a followed team. */
+    fun setHideDuringEveryGame(shield: ShieldEntity, enabled: Boolean) = viewModelScope.launch {
+        repo.setAutoProtect(shield.id, enabled)
+        _userMessages.tryEmit(
+            if (enabled) "${shield.name}: notifications will hide during every game"
+            else "${shield.name}: games will no longer hide notifications on their own"
+        )
         WidgetRefresher.refresh(getApplication())
         SpoilerTileService.requestUpdate(getApplication())
     }

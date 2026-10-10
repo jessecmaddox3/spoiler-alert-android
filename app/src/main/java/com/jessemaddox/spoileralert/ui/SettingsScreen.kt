@@ -164,7 +164,7 @@ fun SettingsScreen(
         JessCard {
             Eyebrow("Auto-stop", small = true)
             Text(
-                "Hiding sessions turn off after this many hours. We check in 15 minutes before they end so a lock is not accidentally left on.",
+                "Hiding you start without a game turns off after this many hours. A protected game hides until it should be over. We check in 15 minutes before any session ends so a lock is not accidentally left on.",
                 style = MaterialTheme.typography.bodySmall,
                 color = JessColors.subtle,
             )

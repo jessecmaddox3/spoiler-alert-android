@@ -236,7 +236,6 @@ fun GameRow(
 ) {
     val started = GameWindows.hasStarted(game.startMillis, nowMillis)
     val sport = EventPresentation.sport(game.leagueId)
-    val today = GamesBrowsing.happensOn(game, LocalDate.now(), ZoneId.systemDefault())
     HairlineCard {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -269,13 +268,11 @@ fun GameRow(
                 verticalArrangement = Arrangement.Center,
             ) {
                 onOpenGame?.let { open -> PrimaryPill("Open game", open, compact = true) }
-                if (today || started) {
-                    com.jessemaddox.spoileralert.ui.theme.GhostPill(
-                        "Hide notifications",
-                        onClick = onProtect,
-                        enabled = protectEnabled,
-                    )
-                }
+                com.jessemaddox.spoileralert.ui.theme.GhostPill(
+                    "Hide notifications",
+                    onClick = onProtect,
+                    enabled = protectEnabled,
+                )
                 if (onProtectLater != null && !started) {
                     ReminderPill(
                         detail = reminderDetail(game.startMillis, nowMillis),

@@ -3,6 +3,7 @@ package com.jessemaddox.spoileralert.widget
 import android.content.Context
 import com.jessemaddox.spoileralert.data.AppDatabase
 import com.jessemaddox.spoileralert.data.GameEntity
+import com.jessemaddox.spoileralert.data.GameTimeProtection
 import com.jessemaddox.spoileralert.data.GameWindows
 import com.jessemaddox.spoileralert.data.ShieldCodec
 import kotlinx.coroutines.flow.Flow
@@ -18,8 +19,10 @@ import com.jessemaddox.spoileralert.data.isEffective
  */
 data class WidgetState(
     val hasShields: Boolean = false,
-    /** Next game among TEAM shields (cached games only exist for TEAM shields). */
+    /** Next cached game among followed teams and protected games. */
     val nextGame: GameEntity? = null,
+    /** When game-time protection will start hiding for [nextGame] on its own, if it will. */
+    val nextGameHidesAtMillis: Long? = null,
     val nextShieldName: String? = null,
     val nextShieldArmed: Boolean = false,
     val armedCount: Int = 0,
@@ -53,11 +56,20 @@ data class WidgetState(
                 val next = games.firstNotNullOfOrNull { game ->
                     shields.find { it.id == game.shieldId }?.let { game to it }
                 }
+                // Any opted-in shield holding this game (its team, or its own GAME shield) means
+                // hiding starts on its own at game time.
+                val hidesAt = next?.first?.let { game ->
+                    val optedIn = games.any { g ->
+                        g.id == game.id && shields.any { it.id == g.shieldId && it.autoProtect }
+                    }
+                    (game.startMillis - GameTimeProtection.LEAD_MS).takeIf { optedIn }
+                }
                 val heroArmed = shields.filter { it.armed }
                     .minByOrNull { ShieldCodec.sessionDeadlineMillis(it) ?: Long.MAX_VALUE }
                 WidgetState(
                     hasShields = shields.isNotEmpty(),
                     nextGame = next?.first,
+                    nextGameHidesAtMillis = hidesAt,
                     nextShieldName = next?.second?.name,
                     nextShieldArmed = next?.second?.armed == true,
                     armedCount = shields.count { it.armed },

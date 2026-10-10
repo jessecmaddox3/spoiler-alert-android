@@ -52,11 +52,15 @@ object DailyRelevance {
         catalog: TeamCatalog? = null,
     ): DailyEventFeed {
         val shieldsById = shields.associateBy { it.id }
+        // Once a game has its own GAME shield, that shield's card speaks for it; a followed
+        // team's copy of the same game would offer a second, conflicting protect action.
+        val gameShieldEvents = games.filter { shieldsById[it.shieldId]?.kind == "GAME" }.mapTo(mutableSetOf()) { it.id }
         val personal = games.asSequence()
             .filterNot { it.completed }
             .mapNotNull { game ->
                 val shield = shieldsById[game.shieldId] ?: return@mapNotNull null
                 if (shield.kind !in setOf("TEAM", "GAME") || HiddenRecency.isHiding(shield, nowMillis)) return@mapNotNull null
+                if (shield.kind == "TEAM" && game.id in gameShieldEvents) return@mapNotNull null
                 PersonalToday(shield, game, catalog?.leagueIdForTeam(shield.catalogTeamId)
                     ?: leagueGames.firstOrNull { it.eventId == game.id }?.leagueId)
             }

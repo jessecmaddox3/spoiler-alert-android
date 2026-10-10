@@ -168,13 +168,25 @@ private fun IdleGameLines(state: WidgetState) {
     val now = System.currentTimeMillis()
     val whenText = if (game.startMillis <= now) "Live now" else formatKickoff(game.startMillis)
     TitleLine("${game.shortName} · $whenText", WBlueberry)
+    val hidesAt = state.nextGameHidesAtMillis
+    if (hidesAt != null && now < hidesAt) {
+        Text(
+            "Hides automatically ${formatKickoff(hidesAt)}",
+            style = TextStyle(color = WSubtleOnBlue, fontSize = 13.sp),
+            maxLines = 1,
+        )
+        return
+    }
     Text(
-        "Start hiding notifications",
+        "Hide this game's notifications",
         style = TextStyle(color = WAccentInk, fontSize = 13.sp, fontWeight = FontWeight.Bold),
         maxLines = 1,
         modifier = GlanceModifier.clickable(
             actionRunCallback<ArmShieldAction>(
-                actionParametersOf(ArmShieldAction.KEY_SHIELD_ID to game.shieldId),
+                actionParametersOf(
+                    ArmShieldAction.KEY_SHIELD_ID to game.shieldId,
+                    ArmShieldAction.KEY_EVENT_ID to game.id,
+                ),
             ),
         ),
     )
@@ -207,16 +219,20 @@ private fun formatKickoff(millis: Long): String =
 private fun formatEndTime(millis: Long): String =
     SimpleDateFormat("h:mm a", Locale.getDefault()).format(Date(millis))
 
-/** One-tap arm from the widget — arms the shield without opening the app. */
+/** One-tap protect from the widget, without opening the app: the game is protected on its own
+ *  clock (from just before it starts until it should be over), never from the tap. */
 class ArmShieldAction : ActionCallback {
     override suspend fun onAction(context: Context, glanceId: GlanceId, parameters: ActionParameters) {
         val shieldId = parameters[KEY_SHIELD_ID] ?: return
-        runCatching { ShieldRepository(context.applicationContext).arm(shieldId) }
+        val repo = ShieldRepository(context.applicationContext)
+        // A widget placed before game-time protection carries no game; fall back to the old arm.
+        runCatching { parameters[KEY_EVENT_ID]?.let { repo.protectCachedGame(shieldId, it) } ?: repo.arm(shieldId) }
         runCatching { SpoilerWidget().updateAll(context) }
     }
 
     companion object {
         val KEY_SHIELD_ID = ActionParameters.Key<Long>("shieldId")
+        val KEY_EVENT_ID = ActionParameters.Key<String>("eventId")
     }
 }
 

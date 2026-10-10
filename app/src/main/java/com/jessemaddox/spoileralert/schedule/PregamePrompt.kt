@@ -41,6 +41,8 @@ object PregamePrompt {
         // "Protect later" GAME shield gets its arm-now ask exactly like a team does.
         if (shield.kind != "TEAM" && shield.kind != "GAME")
             return PromptDecision.Skip("shield kind has no schedule")
+        // Game-time protection starts hiding on its own at this same moment; asking would be noise.
+        if (shield.autoProtect) return PromptDecision.Skip("hides automatically at game time")
         if (!shield.pregamePrompts) return PromptDecision.Skip("pregame prompts off for this shield")
         if (shield.armed) return PromptDecision.Skip("shield already armed")
         if (game == null) return PromptDecision.Skip("game no longer in schedule cache")

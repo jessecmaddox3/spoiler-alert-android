@@ -71,6 +71,19 @@ object EventPresentation {
         return EventTiming(schedule, relative)
     }
 
+    /** When game-time hiding begins: "at 7:20 PM" today, "tomorrow at 7:20 PM", else
+     *  "Sat, Oct 17 at 7:20 PM". */
+    fun startsAtLabel(startMillis: Long, nowMillis: Long, zoneId: ZoneId): String {
+        val start = Instant.ofEpochMilli(startMillis).atZone(zoneId)
+        val today = Instant.ofEpochMilli(nowMillis).atZone(zoneId).toLocalDate()
+        val time = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT).format(start)
+        return when (start.toLocalDate()) {
+            today -> "at $time"
+            today.plusDays(1) -> "tomorrow at $time"
+            else -> "${DateTimeFormatter.ofPattern("EEE, MMM d").format(start)} at $time"
+        }
+    }
+
     fun friendlyDuration(millis: Long): String {
         val minutes = max(0L, millis / MINUTE_MS)
         val days = minutes / (24 * 60)

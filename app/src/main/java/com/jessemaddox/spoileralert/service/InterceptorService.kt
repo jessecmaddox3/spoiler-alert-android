@@ -10,6 +10,7 @@ import android.service.notification.StatusBarNotification
 import android.util.Log
 import com.jessemaddox.spoileralert.SpoilerAlertApp
 import com.jessemaddox.spoileralert.data.CaptureContext
+import com.jessemaddox.spoileralert.data.GameTimeProtection
 import com.jessemaddox.spoileralert.data.ProtectionSnapshot
 import com.jessemaddox.spoileralert.data.protectionSnapshot
 import com.jessemaddox.spoileralert.data.notificationMatchText
@@ -25,6 +26,7 @@ import com.jessemaddox.spoileralert.widget.WidgetRefresher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.async
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -46,6 +48,10 @@ class InterceptorService : NotificationListenerService() {
     @Volatile
     private var protectionCache = ProtectionSnapshot(emptyList(), null)
 
+    /** Opted-in shields' game windows, kept hot for the same reason. */
+    @Volatile
+    private var gameWindows: List<GameTimeProtection.Window> = emptyList()
+
     override fun onCreate() {
         super.onCreate()
         repo = ShieldRepository(applicationContext)
@@ -56,6 +62,10 @@ class InterceptorService : NotificationListenerService() {
             repo.shieldDao.observeProtectionRecords().collect { records ->
                 protectionCache = records.protectionSnapshot(System.currentTimeMillis())
             }
+        }
+        scope.launch {
+            (application as SpoilerAlertApp).startupReady.await()
+            repo.observeGameWindows().collect { gameWindows = it }
         }
         scope.launch {
             ActiveNotificationSweep.requests.collect { sweepActiveNotifications() }
@@ -122,7 +132,17 @@ class InterceptorService : NotificationListenerService() {
         val now = System.currentTimeMillis()
         val snapshot = protectionCache
         val active = snapshot.protections.filter { it.expiresAtMillis > now }
-        val shields = active.map { it.shield }
+        // A game window that is open by the clock protects now, even if Android has not yet run
+        // its start worker. Hide for it immediately and start its session in the background.
+        val due = GameTimeProtection.dueWindows(
+            gameWindows, snapshot.gameTimeShields.mapValues { it.value.stoppedAtMillis },
+            active.mapTo(mutableSetOf()) { it.token.shieldId }, now,
+        )
+        val starting = if (due.isEmpty()) null else scope.async {
+            due.forEach { runCatching { repo.startGameWindow(it.shieldId, it.eventId) } }
+        }
+        val dueShields = due.mapNotNull { snapshot.gameTimeShields[it.shieldId]?.shield }.distinctBy { it.id }
+        val shields = active.map { it.shield } + dueShields
         // Trace decisions for diagnosable sources so field failures leave evidence (Debug tools).
         val traceworthy = isDebugFake || sbn.packageName in SourcePolicy.MESSAGING ||
             sbn.packageName in SourcePolicy.SPORTS_NEWS || sbn.hasMessagingStyle()
@@ -137,10 +157,25 @@ class InterceptorService : NotificationListenerService() {
         }
         if (sbn.packageName != packageName && FantasyPolicy.shouldHide(
                 sbn.packageName, AppPrefs.fantasyPackages(applicationContext),
-                AppPrefs.excludedPackages(applicationContext), active.isNotEmpty())) {
-            val capture = snapshot.fantasy?.copy(matchMode = mode.name, capturedAtMillis = now) ?: return
+                AppPrefs.excludedPackages(applicationContext), shields.isNotEmpty())) {
             val texts = sbn.extractTexts()
             val metadata = sbn.captureMetadata(ranking)
+            if (active.isEmpty()) {
+                // Only a due window covers this moment: its session (and fantasy epoch) starts first.
+                trace(TraceLines.fantasyHide(sbn.packageName))
+                cancelNotification(sbn.key)
+                cancelLoneGroupSummary(sbn)
+                val recovery = dueShields.first().id.let { snapshot.gameTimeShields.getValue(it) }
+                scope.launch {
+                    starting?.await()
+                    val capture = repo.sessions.snapshot().fantasy
+                        ?.copy(matchMode = mode.name, capturedAtMillis = now)
+                        ?: recovery.recoveryCapture(mode, now).also { Log.w(TAG, "game window did not start; holding fantasy item sealed") }
+                    hideAndVault(sbn, capture, texts, metadata, groupWithEvent = false)
+                }
+                return
+            }
+            val capture = snapshot.fantasy?.copy(matchMode = mode.name, capturedAtMillis = now) ?: return
             trace(TraceLines.fantasyHide(sbn.packageName))
             cancelNotification(sbn.key)
             cancelLoneGroupSummary(sbn)
@@ -178,11 +213,24 @@ class InterceptorService : NotificationListenerService() {
         }
         if (traceworthy) trace(TraceLines.matched(sbn.packageName, mode, hit.name))
 
-        val capture = active.first { it.shield.id == hit.id }.capture(mode, now)
+        val running = active.firstOrNull { it.shield.id == hit.id }
         cancelNotification(sbn.key)
         cancelLoneGroupSummary(sbn)
 
-        scope.launch { hideAndVault(sbn, capture, texts, metadata) }
+        if (running != null) {
+            val capture = running.capture(mode, now)
+            scope.launch { hideAndVault(sbn, capture, texts, metadata) }
+            return
+        }
+        // Matched a due game window: store it under the session its start just created.
+        val recovery = snapshot.gameTimeShields.getValue(hit.id)
+        scope.launch {
+            starting?.await()
+            val capture = repo.sessions.snapshot().protections
+                .firstOrNull { it.token.shieldId == hit.id }?.capture(mode, now)
+                ?: recovery.recoveryCapture(mode, now).also { Log.w(TAG, "game window for shield ${hit.id} did not start; holding item sealed") }
+            hideAndVault(sbn, capture, texts, metadata)
+        }
     }
 
     /** Shared tail of every hide: vault the notification's metadata/content under [shieldId],

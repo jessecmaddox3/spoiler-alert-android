@@ -10,6 +10,7 @@ import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import com.jessemaddox.spoileralert.R
 import com.jessemaddox.spoileralert.data.ShieldRepository
+import com.jessemaddox.spoileralert.ui.EventPresentation
 import com.jessemaddox.spoileralert.ui.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,6 +18,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.time.ZoneId
 import java.util.Locale
 
 /**
@@ -47,9 +49,9 @@ class SpoilerTileService : TileService() {
                 openApp()
                 return@launch
             }
-            when (val action = TileDecision.decide(state.idleCandidates, System.currentTimeMillis())) {
-                is TileDecision.Action.Arm -> {
-                    runCatching { ShieldRepository(applicationContext).arm(action.shieldId, action.hours) }
+            when (val action = TileDecision.decide(state.idleCandidates)) {
+                is TileDecision.Action.Protect -> {
+                    runCatching { ShieldRepository(applicationContext).protectCachedGame(action.shieldId, action.eventId) }
                     render(TileState.snapshot(applicationContext))
                 }
                 TileDecision.Action.OpenApp -> openApp()
@@ -76,7 +78,10 @@ class SpoilerTileService : TileService() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) tile.subtitle = activeSubtitle(state)
         } else {
             tile.state = Tile.STATE_INACTIVE
-            tile.label = "Start hiding"
+            val hidesAt = state.idleCandidates.singleOrNull()?.hidesAtMillis
+            tile.label = if (hidesAt != null) {
+                "Hides " + EventPresentation.startsAtLabel(hidesAt, System.currentTimeMillis(), ZoneId.systemDefault())
+            } else "Hide next game"
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 tile.subtitle = TileDecision.subtitle(state.idleCandidates)
             }

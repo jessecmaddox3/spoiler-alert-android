@@ -18,6 +18,13 @@ class EventPresentationTest {
         assertEquals("Starts in 1h 28m", result.relative)
     }
 
+    @Test fun `game-time start reads as today, tomorrow, or a dated day`() {
+        val now = at(2026, 7, 19, 11, 40)
+        assertEquals("at 7:20 PM", EventPresentation.startsAtLabel(at(2026, 7, 19, 19, 20), now, zone))
+        assertEquals("tomorrow at 1:00 PM", EventPresentation.startsAtLabel(at(2026, 7, 20, 13, 0), now, zone))
+        assertEquals("Thu, Jul 23 at 8:05 PM", EventPresentation.startsAtLabel(at(2026, 7, 23, 20, 5), now, zone))
+    }
+
     @Test fun `live event says how long ago it started`() {
         val start = at(2026, 7, 19, 15, 0)
         val result = EventPresentation.timing(

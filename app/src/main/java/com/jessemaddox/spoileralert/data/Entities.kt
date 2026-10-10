@@ -28,6 +28,13 @@ data class ShieldEntity(
     /** Immutable session identity survives deadline extensions; revision scopes scheduled work. */
     val currentSessionId: String? = null,
     @ColumnInfo(defaultValue = "0") val sessionRevision: Long = 0,
+    /** Game-time protection ([GameTimeProtection]): TEAM shields hide during every cached game
+     *  ("Hide during every game"); a GAME shield hides during its one event. Hiding follows each
+     *  game's own start and expected finish, never the moment the user opted in. */
+    @ColumnInfo(defaultValue = "0") val autoProtect: Boolean = false,
+    /** When the user last stopped this shield. A game window that was open at that moment stays
+     *  stopped; windows that open later still start on their own. */
+    val gameTimeStoppedAtMillis: Long? = null,
 )
 
 /** Small durable tombstones. Expiry, deletion and rearming never grant reveal permission. */

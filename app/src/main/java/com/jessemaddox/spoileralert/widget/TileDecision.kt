@@ -1,7 +1,5 @@
 package com.jessemaddox.spoileralert.widget
 
-import com.jessemaddox.spoileralert.ui.SessionDurations
-
 /**
  * Pure decision logic for the idle Quick Settings tile tap (v3 amendment item 9): arm the
  * single obvious next thing to protect, or defer to the app when it's ambiguous. Takes only
@@ -20,25 +18,25 @@ object TileDecision {
         val shieldId: Long,
         val name: String,
         val leagueId: String?,
-        val gameStartMillis: Long? = null,
+        /** The next game itself; protecting it follows the game's clock, not the tap. */
+        val eventId: String,
+        /** Set when game-time protection already starts hiding for this game on its own. */
+        val hidesAtMillis: Long? = null,
     )
 
     sealed interface Action {
-        /** Arm [shieldId] through its next game's expected finish
-         *  ([SessionDurations.gameAwareDefaultHours]). */
-        data class Arm(val shieldId: Long, val hours: Int) : Action
+        /** Protect [eventId] for [shieldId] on the game's own clock
+         *  ([com.jessemaddox.spoileralert.data.ShieldRepository.protectCachedGame]). */
+        data class Protect(val shieldId: Long, val eventId: String) : Action
 
         /** Ambiguous or nothing schedulable — collapse the shade and let the user choose. */
         data object OpenApp : Action
     }
 
-    /** Idle tap: arm the one obvious candidate, else open the app. */
-    fun decide(candidates: List<Candidate>, nowMillis: Long): Action {
+    /** Idle tap: protect the one obvious candidate's game, else open the app. */
+    fun decide(candidates: List<Candidate>): Action {
         val only = candidates.singleOrNull() ?: return Action.OpenApp
-        return Action.Arm(
-            only.shieldId,
-            SessionDurations.gameAwareDefaultHours(only.leagueId, only.gameStartMillis, nowMillis),
-        )
+        return Action.Protect(only.shieldId, only.eventId)
     }
 
     /** Idle subtitle: the one candidate's name, else the generic app name. */

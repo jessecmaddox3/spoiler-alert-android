@@ -1,7 +1,6 @@
 package com.jessemaddox.spoileralert.ui
 
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.time.LocalDateTime
 
@@ -82,108 +81,6 @@ class SessionDurationsTest {
         assertEquals(4, SessionDurations.suggestedHours("f1"))
         assertEquals(4, SessionDurations.suggestedHours("golf"))
         assertEquals(4, SessionDurations.suggestedHours(null))
-    }
-
-    // --- gameAwareDefaultHours: default that covers the actual game (start + length + buffer) ---
-
-    private val now = 1_700_000_000_000L // fixed reference "now" for game-aware math
-    private fun min(m: Long) = m * 60_000L
-    private fun hr(h: Long) = h * 3_600_000L
-
-    @Test
-    fun `no known game falls back to the flat sport-aware suggestion`() {
-        assertEquals(3, SessionDurations.gameAwareDefaultHours("nba", null, now))
-        assertEquals(5, SessionDurations.gameAwareDefaultHours("nfl", null, now))
-        assertEquals(4, SessionDurations.gameAwareDefaultHours(null, null, now))
-    }
-
-    @Test
-    fun `football kicking off now covers game plus post-game buffer`() {
-        // 3.5h game + 45m buffer = 4h15m → ceil 5
-        assertEquals(5, SessionDurations.gameAwareDefaultHours("nfl", now, now))
-        assertEquals(5, SessionDurations.gameAwareDefaultHours("mlb", now, now)) // baseball also 3.5h
-    }
-
-    @Test
-    fun `basketball kicking off now covers 2_5h plus buffer`() {
-        // 2.5h + 45m = 3h15m → ceil 4
-        assertEquals(4, SessionDurations.gameAwareDefaultHours("nba", now, now))
-    }
-
-    @Test
-    fun `soccer leagues use their own lengths`() {
-        // epl 2h + 45m = 2h45m → ceil 3
-        assertEquals(3, SessionDurations.gameAwareDefaultHours("epl", now, now))
-        assertEquals(3, SessionDurations.gameAwareDefaultHours("mls", now, now))
-        // knockout soccer / World Cup 2.5h + 45m = 3h15m → ceil 4
-        assertEquals(4, SessionDurations.gameAwareDefaultHours("soccer", now, now))
-        assertEquals(4, SessionDurations.gameAwareDefaultHours("fifa.world", now, now))
-    }
-
-    @Test
-    fun `unknown league uses a 3h default game length`() {
-        // 3h + 45m = 3h45m → ceil 4
-        assertEquals(4, SessionDurations.gameAwareDefaultHours("golf", now, now))
-    }
-
-    @Test
-    fun `imminent game folds the pre-kickoff wait into the default`() {
-        // nba starting in 30m: 0.5h wait + 3.25h coverage = 3.75h → ceil 4
-        assertEquals(4, SessionDurations.gameAwareDefaultHours("nba", now + min(30), now))
-    }
-
-    @Test
-    fun `in-progress game covers only the remaining time`() {
-        // nfl started 1h ago: end = now + 3.25h → ceil 4
-        assertEquals(4, SessionDurations.gameAwareDefaultHours("nfl", now - hr(1), now))
-    }
-
-    @Test
-    fun `nearly-over game clamps to the 1-hour minimum`() {
-        // nba: length+buffer = 3.25h; start 3h05m ago → ends in ~10m → ceil 1
-        assertEquals(1, SessionDurations.gameAwareDefaultHours("nba", now - min(185), now))
-    }
-
-    @Test
-    fun `a game already over falls back to the flat suggestion`() {
-        // nba ended well before now → flat 3, not a tiny game-aware number
-        assertEquals(3, SessionDurations.gameAwareDefaultHours("nba", now - hr(6), now))
-    }
-
-    @Test
-    fun `arming in the morning for an evening game still covers the whole game`() {
-        // Regression: cfb armed 11:40 for a 19:30 kickoff got a flat 5h and stopped hiding at
-        // 16:40. Now: 7h50m wait + 3.5h game + 45m buffer = 12h05m → ceil 13 (ends 00:40).
-        val hours = SessionDurations.gameAwareDefaultHours("cfb", now + hr(7) + min(50), now)
-        assertEquals(13, hours)
-        val kickoff = now + hr(7) + min(50)
-        assertTrue(now + hr(hours.toLong()) > kickoff + min(210) + min(45))
-    }
-
-    @Test
-    fun `a game the next day is covered through its finish`() {
-        // nba 30h out: 30h + 3h15m = 33h15m → ceil 34
-        assertEquals(34, SessionDurations.gameAwareDefaultHours("nba", now + hr(30), now))
-    }
-
-    @Test
-    fun `a game no session can reach falls back to the flat suggestion`() {
-        // ends past the 72h cap → flat 3 rather than a 72h session that still misses it
-        assertEquals(3, SessionDurations.gameAwareDefaultHours("nba", now + hr(70), now))
-    }
-
-    @Test
-    fun `coverableGameEndMillis mirrors the default decision`() {
-        // known + imminent → non-null end at start + length + buffer
-        assertEquals(now + hr(2) + min(30) + min(45),
-            SessionDurations.coverableGameEndMillis("nba", now, now))
-        // hours away is still covered — the session follows the game, not the tap
-        assertEquals(now + hr(8) + hr(2) + min(30) + min(45),
-            SessionDurations.coverableGameEndMillis("nba", now + hr(8), now))
-        // null / over / beyond the session cap → null (caller uses the flat suggestion)
-        assertEquals(null, SessionDurations.coverableGameEndMillis("nba", null, now))
-        assertEquals(null, SessionDurations.coverableGameEndMillis("nba", now - hr(6), now))
-        assertEquals(null, SessionDurations.coverableGameEndMillis("nba", now + hr(70), now))
     }
 
     // --- formatRemaining: live countdown text for chips ("2h 40m", "12m", "<1m") ---

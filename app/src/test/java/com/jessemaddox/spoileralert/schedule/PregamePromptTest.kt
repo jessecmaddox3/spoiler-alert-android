@@ -15,9 +15,11 @@ class PregamePromptTest {
         armed: Boolean = false,
         pregamePrompts: Boolean = true,
         kind: String = "TEAM",
+        autoProtect: Boolean = false,
     ) = ShieldEntity(
         id = 7, name = "Atlanta Falcons", aliasesJson = "[]", kind = kind,
         catalogTeamId = "nfl-atl", armed = armed, pregamePrompts = pregamePrompts,
+        autoProtect = autoProtect,
     )
 
     private fun game(startMillis: Long, completed: Boolean = false) = GameEntity(
@@ -25,6 +27,12 @@ class PregamePromptTest {
         shortName = "CED @ HAR", startMillis = startMillis, completed = completed,
         fetchedAtMillis = now,
     )
+
+    @Test
+    fun `game-time protection skips the ask because hiding starts on its own`() {
+        val decision = PregamePrompt.shouldPrompt(true, shield(autoProtect = true), game(now + 10 * 60_000L), now)
+        assertEquals(PromptDecision.Skip("hides automatically at game time"), decision)
+    }
 
     @Test
     fun `future start prompts with pregame copy`() {

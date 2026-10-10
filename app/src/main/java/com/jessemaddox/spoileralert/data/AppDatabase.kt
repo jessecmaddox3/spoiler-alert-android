@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 @Database(
     entities = [ShieldEntity::class, VaultEntity::class, GameEntity::class, LeagueGameEntity::class,
         ProtectionSessionEntity::class, CaptureOwnership::class, CaptureConversationAlias::class],
-    version = 11,
+    version = 12,
     exportSchema = true,
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -181,9 +181,19 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        /** Game-time protection opt-in plus the last explicit stop. Additive; every existing
+         *  shield keeps today's behavior (off, never stopped). */
+        val MIGRATION_11_12 = object : androidx.room.migration.Migration(11, 12) {
+            override fun migrate(db: androidx.sqlite.db.SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE shields ADD COLUMN autoProtect INTEGER NOT NULL DEFAULT 0")
+                db.execSQL("ALTER TABLE shields ADD COLUMN gameTimeStoppedAtMillis INTEGER")
+            }
+        }
+
         val ALL_MIGRATIONS = arrayOf(
             MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6,
             MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9, MIGRATION_9_10, MIGRATION_10_11,
+            MIGRATION_11_12,
         )
 
         fun get(context: Context): AppDatabase =

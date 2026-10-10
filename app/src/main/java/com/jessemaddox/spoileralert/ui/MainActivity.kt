@@ -329,6 +329,7 @@ class MainActivity : ComponentActivity() {
                             vm.armSession(shield.id, AppPrefs.autoDisarmHours(this@MainActivity))
                             scope.launch { snackbar.showSnackbar("Hiding notifications for ${shield.name}") }
                         },
+                        onSetHideDuringEveryGame = vm::setHideDuringEveryGame,
                         onAdd = { showAdd = true },
                         onDelete = vm::deleteShield,
                     )
@@ -362,12 +363,8 @@ class MainActivity : ComponentActivity() {
                         leagueNames = vm.leagueNames,
                         catalog = vm.catalog,
                         onProtect = { game ->
-                            val hours = SessionDurations.gameAwareDefaultHours(
-                                game.leagueId, game.startMillis, System.currentTimeMillis(),
-                            )
-                            vm.protectGame(game, hours)
+                            vm.protectGame(game)
                             showGames = false
-                            scope.launch { snackbar.showSnackbar("Hiding notifications for ${game.shortName}") }
                         },
                         onProtectLater = vm::protectGameLater,
                         initialTodayOnly = gamesTodayOnly,
@@ -390,14 +387,15 @@ class MainActivity : ComponentActivity() {
                         onFixListener = { openListenerSettings() },
                         onFixNotifications = { openAppNotificationSettings() },
                         onQuickProtect = { shield, game ->
-                            val leagueId = vm.catalog.leagueIdForTeam(shield.catalogTeamId)
-                                ?: shield.gameEventId?.let { leagueGamesById[it]?.leagueId }
-                            val hours = SessionDurations.gameAwareDefaultHours(
-                                leagueId, game?.startMillis, System.currentTimeMillis(),
-                            )
-                            vm.armSession(shield.id, hours)
-                            scope.launch { snackbar.showSnackbar("Hiding notifications for ${game?.shortName ?: shield.name}") }
+                            // A specific game is protected on its own clock, never from the tap.
+                            if (game != null) vm.protectCachedGame(shield, game) else {
+                                val leagueId = vm.catalog.leagueIdForTeam(shield.catalogTeamId)
+                                vm.armSession(shield.id, SessionDurations.suggestedHours(leagueId))
+                                scope.launch { snackbar.showSnackbar("Hiding notifications for ${shield.name}") }
+                            }
                         },
+                        onStartGameNow = { shield, game -> vm.startGameNow(shield.id, game.id, game.shortName) },
+                        onCancelGameTime = vm::cancelGameTime,
                         onEndProtection = { shield, selection ->
                             val releaseStarted = System.currentTimeMillis()
                             vm.endProtection(shield.id, selection) { outcome ->
@@ -429,13 +427,7 @@ class MainActivity : ComponentActivity() {
                             vm.refreshSchedules()
                             showGames = true
                         },
-                        onProtectFeatured = { game ->
-                            val hours = SessionDurations.gameAwareDefaultHours(
-                                game.leagueId, game.startMillis, System.currentTimeMillis(),
-                            )
-                            vm.protectGame(game, hours)
-                            scope.launch { snackbar.showSnackbar("Hiding notifications for ${game.shortName}") }
-                        },
+                        onProtectFeatured = { game -> vm.protectGame(game) },
                     )
                     tab == 1 -> VaultScreen(
                         items = allVault,
@@ -460,11 +452,7 @@ class MainActivity : ComponentActivity() {
                         },
                         onProtectGame = { game ->
                             showAdd = false
-                            val hours = SessionDurations.gameAwareDefaultHours(
-                                game.leagueId, game.startMillis, System.currentTimeMillis(),
-                            )
-                            vm.protectGame(game, hours)
-                            scope.launch { snackbar.showSnackbar("Hiding notifications for ${game.shortName}") }
+                            vm.protectGame(game)
                         },
                         onProtectGameLater = { showAdd = false; vm.protectGameLater(it) },
                         onOpenGame = {

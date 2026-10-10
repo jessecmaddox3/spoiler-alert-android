@@ -1,6 +1,7 @@
 package com.jessemaddox.spoileralert.widget
 
 import android.content.Context
+import com.jessemaddox.spoileralert.data.GameTimeProtection
 import com.jessemaddox.spoileralert.data.GameWindows
 import com.jessemaddox.spoileralert.data.isEffective
 import com.jessemaddox.spoileralert.data.ShieldCodec
@@ -57,7 +58,10 @@ data class TileState(
                     shieldId = s.id,
                     name = game.shortName,
                     leagueId = catalog?.leagueIdForTeam(s.catalogTeamId),
-                    gameStartMillis = game.startMillis,
+                    eventId = game.id,
+                    hidesAtMillis = (game.startMillis - GameTimeProtection.LEAD_MS).takeIf {
+                        s.autoProtect || shields.any { it.kind == "GAME" && it.gameEventId == game.id && it.autoProtect }
+                    },
                 )
             }
             return TileState(armed = false, idleCandidates = candidates)

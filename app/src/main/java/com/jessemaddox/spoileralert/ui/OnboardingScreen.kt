@@ -223,7 +223,7 @@ private fun WelcomeStep(
         )
         Spacer(Modifier.height(8.dp))
         Text(
-            "Pick the teams and events you follow. On game day, you decide when Spoiler Alert should start hiding notifications.",
+            "Pick the teams and events you follow. Protect a game and Spoiler Alert hides its notifications from just before it starts until it should be over.",
             style = MaterialTheme.typography.bodyLarge,
             color = JessColors.subtle,
         )

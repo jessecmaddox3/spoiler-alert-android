@@ -167,5 +167,32 @@ class MigrationTest {
         }
     }
 
+    @Test fun migrate11To12_keepsShieldsAndLeavesGameTimeProtectionOff() {
+        helper.createDatabase(DB, 11).use { db ->
+            db.execSQL(
+                "INSERT INTO shields (name, aliasesJson, kind, armed, armedAtMillis, autoDisarmHours, " +
+                    "maskedAlerts, pregamePrompts, currentSessionId, sessionRevision) VALUES " +
+                    "('Cedar Comets', '[]', 'TEAM', 1, 1901232000000, 5, 0, 1, 'fiction-session', 2)"
+            )
+        }
+
+        helper.runMigrationsAndValidate(DB, 12, true, AppDatabase.MIGRATION_11_12).use { db ->
+            db.query(
+                "SELECT name, armed, armedAtMillis, autoDisarmHours, currentSessionId, sessionRevision, " +
+                    "autoProtect, gameTimeStoppedAtMillis FROM shields"
+            ).use { c ->
+                assertTrue(c.moveToFirst())
+                assertEquals("Cedar Comets", c.getString(0))
+                assertEquals(1, c.getInt(1))
+                assertEquals(1901232000000L, c.getLong(2))
+                assertEquals(5, c.getInt(3))
+                assertEquals("fiction-session", c.getString(4))
+                assertEquals(2L, c.getLong(5))
+                assertEquals(0, c.getInt(6))
+                assertTrue(c.isNull(7))
+            }
+        }
+    }
+
     private companion object { const val DB = "migration-test.db" }
 }

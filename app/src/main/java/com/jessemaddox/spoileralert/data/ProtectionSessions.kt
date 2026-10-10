@@ -47,9 +47,21 @@ data class ActiveProtection(
     )
 }
 
+/** An opted-in shield ([ShieldEntity.autoProtect]) the listener may hide for inside a due game
+ *  window before its session has started. */
+data class GameTimeShield(val shield: ArmedShield, val kind: String, val stoppedAtMillis: Long?) {
+    /** A sealed recovery identity for an item hidden for this shield whose window then failed to
+     *  start: [ProtectionSessions.persist] records it as an ended RECOVERED session, so the item
+     *  stays hidden and revealable under this shield instead of being lost. */
+    fun recoveryCapture(mode: MatchMode, now: Long) = CaptureContext(
+        "recovered:" + UUID.randomUUID(), shield.id, kind, shield.name, mode.name, now,
+    )
+}
+
 data class ProtectionSnapshot(
     val protections: List<ActiveProtection>,
     val fantasy: CaptureContext?,
+    val gameTimeShields: Map<Long, GameTimeShield> = emptyMap(),
 )
 
 data class ProtectionPolicy(
@@ -103,7 +115,15 @@ fun List<ShieldWithSession>.protectionSnapshot(now: Long): ProtectionSnapshot {
     }
     val fantasy = firstOrNull { it.shield.kind == "FANTASY" && it.session?.endedAtMillis == null && it.session != null }
         ?.let { CaptureContext(it.session!!.sessionId, it.shield.id, "FANTASY", it.shield.name, "LEGACY", now) }
-    return ProtectionSnapshot(active, fantasy)
+    val gameTime = filter { it.shield.autoProtect && (it.shield.kind == "TEAM" || it.shield.kind == "GAME") }
+        .mapNotNull { row ->
+            runCatching {
+                row.shield.id to GameTimeShield(ShieldCodec.toArmedShield(row.shield), row.shield.kind,
+                    row.shield.gameTimeStoppedAtMillis)
+            }
+                .getOrNull()
+        }.toMap()
+    return ProtectionSnapshot(active, fantasy, gameTime)
 }
 
 /** Database-only lifecycle. Android work/notification effects happen after the transaction. */

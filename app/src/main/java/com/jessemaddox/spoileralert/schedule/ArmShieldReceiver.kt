@@ -13,8 +13,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 /**
- * Handles the "Arm shield" action on a pregame prompt: arms the shield WITHOUT opening
- * the app, cancels the prompt, refreshes the widget. Posts nothing else — the widget and
+ * Handles the "Hide until it's over" action on a pregame prompt: starts hiding for that game
+ * through its expected finish WITHOUT opening the app, cancels the prompt, refreshes the widget. Posts nothing else — the widget and
  * app already reflect armed state. Only ever runs from an explicit user tap (consent).
  */
 class ArmShieldReceiver : BroadcastReceiver() {
@@ -27,7 +27,10 @@ class ArmShieldReceiver : BroadcastReceiver() {
         val pending = goAsync()
         CoroutineScope(Dispatchers.Default).launch {
             runCatching {
-                ShieldRepository(app).arm(shieldId)
+                val repo = ShieldRepository(app)
+                val eventId = intent.getStringExtra(EXTRA_EVENT_ID)
+                // An older prompt without its game falls back to the shield's stored length.
+                if (eventId != null) repo.startGameWindow(shieldId, eventId, explicit = true) else repo.arm(shieldId)
                 app.getSystemService(NotificationManager::class.java)
                     .cancel(PregamePromptWorker.notificationId(shieldId))
                 WidgetRefresher.refreshNow(app)
@@ -41,5 +44,6 @@ class ArmShieldReceiver : BroadcastReceiver() {
         private const val TAG = "ArmShieldReceiver"
         const val ACTION_ARM_SHIELD = "com.jessemaddox.spoileralert.ARM_SHIELD"
         const val EXTRA_SHIELD_ID = "shieldId"
+        const val EXTRA_EVENT_ID = "eventId"
     }
 }

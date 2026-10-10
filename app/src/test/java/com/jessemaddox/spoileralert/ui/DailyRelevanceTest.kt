@@ -35,6 +35,16 @@ class DailyRelevanceTest {
         assertEquals(listOf("one", "two"), feed.personal.map { it.game.id })
     }
 
+    @Test fun `a game with its own game shield shows once, not again under the followed team`() {
+        val team = ShieldEntity(id = 7, name = "Atlanta United", aliasesJson = "[]", kind = "TEAM")
+        val match = ShieldEntity(id = 9, name = "ATL @ ORL", aliasesJson = "[]", kind = "GAME",
+            gameEventId = "match", autoProtect = true)
+        val start = at(2026, 7, 19, 19)
+        val feed = DailyRelevance.build(listOf(team, match),
+            listOf(teamGame("match", 7, start), teamGame("match", 9, start)), emptyList(), now, atlanta)
+        assertEquals(listOf(9L), feed.personal.map { it.shield.id })
+    }
+
     @Test fun `The Open remains featured across its multi-day window`() {
         val open = leagueGame(
             id = "open", league = "golf", name = "The Open",

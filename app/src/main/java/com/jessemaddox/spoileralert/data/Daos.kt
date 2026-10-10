@@ -8,6 +8,21 @@ import androidx.room.Transaction
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
+private const val GAME_WINDOW_SELECT =
+    "SELECT g.shieldId AS shieldId, g.id AS eventId, g.startMillis AS startMillis, " +
+        "s.catalogTeamId AS catalogTeamId, lg.leagueId AS leagueId, lg.endMillis AS endMillis " +
+        "FROM games g JOIN shields s ON s.id = g.shieldId LEFT JOIN league_games lg ON lg.eventId = g.id "
+
+/** One cached game for a shield, enough to size its game-time window. */
+data class GameTimeRow(
+    val shieldId: Long,
+    val eventId: String,
+    val startMillis: Long,
+    val catalogTeamId: String?,
+    val leagueId: String?,
+    val endMillis: Long?,
+)
+
 @Dao
 interface ShieldDao {
     @Transaction
@@ -106,6 +121,23 @@ interface ShieldDao {
 
     @Query("UPDATE shields SET pregamePrompts = :enabled WHERE id = :id")
     suspend fun setPregamePrompts(id: Long, enabled: Boolean)
+
+    @Query("UPDATE shields SET autoProtect = :enabled WHERE id = :id")
+    suspend fun setAutoProtect(id: Long, enabled: Boolean)
+
+    @Query("UPDATE shields SET gameTimeStoppedAtMillis = :stoppedAt WHERE id = :id")
+    suspend fun setGameTimeStoppedAt(id: Long, stoppedAt: Long)
+
+    /** Every opted-in shield's cached, unfinished games with the public league metadata that
+     *  sizes their windows. Public schedule data only, never joined with vault content. */
+    @Query(GAME_WINDOW_SELECT + "WHERE s.autoProtect = 1 AND s.kind IN ('TEAM', 'GAME') AND g.completed = 0")
+    fun observeGameTimeRows(): Flow<List<GameTimeRow>>
+
+    @Query(GAME_WINDOW_SELECT + "WHERE s.id = :shieldId AND g.completed = 0")
+    suspend fun gameTimeRows(shieldId: Long): List<GameTimeRow>
+
+    @Query(GAME_WINDOW_SELECT + "WHERE s.id = :shieldId AND g.id = :eventId")
+    suspend fun gameTimeRow(shieldId: Long, eventId: String): GameTimeRow?
 
     /** GAME shields, for the schedule refresh's re-derive pass ([ShieldRepository.refreshGameShield]). */
     @Query("SELECT * FROM shields WHERE kind = 'GAME'")
