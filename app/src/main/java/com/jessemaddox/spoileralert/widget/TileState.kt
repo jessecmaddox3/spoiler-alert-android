@@ -57,6 +57,7 @@ data class TileState(
                     shieldId = s.id,
                     name = game.shortName,
                     leagueId = catalog?.leagueIdForTeam(s.catalogTeamId),
+                    gameStartMillis = game.startMillis,
                 )
             }
             return TileState(armed = false, idleCandidates = candidates)

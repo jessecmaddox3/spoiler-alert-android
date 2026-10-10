@@ -41,11 +41,6 @@ object SessionDurations {
      *  the final whistle, and immediate reaction coverage — not just the clock. */
     const val POSTGAME_BUFFER_MINUTES = 45L
 
-    /** Only default-cover a game the user is arming AROUND kickoff: a game further out than
-     *  this uses the flat [suggestedHours] instead (arming hours early shouldn't hide for
-     *  10+ hours by default). In-progress and just-about-to-start games qualify. */
-    const val NEAR_WINDOW_MINUTES = 6 * 60L
-
     /** Typical wall-clock length of a game in the given league, in minutes (broadcast start
      *  to final whistle, before the post-game buffer). Football and baseball run long,
      *  basketball middles, league soccer is tight, knockout/World Cup soccer runs longer. */
@@ -60,23 +55,27 @@ object SessionDurations {
 
     /**
      * Epoch-millis end of a game the session should cover (kickoff + typical length + buffer),
-     * or null when there's nothing sensible to cover — no known game, the game already ended,
-     * or kickoff is further out than [NEAR_WINDOW_MINUTES]. Callers that get null fall back to
+     * or null when there's nothing a session can cover — no known game, the game already
+     * ended, or it ends beyond the [MAX_HOURS] session cap. Callers that get null fall back to
      * the flat [suggestedHours]. Shared by [gameAwareDefaultHours] and the sheet's "covers the
      * game" affordance so the label and the math never disagree.
+     *
+     * How early the user arms never matters: the session is anchored to the game, not the tap.
+     * (An earlier "near kickoff" gate sent a morning arm for an evening game to the flat
+     * [suggestedHours], so hiding expired hours before kickoff.)
      */
     fun coverableGameEndMillis(leagueId: String?, gameStartMillis: Long?, nowMillis: Long): Long? {
         if (gameStartMillis == null) return null
         val end = gameStartMillis +
             (typicalGameLengthMinutes(leagueId) + POSTGAME_BUFFER_MINUTES) * 60_000L
         if (end <= nowMillis) return null // already over — nothing left to cover
-        if (gameStartMillis > nowMillis + NEAR_WINDOW_MINUTES * 60_000L) return null // too far out
+        if (end > nowMillis + MAX_HOURS * 3_600_000L) return null // no session can reach it
         return end
     }
 
     /**
      * Game-aware default session length (v3 amendment item 8, sport-aware check-in timing):
-     * when a game start is known and imminent/in-progress, default the session to END at the
+     * when a game start is known and not yet over, default the session to END at the
      * game's expected finish (kickoff + [typicalGameLengthMinutes] + [POSTGAME_BUFFER_MINUTES]),
      * expressed as whole hours from [nowMillis], min 1, capped at [MAX_HOURS]. The check-in
      * (15 min before expiry) then lands near expected game-end automatically. Falls back to the

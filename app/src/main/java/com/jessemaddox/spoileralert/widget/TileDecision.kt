@@ -16,10 +16,16 @@ import com.jessemaddox.spoileralert.ui.SessionDurations
  */
 object TileDecision {
     /** One armable candidate: an unarmed TEAM shield with a next schedulable game. */
-    data class Candidate(val shieldId: Long, val name: String, val leagueId: String?)
+    data class Candidate(
+        val shieldId: Long,
+        val name: String,
+        val leagueId: String?,
+        val gameStartMillis: Long? = null,
+    )
 
     sealed interface Action {
-        /** Arm [shieldId] for the sport-suggested duration ([SessionDurations.suggestedHours]). */
+        /** Arm [shieldId] through its next game's expected finish
+         *  ([SessionDurations.gameAwareDefaultHours]). */
         data class Arm(val shieldId: Long, val hours: Int) : Action
 
         /** Ambiguous or nothing schedulable — collapse the shade and let the user choose. */
@@ -27,9 +33,12 @@ object TileDecision {
     }
 
     /** Idle tap: arm the one obvious candidate, else open the app. */
-    fun decide(candidates: List<Candidate>): Action {
+    fun decide(candidates: List<Candidate>, nowMillis: Long): Action {
         val only = candidates.singleOrNull() ?: return Action.OpenApp
-        return Action.Arm(only.shieldId, SessionDurations.suggestedHours(only.leagueId))
+        return Action.Arm(
+            only.shieldId,
+            SessionDurations.gameAwareDefaultHours(only.leagueId, only.gameStartMillis, nowMillis),
+        )
     }
 
     /** Idle subtitle: the one candidate's name, else the generic app name. */

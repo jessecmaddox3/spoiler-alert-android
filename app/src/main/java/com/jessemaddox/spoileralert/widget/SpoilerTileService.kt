@@ -47,7 +47,7 @@ class SpoilerTileService : TileService() {
                 openApp()
                 return@launch
             }
-            when (val action = TileDecision.decide(state.idleCandidates)) {
+            when (val action = TileDecision.decide(state.idleCandidates, System.currentTimeMillis())) {
                 is TileDecision.Action.Arm -> {
                     runCatching { ShieldRepository(applicationContext).arm(action.shieldId, action.hours) }
                     render(TileState.snapshot(applicationContext))

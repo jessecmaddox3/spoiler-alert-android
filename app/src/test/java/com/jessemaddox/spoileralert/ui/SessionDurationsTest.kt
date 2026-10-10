@@ -1,6 +1,7 @@
 package com.jessemaddox.spoileralert.ui
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.time.LocalDateTime
 
@@ -150,9 +151,25 @@ class SessionDurationsTest {
     }
 
     @Test
-    fun `a game too far in the future falls back to the flat suggestion`() {
-        // starts 8h out (beyond the near window) → flat 3, not an 11h session
-        assertEquals(3, SessionDurations.gameAwareDefaultHours("nba", now + hr(8), now))
+    fun `arming in the morning for an evening game still covers the whole game`() {
+        // Regression: cfb armed 11:40 for a 19:30 kickoff got a flat 5h and stopped hiding at
+        // 16:40. Now: 7h50m wait + 3.5h game + 45m buffer = 12h05m → ceil 13 (ends 00:40).
+        val hours = SessionDurations.gameAwareDefaultHours("cfb", now + hr(7) + min(50), now)
+        assertEquals(13, hours)
+        val kickoff = now + hr(7) + min(50)
+        assertTrue(now + hr(hours.toLong()) > kickoff + min(210) + min(45))
+    }
+
+    @Test
+    fun `a game the next day is covered through its finish`() {
+        // nba 30h out: 30h + 3h15m = 33h15m → ceil 34
+        assertEquals(34, SessionDurations.gameAwareDefaultHours("nba", now + hr(30), now))
+    }
+
+    @Test
+    fun `a game no session can reach falls back to the flat suggestion`() {
+        // ends past the 72h cap → flat 3 rather than a 72h session that still misses it
+        assertEquals(3, SessionDurations.gameAwareDefaultHours("nba", now + hr(70), now))
     }
 
     @Test
@@ -160,10 +177,13 @@ class SessionDurationsTest {
         // known + imminent → non-null end at start + length + buffer
         assertEquals(now + hr(2) + min(30) + min(45),
             SessionDurations.coverableGameEndMillis("nba", now, now))
-        // null / over / far-future → null (caller uses the flat suggestion)
+        // hours away is still covered — the session follows the game, not the tap
+        assertEquals(now + hr(8) + hr(2) + min(30) + min(45),
+            SessionDurations.coverableGameEndMillis("nba", now + hr(8), now))
+        // null / over / beyond the session cap → null (caller uses the flat suggestion)
         assertEquals(null, SessionDurations.coverableGameEndMillis("nba", null, now))
         assertEquals(null, SessionDurations.coverableGameEndMillis("nba", now - hr(6), now))
-        assertEquals(null, SessionDurations.coverableGameEndMillis("nba", now + hr(8), now))
+        assertEquals(null, SessionDurations.coverableGameEndMillis("nba", now + hr(70), now))
     }
 
     // --- formatRemaining: live countdown text for chips ("2h 40m", "12m", "<1m") ---
