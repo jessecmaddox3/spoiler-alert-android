@@ -126,7 +126,7 @@ interface ShieldDao {
     suspend fun setAutoProtect(id: Long, enabled: Boolean)
 
     @Query("UPDATE shields SET gameTimeStoppedAtMillis = :stoppedAt WHERE id = :id")
-    suspend fun setGameTimeStoppedAt(id: Long, stoppedAt: Long)
+    suspend fun setGameTimeStoppedAt(id: Long, stoppedAt: Long?)
 
     /** Every opted-in shield's cached, unfinished games with the public league metadata that
      *  sizes their windows. Public schedule data only, never joined with vault content. */

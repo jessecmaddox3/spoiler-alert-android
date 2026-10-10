@@ -147,11 +147,16 @@ class ShieldRepository(
             val record = shieldDao.protectionRecords().firstOrNull { it.shield.id == shieldId }
             val deadline = record?.takeIf { it.isEffective(now) }?.let { ShieldCodec.sessionDeadlineMillis(it.shield) }
             val window = shieldDao.gameTimeRow(shieldId, eventId)?.let(::windowFor)
-            when (val decision = GameTimeProtection.decide(record?.shield, deadline, window, now, explicit)) {
+            val result = when (val decision = GameTimeProtection.decide(record?.shield, deadline, window, now, explicit)) {
                 is GameTimeProtection.Start.Arm -> armLocked(shieldId, decision.hours).also { started = it }
                 GameTimeProtection.Start.AlreadyCovered -> true
                 is GameTimeProtection.Start.Skip -> false
             }
+            // Asking for hiding again undoes an earlier stop for this game.
+            if (explicit && result && record?.shield?.gameTimeStoppedAtMillis != null) {
+                shieldDao.setGameTimeStoppedAt(shieldId, null)
+            }
+            result
         }
         if (started) {
             SummaryNotifier.refresh(context)
@@ -224,6 +229,10 @@ class ShieldRepository(
             return GameProtection.Scheduled(window.startMillis)
         }
         if (!shield.autoProtect) leagueGameDao.byId(eventId)?.let { return protectAtGameTime(it) }
+        // Starting now only helps if a session can last until the game is over.
+        if (window != null && GameTimeProtection.hoursToReach(window.endMillis, now) * 3_600_000L < window.endMillis - now) {
+            return GameProtection.Unavailable
+        }
         return if (startGameWindow(shieldId, eventId, explicit = true)) GameProtection.HidingNow
         else GameProtection.Unavailable
     }
@@ -233,6 +242,7 @@ class ShieldRepository(
     suspend fun cancelGameTime(shieldId: Long) = SessionEffects.mutex.withLock {
         val shield = shieldDao.byId(shieldId) ?: return@withLock
         shieldDao.setAutoProtect(shieldId, false)
+        if (shield.kind == "GAME") shieldDao.setPregamePrompts(shieldId, false)
         if (shield.kind == "GAME" && !shield.armed && vaultDao.countForShield(shieldId) == 0) {
             deleteShieldLocked(shieldId)
         }
@@ -343,8 +353,10 @@ class ShieldRepository(
         // Stopping this shield's current session is an explicit stop: a game window open right now
         // stays stopped, later games still start on their own. Recorded before the session ends so
         // the listener never sees an open window with nothing hiding and nothing stopped.
-        shieldDao.byId(shieldId)?.currentSessionId?.takeIf { it in selection.sessionIds }
-            ?.let { shieldDao.setGameTimeStoppedAt(shieldId, System.currentTimeMillis()) }
+        val stopNow = System.currentTimeMillis()
+        shieldDao.protectionRecords().firstOrNull { it.shield.id == shieldId }
+            ?.takeIf { it.isEffective(stopNow) && it.shield.currentSessionId in selection.sessionIds }
+            ?.let { shieldDao.setGameTimeStoppedAt(shieldId, stopNow) }
         val batch = sessions.reveal(selection, policy(), if (delete) shieldId else null, expectedCurrentSessionId)
         batch.ended.forEach { SessionActions.cancel(context, it) }
         // Ended sessions can retain a session-ended notice after expiry; clear only selected scopes.
@@ -633,9 +645,13 @@ class ShieldRepository(
     private suspend fun cleanupGameShieldLocked(shieldId: Long, exceptWork: String? = null) {
         val s = shieldDao.byId(shieldId) ?: return
         if (s.kind != "GAME" || s.armed) return
-        // Stopping an early "Start hiding now" must not cancel the game's own start later on.
+        // Keep an opted-in game while its window can still start or restart: stopping an early
+        // "Start hiding now" must not cancel kickoff, and a multi-day event outlasting the 72-hour
+        // session cap must keep its window for the final days.
         val now = System.currentTimeMillis()
-        if (s.autoProtect && shieldDao.gameTimeRows(shieldId).map(::windowFor).any { now < it.startMillis }) return
+        if (s.autoProtect && shieldDao.gameTimeRows(shieldId).map(::windowFor).any {
+                now < it.endMillis && !GameTimeProtection.stoppedDuring(it, s.gameTimeStoppedAtMillis)
+            }) return
         val hidden = vaultDao.hiddenForShield(shieldId).size
         val total = vaultDao.countForShield(shieldId)
         if (GameShieldLifecycle.deleteNowAfterReveal(s.kind, s.armed, hidden, total)) {

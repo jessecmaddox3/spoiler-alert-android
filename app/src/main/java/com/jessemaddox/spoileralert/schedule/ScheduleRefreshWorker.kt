@@ -96,7 +96,7 @@ class ScheduleRefreshWorker(context: Context, params: WorkerParameters) :
             // Like team games, recompute the start from the latest kickoff on every refresh, so a
             // moved game's pregame ask or game-time start moves with it.
             val eventId = shield.gameEventId ?: continue
-            db.gameDao().byKey(eventId, shield.id)?.let {
+            db.gameDao().byKey(eventId, shield.id)?.takeIf { it.startMillis > System.currentTimeMillis() }?.let {
                 PregamePromptWorker.enqueue(applicationContext, it.id, it.shieldId, it.startMillis, it.completed)
             }
         }

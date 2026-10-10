@@ -87,6 +87,24 @@ class GameTimeProtectionRepositoryTest {
         assertTrue(db.shieldDao().byId(id)!!.armed)
     }
 
+    @Test fun revealingLeftoversWhileNothingIsHidingDoesNotStopTonightsGame() = runBlocking {
+        val id = teamWithGame(System.currentTimeMillis() - 30 * minute)
+        // An earlier session whose deadline and grace have both passed.
+        ProtectionSessions(db, { System.currentTimeMillis() - 10 * hour }).arm(id, 1)
+        repo.stopAndReveal(id, repo.revealScope(id))
+        assertEquals(null, db.shieldDao().byId(id)!!.gameTimeStoppedAtMillis)
+        assertTrue(repo.startGameWindow(id, "fiction-game"))
+    }
+
+    @Test fun askingAgainAfterAStopClearsIt() = runBlocking {
+        val id = teamWithGame(System.currentTimeMillis() - 30 * minute)
+        assertTrue(repo.startGameWindow(id, "fiction-game"))
+        repo.stopAndReveal(id, repo.revealScope(id))
+        assertTrue(db.shieldDao().byId(id)!!.gameTimeStoppedAtMillis != null)
+        assertTrue(repo.startGameWindow(id, "fiction-game", explicit = true))
+        assertEquals(null, db.shieldDao().byId(id)!!.gameTimeStoppedAtMillis)
+    }
+
     @Test fun stoppingAnEarlyStartKeepsTheGamesOwnStart() = runBlocking {
         val kickoff = System.currentTimeMillis() + 3 * hour
         db.leagueGameDao().upsertAll(listOf(matchup(kickoff)))
